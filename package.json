@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore .",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.+(js|json)\"",
+    "check-format" : "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json)\"",
+    "validate" : "npm run check-format && npm run lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.4.0",
+    "prettier": "^2.5.1"
+  }
+}
