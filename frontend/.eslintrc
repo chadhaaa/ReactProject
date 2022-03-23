@@ -1,0 +1,21 @@
+{
+    "parserOptions" : {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": ["eslint-recommended", "eslint-config-prettier"],
+    "rules": {
+        "semi" : "error",
+        "no-undef" : "warn",
+        "quotes" : ["error", "single"]
+    }, 
+
+        "env": {
+            "browser" : true, 
+            "node" : true
+        }
+    
+}
