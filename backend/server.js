@@ -15,6 +15,7 @@ const Place = require('./models/place')
 const Program = require('./models/program')
 const Session = require('./models/session')
 const Subscription = require('./models/subscription')
+const Discipline = require('./models/discipline')
 
 // Database connection
 mongoose
