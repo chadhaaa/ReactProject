@@ -8,6 +8,10 @@ const statSchema = mongoose.Schema({
 	link: { type: String, required: false },
 	visibility: { type: Boolean, required: false },
 	currentState: { type: Number, required: false },
+	disciplineId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Discipline',
+	},
 })
 
 module.exports = mongoose.model('Stats', statSchema)
