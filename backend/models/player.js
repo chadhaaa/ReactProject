@@ -16,6 +16,10 @@ const playerSchema = mongoose.Schema({
 	weight: { type: Number, required: false },
 	//IMC:{ type: String, required: false },
 	LeftRight: { type: String, required: false },
+	goal: { type: String, required: false },
+	coachId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coach' },
+	sessionPrice: { type: Number, required: false },
+	sessionNumbers: { type: Number, required: true },
 })
 
 module.exports = mongoose.model('Player', playerSchema)
