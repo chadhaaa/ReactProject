@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const playerSchema = mongoose.Schema({
 	firstname: { type: String, required: false },
 	lastname: { type: String, required: false },
+	password: { type: String, required: false },
 	email: { type: String, required: false },
 	birthDate: { type: String, required: false },
 	picture: { type: String, required: false },
