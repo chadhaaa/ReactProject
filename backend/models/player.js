@@ -12,7 +12,6 @@ const playerSchema = mongoose.Schema({
 	schoolType: { type: String, required: false },
 	country: { type: String, required: false },
 	tel: { type: Number, required: false },
-	sessionPrice: { type: String, required: false },
 	height: { type: Number, required: false },
 	weight: { type: Number, required: false },
 	//IMC:{ type: String, required: false },
