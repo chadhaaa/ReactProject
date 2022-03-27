@@ -21,6 +21,7 @@ const playerSchema = mongoose.Schema({
 	coachId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coach' },
 	sessionPrice: { type: Number, required: false },
 	sessionNumbers: { type: Number, required: true },
+	active : { type: Boolean, required: false },
 })
 
 module.exports = mongoose.model('Player', playerSchema)
