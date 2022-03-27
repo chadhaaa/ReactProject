@@ -16,6 +16,7 @@ const Program = require('./models/program')
 const Session = require('./models/session')
 const Subscription = require('./models/subscription')
 const Discipline = require('./models/discipline')
+const routerSessionDetails = require('./routes/sessionDetails.js')
 
 // Database connection
 mongoose
@@ -34,3 +35,5 @@ const server = http.createServer(app)
 server.listen(8000, () => {
 	console.log('Listening on port 8000')
 })
+
+app.use('/api', routerSessionDetails)
