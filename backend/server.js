@@ -17,6 +17,8 @@ const Session = require('./models/session')
 const Subscription = require('./models/subscription')
 const Discipline = require('./models/discipline')
 
+const routerInviterPlayer = require('./routes/invitePlayer.js')
+
 // Database connection
 mongoose
 	.connect(
@@ -34,3 +36,5 @@ const server = http.createServer(app)
 server.listen(8000, () => {
 	console.log('Listening on port 8000')
 })
+
+app.use('/api', routerInviterPlayer)

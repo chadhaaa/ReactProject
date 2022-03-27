@@ -20,6 +20,7 @@ const playerSchema = mongoose.Schema({
 	coachId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coach' },
 	sessionPrice: { type: Number, required: false },
 	sessionNumbers: { type: Number, required: true },
+	password: { type: Number, required: true },
 })
 
 module.exports = mongoose.model('Player', playerSchema)
