@@ -8,7 +8,8 @@ const Player = require("../models/player");
 require('dotenv').config()
 
 const invitePlayer = async (req, res) => {
- const player = new Player({
+  let player; 
+ player = new Player({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
@@ -26,8 +27,8 @@ const invitePlayer = async (req, res) => {
   let smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.USER,
-      pass: process.env.PASS,
+      user:"nodeisamm@gmail.com",
+      pass: "otaku666",
     },
     tls: {
       rejectUnauthorized: false,
@@ -35,7 +36,7 @@ const invitePlayer = async (req, res) => {
   });
 
   let mailOptions = {
-    from: process.env.USER,
+    from: "nodeisamm@gmail.com",
     to: `${req.body.email}`,
     subject: "Invitation from COACH to join a session",
     text: "test",
@@ -60,7 +61,7 @@ const invitePlayer = async (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      res.send("Sucess: Email was successfully sent !");
+      res.send("Success: Email was successfully sent !");
     }
   });
 

@@ -11,7 +11,6 @@ const playerSchema = mongoose.Schema({
 	schoolType: { type: String, required: false },
 	country: { type: String, required: false },
 	tel: { type: Number, required: false },
-	sessionPrice: { type: String, required: false },
 	height: { type: Number, required: false },
 	weight: { type: Number, required: false },
 	//IMC:{ type: String, required: false },
@@ -20,7 +19,7 @@ const playerSchema = mongoose.Schema({
 	coachId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coach' },
 	sessionPrice: { type: Number, required: false },
 	sessionNumbers: { type: Number, required: true },
-	password: { type: Number, required: true },
+	password: { type: String, required: true },
 })
 
 module.exports = mongoose.model('Player', playerSchema)
