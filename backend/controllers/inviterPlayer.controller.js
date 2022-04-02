@@ -27,8 +27,8 @@ const invitePlayer = async (req, res) => {
   let smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user:"nodeisamm@gmail.com",
-      pass: "otaku666",
+      user: process.env.USER,
+      pass: process.env.PASS,
     },
     tls: {
       rejectUnauthorized: false,
@@ -36,7 +36,7 @@ const invitePlayer = async (req, res) => {
   });
 
   let mailOptions = {
-    from: "nodeisamm@gmail.com",
+    from: process.env.USER,
     to: `${req.body.email}`,
     subject: "Invitation from COACH to join a session",
     text: "test",
@@ -52,7 +52,7 @@ const invitePlayer = async (req, res) => {
        <li>price per week : ${req.body.sessionPrice} </li>
        <li>number of sessions : ${req.body.sessionNumbers} </li>
       </ul>
-      <a href=http://localhost:3000/updateCompetence/>Accept invitation</a>
+      <a href=http://localhost:3000/competence/>Accept invitation</a>
       <h4> Your Coach </h4>
       `,
   };
