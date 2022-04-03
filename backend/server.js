@@ -16,6 +16,10 @@ const Program = require('./models/program')
 const Session = require('./models/session')
 const Subscription = require('./models/subscription')
 const Discipline = require('./models/discipline')
+const CompetencePlayer = require('./models/competencePlayer')
+const StatisticPlayer = require('./models/statisticPlayer')
+const CompetenceSession = require('./models/competenceSession')
+const StatisticSession = require('./models/statisticSession')
 
 // Database connection
 mongoose
