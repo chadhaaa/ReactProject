@@ -21,6 +21,7 @@ const AddNewChllg = async (req, res) => {
 	let newChllg = new chllg({
 		link: req.body.link,
 		goal: req.body.goal,
+		idPlayer: req.body.idPlayer
 	})
 	newChllg = await newChllg.save()
 	if (!newChllg) {
@@ -36,7 +37,8 @@ const UpdateChllg = async (req, res) => {
 	const chllg = await chllg.findByIdAndUpdate(req.params.id,
 		{
 			link: req.body.link,
-			goal: req.body.goal
+			goal: req.body.goal,
+			idPlayer: req.body.idPlayer
 		},
 		{ new: true }
 	)
