@@ -23,6 +23,7 @@ const StatisticSession = require("./models/statisticSession");
 //App routes
 const routeChallenge = require("./routes/challenge.js");
 const routeSession = require("./routes/session.js");
+const routeListSession = require("./routes/listSession.js");
 
 // Database connection
 mongoose
@@ -57,3 +58,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api", routeChallenge);
 app.use("/api", routeSession);
+app.use("/listSession", routeListSession);
