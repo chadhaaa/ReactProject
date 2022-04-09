@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const http = require('http')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 // Adding tables to database
 const Coach = require('./models/coach')
@@ -20,6 +21,10 @@ const CompetencePlayer = require('./models/competencePlayer')
 const StatisticPlayer = require('./models/statisticPlayer')
 const CompetenceSession = require('./models/competenceSession')
 const StatisticSession = require('./models/statisticSession')
+
+
+// App routes
+const routesSignup = require('./routes/signup.js')
 
 // Database connection
 mongoose
@@ -49,3 +54,6 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+// Route to Crud Comp and Crud Stat
+app.use('/api', routesSignup)
+
