@@ -12,6 +12,8 @@ class Signup extends Component{
             firstname: '',
             lastname: '',
             birthDate: '',
+            password: '',
+            email: '',
 
         };
     }
@@ -33,7 +35,11 @@ class Signup extends Component{
         });
 
     }
-
+    handleChange = event => {
+        this.setState({
+          [event.target.id]: event.target.value
+        });
+      };
 
 
 
@@ -48,22 +54,45 @@ class Signup extends Component{
                         <form>
                             <input type='text'
                             placeholder='Firstname'
-                            onChange={this.changeFirstname}
+                            onChange={this.handleChange}
                             value={this.state.firstname}
                             className='form-control form-group'
+                            id='firstname'
                             />
                             <input type='text'
                             placeholder='lastname'
-                            onChange={this.changeLastname}
+                            onChange={this.handleChange}
                             value={this.state.lastname}
                             className='form-control form-group'
+                            id='lastname'
                             />
                             <input type='date'
-                            onChange={this.changeBirthDate}
+                            onChange={this.handleChange}
                             value={this.state.birthDate}
                             className='form-control form-group'
+                            id='birthDate'
                             
                             />
+                            <input type='email'
+                            placeholder='email'
+                            onChange={this.handleChange}
+                            value={this.state.email}
+                            className='form-control form-group'
+                            id='email'
+                            
+                            />
+                            
+                            <input type='password'
+                            placeholder='password'
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                            className='form-control form-group'
+                            id='password'
+                            
+                            />
+                            
+                            
+                            
                             <input type='submit' className='btn btn-danger btn-block' value='submit'/>
                         </form>
                     </div>    
