@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from './logo.svg'
+import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom'
+import GetSeance from './components/pages/sessionDetails/getAllSession'
+import GetOneSeance from './components/pages/sessionDetails/getOneSession'
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<div className='App'>
+				<Routes>
+					<Route exact path='/sessionList' element={<GetSeance />}></Route>
+					<Route exact path='/oneSession/:id' element={<GetOneSeance />}></Route>
+				</Routes>
+			</div>
+		</Router>
+	)
 }
 
-export default App;
+export default App
