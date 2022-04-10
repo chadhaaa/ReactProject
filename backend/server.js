@@ -16,12 +16,13 @@ const Program = require('./models/program')
 const Session = require('./models/session')
 const Subscription = require('./models/subscription')
 const Discipline = require('./models/discipline')
-const CompetencePlayer = require('./models/competencePlayer')
+const CompetencePlayer = require('./models/competencePlayer')	
 const StatisticPlayer = require('./models/statisticPlayer')
 const CompetenceSession = require('./models/competenceSession')
 const StatisticSession = require('./models/statisticSession')
 //App routes
 const routeChallenge = require('./routes/challenge.js')
+const routeSession = require('./routes/session.js')
 
 // Database connection
 mongoose
@@ -52,3 +53,4 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use('/api',routeChallenge)
+app.use('/api',routeSession)
