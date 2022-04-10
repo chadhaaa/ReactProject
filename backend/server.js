@@ -49,3 +49,54 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+// send EMAIL REMINDER to coach and player
+const cron = require('node-cron')
+const mailer = require('nodemailer')
+
+// credentials for your Mail
+
+const currentDate = new Date().toString().split(' ')
+
+let cYear = currentDate[3]
+let cMonth = currentDate[1]
+let cDay = currentDate[2]
+
+console.log('day', cDay)
+console.log('Month', cMonth)
+console.log('year', cYear)
+
+var transporter = mailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'nodeisamm@gmail.com',
+		pass: 'otaku666',
+	},
+})
+
+cron.schedule('* * * * * *', () => {
+	///The Main Function
+	const sendWishes =
+		// looping through the users
+		Seance.find({}, (err, dates) => {
+			dates.forEach((element) => {
+				let d = element.date.toString().split(' ')
+
+				// Sending the Mail
+				if (d[2] === cDay && d[1] === cMonth && d[3] === cYear) {
+					const mailOptions = {
+						from: 'nodeisamm@gmail.com',
+						to: 'chadha.hadji@gmail.com',
+						subject: `Ness-React Email Reminder `,
+						html: `We remind you that there is an upcoming session </b> at ${element.time} , Enjoy !`,
+					}
+					return transporter.sendMail(mailOptions, (error, data) => {
+						if (error) {
+							console.log(error)
+							return
+						}
+					})
+				}
+			})
+		})
+})
