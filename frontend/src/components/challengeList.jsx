@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-//import React, { useEffect } from 'react';
+import axios from 'axios';
 
 
-const challengeList = () => {
+const ChallengeList = () => {
 
   const [challenges, setChallenges] = useState([]);
+  const status = 'DONE';
 
 
   const fetchData = () => {
@@ -26,6 +27,16 @@ const challengeList = () => {
 
   }, []);
 
+  const updateStatus = async (challenge) => (event) => {
+
+
+		event.preventDefault();
+
+		axios.put(`/api/assignChallengePlayer/${challenge._id}`, status);
+		//badel l link hasb eli aandek baad fel code besh temshilou baad update
+		history('/');
+	};
+
 
   return (
 
@@ -38,7 +49,9 @@ const challengeList = () => {
 
           {challenges.map(challenge => (
 
-            <li key={challenge.id}>{challenge.goal} {challenge.link} {challenge.status}</li>
+            <li key={challenge.id}>{challenge.goal} {challenge.link} {challenge.status}
+            <button onClick={updateStatus({challenge})}>DONE!</button>
+            </li>
             
 
           ))}
@@ -54,4 +67,4 @@ const challengeList = () => {
 };
 
 
-export default challengeList;
+export default ChallengeList;
