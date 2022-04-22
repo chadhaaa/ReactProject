@@ -1,14 +1,14 @@
-import logo from './logo.svg'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import EmailSend from './components/pages/SendEmailPlayer'
+import EmailSend from './Components/pages/EmailSend'
 function App() {
 	return (
 		<Router>
 			<div className='App'>
 				<Routes>
-					<Route exact path='/players' element={<EmailSend />}></Route>
+					{/* <Route exact path='/players' element={<EmailSend />}></Route> */}
+					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
 				</Routes>
 			</div>
 		</Router>

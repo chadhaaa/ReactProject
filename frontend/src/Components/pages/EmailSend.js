@@ -18,10 +18,6 @@ const EmailSend = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()
-		console.log('values firstname', firstname)
-		console.log('values lastname', lastname)
-		console.log('values email', email)
-		console.log('values password', password)
 
 		const dataToSubmit = {
 			firstname,
@@ -31,7 +27,7 @@ const EmailSend = () => {
 			sessionPrice,
 			sessionNumbers,
 		}
-		await axios.post('/players', dataToSubmit)
+		await axios.post('/api/players', dataToSubmit)
 	}
 	return (
 		<>
@@ -56,6 +52,18 @@ const EmailSend = () => {
 						placeholder='Enter Player s lastname'
 						value={lastname}
 						onChange={handleChange('lastname')}
+					/>
+				</label>
+				<br />
+				<br />
+
+				<label>
+					Enter Player s password :
+					<input
+						type='password'
+						placeholder='Enter Player s password'
+						value={password}
+						onChange={handleChange('password')}
 					/>
 				</label>
 				<br />
