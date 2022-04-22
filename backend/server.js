@@ -87,7 +87,7 @@ cron.schedule('* * * * * *', () => {
 					const mailOptions = {
 						from: 'nodeisamm@gmail.com',
 						to: 'chadha.hadji@gmail.com',
-						subject: `Ness-React Email Reminder `,
+						subject: `Fitness App Email Reminder `,
 						html: `We remind you that there is an upcoming session </b> at ${element.time} , Enjoy !`,
 					}
 					return transporter.sendMail(mailOptions, (error, data) => {
