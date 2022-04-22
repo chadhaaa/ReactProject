@@ -8,6 +8,7 @@ const Player = require("../models/player");
 require('dotenv').config()
 
 const invitePlayer = async (req, res) => {
+  try {
   let player; 
  player = new Player({
     firstname: req.body.firstname,
@@ -23,12 +24,12 @@ const invitePlayer = async (req, res) => {
     return res.status(404).send({ Message: "Error: Enable to create a new PLAYER !" });
   }
   res.send(player);
-
+  } catch(e) {}
   let smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.USER,
-      pass: process.env.PASS,
+      user:"nodeisamm@gmail.com",
+      pass:"otaku666",
     },
     tls: {
       rejectUnauthorized: false,
@@ -52,7 +53,7 @@ const invitePlayer = async (req, res) => {
        <li>price per week : ${req.body.sessionPrice} </li>
        <li>number of sessions : ${req.body.sessionNumbers} </li>
       </ul>
-      <a href=http://localhost:3000/competence/>Accept invitation</a>
+      <a href=http://localhost:3000/getCompetence/>Accept invitation</a>
       <h4> Your Coach </h4>
       `,
   };
