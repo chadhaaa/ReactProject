@@ -18,7 +18,7 @@ const invitePlayer = async (req, res) => {
     sessionNumbers: req.body.sessionNumbers,
     password: bcrypt.hashSync(req.body.password, 12),
   });
-  player = await player.save();
+  await player.save();
 
   if (!player) {
     return res.status(404).send({ Message: "Error: Enable to create a new PLAYER !" });
