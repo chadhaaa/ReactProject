@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const AddStatistic = () => {
@@ -27,7 +27,7 @@ const AddStatistic = () => {
 			currentState,
 		}
 		await axios.post('/api/statistic', dataToAdd)
-		history('/getStats')
+		history('/getStat')
 	}
 	return (
 		<>
@@ -70,10 +70,10 @@ const AddStatistic = () => {
 				<br />
 
 				<label>
-					Enter player's visibility :
+					Enter Stat's visibility :
 					<input
 						type='text'
-						placeholder="Enter player's visibility"
+						placeholder="Enter Stat's visibility"
 						value={visibility}
 						onChange={handleChange('visibility')}
 					/>
@@ -93,22 +93,12 @@ const AddStatistic = () => {
 				<br />
 				<br />
 
-				<label>
-					Enter but :
-					<input
-						type='text'
-						placeholder="Enter Stat's but"
-						value={but}
-						onChange={handleChange('but')}
-					/>
-				</label>
-				<br />
-				<br />
-
 				<button type='submit' onClick={handleSubmit}>
 					{' '}
 					Add Competence{' '}
 				</button>
+				<br />
+				<button onClick={() => history('/getStat')}> BACK </button>
 			</form>
 		</>
 	)

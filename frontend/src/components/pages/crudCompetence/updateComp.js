@@ -7,13 +7,12 @@ const UpdateCompetence = () => {
 	const { id } = useParams()
 	const [comp, addComp] = useState({
 		visibility: '',
-		note: '',
 		link: '',
 		description: '',
 		name: '',
 	})
 
-	const { visibility, note, name, link, description } = comp
+	const { visibility, name, link, description } = comp
 	const handleChange = (namee) => (event) => {
 		addComp({ ...comp, [namee]: event.target.value })
 	}
@@ -22,7 +21,7 @@ const UpdateCompetence = () => {
 		event.preventDefault()
 
 		await axios.put(`/api/competence/${id}`, comp)
-		//badel l link hasb eli aandek baad fel code besh temshilou baad update
+
 		history('/getCompetence')
 	}
 	return (
@@ -36,18 +35,6 @@ const UpdateCompetence = () => {
 						placeholder="Enter new Competence's visibility"
 						value={visibility}
 						onChange={handleChange('visibility')}
-					/>
-				</label>
-				<br />
-				<br />
-
-				<label>
-					Enter new Competence s note :
-					<input
-						type='text'
-						placeholder="Enter new Competence's note"
-						value={note}
-						onChange={handleChange('note')}
 					/>
 				</label>
 				<br />
@@ -93,6 +80,8 @@ const UpdateCompetence = () => {
 					{' '}
 					Update Competence{' '}
 				</button>
+				<br />
+				<button onClick={() => history('/getCompetence')}> BACK </button>
 			</form>
 		</>
 	)

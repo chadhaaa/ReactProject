@@ -1,13 +1,12 @@
-import logo from './logo.svg'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom'
-i
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import AddCompetence from './components/pages/crudCompetence/addComp'
 import GetCompetences from './components/pages/crudCompetence/getComp'
 import UpdateCompetence from './components/pages/crudCompetence/updateComp'
-import AddStatistic from './pages/crudStatistique/addStat'
-import GetStatistics from './pages/crudStatistique/getStat'
-import UpdateStatistic from './pages/crudStatistique/updateStat'
+import AddStatistic from './components/pages/crudStatistique/addStat'
+import GetStatistics from './components/pages/crudStatistique/getStat'
+import UpdateStat from './components/pages/crudStatistique/updateStat'
 
 function App() {
 	return (
@@ -24,7 +23,7 @@ function App() {
 
 					<Route exact path='/getStat' element={<GetStatistics />}></Route>
 
-					<Route exact path='/updateStat/:id' element={<UpdateStatistic />}></Route>
+					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
 				</Routes>
 			</div>
 		</Router>

@@ -6,10 +6,10 @@
             "jsx": true
         }
     },
-    "extends": ["eslint-recommended", "eslint-config-prettier"],
+    "extends": ["eslint:recommended", "eslint-config-prettier"],
     "rules": {
-        "semi" : "error",
-        "no-undef" : "warn",
+        "semi" : "off",
+        "no-undef" : "off",
         "quotes" : ["error", "single"]
     }, 
 

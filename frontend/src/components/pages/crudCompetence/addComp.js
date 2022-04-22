@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddCompetence = () => {
 	const [comp, addComp] = useState({
@@ -13,7 +14,7 @@ const AddCompetence = () => {
 	const handleChange = (namee) => (event) => {
 		addComp({ ...comp, [namee]: event.target.value })
 	}
-
+	const history = useNavigate()
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 
@@ -24,6 +25,7 @@ const AddCompetence = () => {
 			visibility,
 		}
 		await axios.post('/api/competence', dataToAdd)
+		history('/getCompetence')
 	}
 	return (
 		<>
@@ -81,6 +83,8 @@ const AddCompetence = () => {
 					{' '}
 					Add Competence{' '}
 				</button>
+				<br />
+				<button onClick={() => history('/getCompetence')}> BACK </button>
 			</form>
 		</>
 	)

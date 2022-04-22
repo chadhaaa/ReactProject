@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import './competence.css'
 import axios from 'axios'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-export default function Competence({ name, description, link, note, id }) {
+export default function Competence({ name, description, link, visibility, id }) {
 	const history = useNavigate()
 
 	const deleteCompetence = async (event) => {
@@ -32,6 +31,8 @@ export default function Competence({ name, description, link, note, id }) {
 				</ul>
 			</div>
 			{renderActions()}
+			<br />
+			<button onClick={() => history('/addCompetence')}> Add New Competence </button>
 		</div>
 	)
 }

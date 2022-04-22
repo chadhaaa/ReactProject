@@ -1,8 +1,8 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const UpdateStatistic = () => {
+const UpdateStat = () => {
 	const history = useNavigate()
 	const { id } = useParams()
 	const [stat, addStat] = useState({
@@ -20,18 +20,18 @@ const UpdateStatistic = () => {
 		event.preventDefault()
 
 		await axios.put(`/api/statistic/${id}`, stat)
-		//badel l link hasb eli aandek baad fel code besh temshilou baad update
-		history('/getStats')
+
+		history('/getStat')
 	}
 	return (
 		<>
-			<h1> Update statistiques </h1>
+			<h1> Update Statistic </h1>
 			<form onSubmit={updateStat}>
 				<label>
 					Enter new visibility :
 					<input
 						type='text'
-						placeholder="Enter new Competence's visibility"
+						placeholder="Enter new statistic's visibility"
 						value={visibility}
 						onChange={handleChange('visibility')}
 					/>
@@ -40,10 +40,10 @@ const UpdateStatistic = () => {
 				<br />
 
 				<label>
-					Enter new limit :
+					Enter new Competence s state :
 					<input
 						type='text'
-						placeholder='Enter new Limit'
+						placeholder="Enter new Competence's state"
 						value={currentState}
 						onChange={handleChange('currentState')}
 					/>
@@ -52,24 +52,27 @@ const UpdateStatistic = () => {
 				<br />
 
 				<label>
-					Enter new link :
+					Enter new Competence s link :
 					<input
 						type='text'
-						placeholder="Enter new statistic's link"
+						placeholder="Enter new Competence's note"
 						value={link}
 						onChange={handleChange('link')}
 					/>
 				</label>
+
 				<br />
 				<br />
 
 				<button type='submit' onClick={updateStat}>
 					{' '}
-					Update statistic{' '}
+					Update Statistic{' '}
 				</button>
+				<br />
+				<button onClick={() => history('/getStat')}> BACK </button>
 			</form>
 		</>
 	)
 }
 
-export default UpdateStatistic
+export default UpdateStat

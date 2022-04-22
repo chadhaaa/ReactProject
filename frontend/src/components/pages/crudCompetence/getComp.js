@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import Competence from './competencePage'
+import Competence from './compPage'
 
 const GetCompetences = () => {
 	const [comp, setComp] = useState([])
@@ -10,7 +10,7 @@ const GetCompetences = () => {
 	}, [])
 
 	const getComps = async () => {
-		const response = await axios.get('http://localhost:8000/competences')
+		const response = await axios.get('http://localhost:8000/api/competences')
 		setComp(response.data)
 	}
 	return (
@@ -19,6 +19,7 @@ const GetCompetences = () => {
 			{comp.map(function (comps) {
 				return (
 					<Competence
+						id={comps._id}
 						key={comps._id}
 						name={comps.name}
 						description={comps.description}

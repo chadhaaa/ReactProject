@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import axios from 'axios'
 import './stat.css'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function Statistic({
 	title,
@@ -16,13 +15,13 @@ export default function Statistic({
 	const deleteStatistic = async (event) => {
 		event.preventDefault()
 		await axios.delete(`/api/statistic/${id}`)
-		history('/addStatistic')
+		history('/addStat')
 	}
 
 	function renderActions() {
 		return (
 			<div className='actions'>
-				<button onClick={() => history(`/updateStatistic/${id}`)}>UPDATE</button>
+				<button onClick={() => history(`/updateStat/${id}`)}>UPDATE</button>
 				<button onClick={deleteStatistic}> DELETE</button>
 			</div>
 		)
@@ -40,6 +39,8 @@ export default function Statistic({
 				</ul>
 			</div>
 			{renderActions()}
+			<br />
+			<button onClick={() => history('/addStat')}> Add New Statistic </button>
 		</div>
 	)
 }
