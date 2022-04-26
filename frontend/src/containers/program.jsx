@@ -15,7 +15,6 @@ export default function Program(){
 
     return (        
     <div>
-        <h1 className="text-3xl to-black">Programs</h1>
         {isLoading &&<h1>loading ...</h1>}
         {!isLoading && <ProgramList setIsLoading={setIsLoading} programs={programs}/> }
         <button className='px-5 py-2 bg-gray-200 hover:bg-gray-400 text-blue-400 border-2' >

@@ -22,6 +22,7 @@ export default function ProgramList({ programs,setIsLoading }) {
 								</th>
 							))
 						)}
+
 						<th scope='col' className='px-6 py-3'>
 							<span >Edit</span>
 						</th>
@@ -34,7 +35,7 @@ export default function ProgramList({ programs,setIsLoading }) {
 					{programs && programs?.length === 0 ? (
 						<tr>
 							<td>
-								<h1>No data</h1>
+								<h2>No data</h2>
 							</td>
 						</tr>
 					) : (
@@ -47,9 +48,10 @@ export default function ProgramList({ programs,setIsLoading }) {
 								<td>{program.link}</td>
 								<td>{program.description}</td>
 								<td>{program.picture}</td>
+								<td>{program.__V}</td>
 									<td className='px-6 py-4 text-right'>
 										<Link
-											to={`/program/${program._id}/edit`}
+											to={`/program/edit/${program._id}`}
 											className='font-medium text-blue-600 dark:text-blue-500 hover:underline'>
 											Edit
 										</Link>

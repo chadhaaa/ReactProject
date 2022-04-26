@@ -34,8 +34,6 @@ export default function ProgramCreate({mode}){
     };
     return (
         <div>
-            {mode!=='edit' && <h1 className='text-3xl'>Program Create</h1>}
-            {mode==='edit' && <h1 className='text-3xl'>Program Edit</h1>}
             {mode === 'edit'  && isLoading? (<h1>loading ...</h1>) : (
 
             
