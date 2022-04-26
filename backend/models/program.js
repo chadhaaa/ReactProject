@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const progSchema = mongoose.Schema({
+const programSchema = mongoose.Schema({
 	title: { type: String, required: false },
 	description: { type: String, required: false },
 	link: { type: String, required: false },
@@ -15,4 +15,4 @@ const progSchema = mongoose.Schema({
 	},
 })
 
-module.exports = mongoose.model('Prog', progSchema)
+module.exports = mongoose.model('Program', programSchema)
