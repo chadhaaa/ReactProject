@@ -11,7 +11,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // routes
 const routeProgram = require('./routes/program.route.js')
 const planRoute = require('./routes/plan.route.js');
-
+const sessionRoute = require('./routes/sessions.route');
 // preparing webhook for stripe 
 app.use(
 	express.json({
@@ -56,7 +56,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use('/api',routeProgram)
 app.use('/api',planRoute)
-
+app.use('/api',sessionRoute)
 // stripe routes 
 app.get('/config', (req, res) => {
 	res.send({

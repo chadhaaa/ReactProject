@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ignore-path .gitignore .",
     "format": "prettier --write --ignore-path .gitignore \"**/*.+(js|json)\"",
     "check-format": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json)\"",
-    "validate": "npm run check-format && npm run lint"
+    "validate": "npm run check-format && npm run lint",
+    "db:drop":"node db.drop.js",
+    "db:seed":"node db.seed.js"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +28,7 @@
     "mongoose": "^6.2.7",
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.3",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "stripe": "^8.219.0"
   }
