@@ -10,8 +10,6 @@ import {loadStripe} from '@stripe/stripe-js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const {publishableKey} = await axios.get('http://localhost:8000/config').then(r=>r.data);
-  console.log('waiting... ');
-  console.log(publishableKey);
   
   const stripePromise = loadStripe(publishableKey);
 

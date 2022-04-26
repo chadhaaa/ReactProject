@@ -12,13 +12,11 @@ export default function Checkout(){
     const [isLoading,setIsLoading] = useState(true);
     const params = useParams();
     const plan = params.plan;
-    console.log(plan);
     useEffect(async ()=>{
         if (isLoading){
             const res = await getPriceByPlanName(plan);
             const price = await res.data.price;
             setPrice(price);
-            console.log(price);
             setIsLoading(false);
         }
     },[]);
