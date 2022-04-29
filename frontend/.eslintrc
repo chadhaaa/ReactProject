@@ -6,11 +6,11 @@
             "jsx": true
         }
     },
-    "extends": ["eslint:recommended", "eslint-config-prettier"],
+    "extends": [ "eslint-config-prettier"],
     "rules": {
-        "semi" : "off",
-        "no-undef" : "off",
-        "quotes" : ["error", "single"]
+        "semi" : "warn",
+        "no-undef" : "warn",
+        "quotes" : ["warn", "single"]
     }, 
 
         "env": {

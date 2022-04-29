@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import './form.css'
 
 const EmailSend = () => {
 	const [values, setValues] = useState({
@@ -30,87 +31,102 @@ const EmailSend = () => {
 		await axios.post('/api/players', dataToSubmit)
 	}
 	return (
-		<>
-			<h1> Invite a player </h1>
-			<form onSubmit={handleSubmit}>
-				<label>
-					Enter firstname :
-					<input
-						type='text'
-						placeholder="Enter player's firstname"
-						value={firstname}
-						onChange={handleChange('firstname')}
-					/>
+		<div class='form'>
+			<div class='title'>Invite a player</div>
+			<div class='input-container ic1'>
+				<input
+					id='firstname'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={firstname}
+					onChange={handleChange('firstname')}
+				/>
+				<div class='cut'></div>
+				<label for='firstname' class='placeholder'>
+					Firstname
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Player s lastname :
-					<input
-						type='text'
-						placeholder='Enter Player s lastname'
-						value={lastname}
-						onChange={handleChange('lastname')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='lastname'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={lastname}
+					onChange={handleChange('lastname')}
+				/>
+				<div class='cut'></div>
+				<label for='lastname' class='placeholder'>
+					Lastname
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Player s password :
-					<input
-						type='password'
-						placeholder='Enter Player s password'
-						value={password}
-						onChange={handleChange('password')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='email'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={email}
+					onChange={handleChange('email')}
+				/>
+				<div class='cut'></div>
+				<label for='email' class='placeholder'>
+					Email
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Player s email :
-					<input
-						type='text'
-						placeholder='Enter Player s email'
-						value={email}
-						onChange={handleChange('email')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='password'
+					class='input'
+					type='password'
+					placeholder=' '
+					value={password}
+					onChange={handleChange('password')}
+				/>
+				<div class='cut'></div>
+				<label for='password' class='placeholder'>
+					Password
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Player s sessionPrice :
-					<input
-						type='text'
-						placeholder='Enter Player s sessionPrice'
-						value={sessionPrice}
-						onChange={handleChange('sessionPrice')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='sessionPrice'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={sessionPrice}
+					onChange={handleChange('sessionPrice')}
+				/>
+				<div class='cut'></div>
+				<label for='sessionPrice' class='placeholder'>
+					Session Price
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Player s sessionNumbers :
-					<input
-						type='text'
-						placeholder='Enter Player s sessionNumbers'
-						value={sessionNumbers}
-						onChange={handleChange('sessionNumbers')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='sessionNumbers'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={sessionNumbers}
+					onChange={handleChange('sessionNumbers')}
+				/>
+				<div class='cut'></div>
+				<label for='sessionNumbers' class='placeholder'>
+					Session Numbers
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<button type='submit' onClick={handleSubmit}>
-					{' '}
-					Send Invite{' '}
-				</button>
-			</form>
-		</>
+			<button type='text' class='submit' onClick={handleSubmit}>
+				Invite Player
+			</button>
+		</div>
 	)
 }
 
