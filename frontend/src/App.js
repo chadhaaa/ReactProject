@@ -1,7 +1,7 @@
 import logo from './logo.svg'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom'
-import GetSeance from './components/pages/sessionDetails/getAllSession'
+import GetSeance from './components/pages/sessionDetails/getAllSessions'
 import GetOneSeance from './components/pages/sessionDetails/getOneSession'
 function App() {
 	return (

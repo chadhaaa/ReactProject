@@ -14,14 +14,14 @@ const GetSeance = () => {
 	}
 	return (
 		<div className='App'>
-			<h1>Liste des seances </h1>
+			<h1>Sessions List</h1>
 			{sessions.map(function (session) {
 				return (
 					<Seance
 						id={session._id}
 						key={session._id}
 						day={session.day}
-						locationId={session.locationId}
+						idPlace={session.idPlace}
 						cancellation={session.cancellation}
 						reason={session.reason}
 						feedback={session.feedback}

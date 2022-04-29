@@ -15,16 +15,20 @@ export default function OneSeance({
 	return (
 		<div className='oneSeance'>
 			<div className='title'>
-				<ul>
-					<h2>Details session</h2>
-					<li>{reason}</li>
-					<li>{day}</li>
-					<li>{idPlace}</li>
-					<li>{cancellation}</li>
-					<li>{feedback}</li>
-					<li>{hour}</li>
-					<li>{programId}</li>
-				</ul>
+				<h1>
+					<strong>Session</strong>
+				</h1>
+				<table>
+					<tr>
+						<td>{reason}</td>
+						<td>{day}</td>
+						<td>{idPlace}</td>
+						<td>{cancellation}</td>
+						<td>{feedback}</td>
+						<td>{hour}</td>
+						<td>{programId}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	)
