@@ -12,6 +12,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const routeProgram = require('./routes/program.route.js')
 const planRoute = require('./routes/plan.route.js');
 const sessionRoute = require('./routes/sessions.route');
+const invitationRoute = require('./routes/invitation.route');
 // preparing webhook for stripe 
 app.use(
 	express.json({
@@ -57,12 +58,13 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/api',routeProgram)
 app.use('/api',planRoute)
 app.use('/api',sessionRoute)
+app.use('/api/invitation',invitationRoute)
 // stripe routes 
 app.get('/config', (req, res) => {
 	res.send({
 	  publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
 	});
-  });
+});
 
 app.post('/create-payment-intent', async (req, res) => {
   const { amount } = req.body;
@@ -132,3 +134,4 @@ app.post('/webhook', async (req, res) => {
   }
   res.sendStatus(200);
 });
+
