@@ -9,8 +9,8 @@ export default function ProgramList({ programs,setIsLoading }) {
         setIsLoading(true);
 	};
 	return (
-		<div className='mx-10 relative overflow-x-auto shadow-md sm:rounded-lg'>
-			<table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+		<div className='overflow-x-scroll  w-full shadow-md sm:rounded-lg'>
+			<table className='w-full  left-0 text-sm text-left text-gray-500 dark:text-gray-400'>
 				<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
 					<tr className='table-row'>
 						{ programs && programs.length === 0 ? (

@@ -5,10 +5,10 @@ import {toast } from 'react-toastify';
 export default function SessionList({ sessions }) {
 	
 	return (
-		<div className='shadow-md  sm:rounded-lg '>
-			<table className='text-sm text-left text-gray-500 dark:text-gray-400 overflow-x '>
+		<div className='shadow-md sm:rounded-lg overflow-x-scroll mx-4 min-h-[400px]'>
+			<table className='text-sm text-left text-gray-500 dark:text-gray-400 mx-5'>
 				<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 '>
-					<tr className='overflow-x-auto'>
+					<tr className=''>
 						{ sessions?.length === 0 ? (
 							<th>no data</th>
 						) : (

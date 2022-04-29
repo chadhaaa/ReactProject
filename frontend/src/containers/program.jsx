@@ -14,7 +14,7 @@ export default function Program(){
     },[isLoading]);
 
     return (        
-    <div>
+    <div className='relative w-full'>
         {isLoading &&<h1>loading ...</h1>}
         {!isLoading && <ProgramList setIsLoading={setIsLoading} programs={programs}/> }
         <button className='px-5 py-2 bg-gray-200 hover:bg-gray-400 text-blue-400 border-2' >

@@ -20,16 +20,20 @@ export default function SessionView (){
     const toUl = (obj)=>{
         return Object.keys(obj).filter(key=>key!='_id').map(key=><li key={key}>{key} : {obj[key]}</li>);
     };
+
     return (
-        <div>
+        <div className='flex w-full'>
             <h2>session id {sessionId}</h2>
             {isLoading && <h1>loading ...</h1>}
+            <div className='flex flex-col'>
 
-            {
+            
+            {  Object.keys(session).length !== 0 &&
                 Object.keys(session).map((key,index)=>{
-                    return <p className='text-xl' key={index}><span className='text-black font-bold'>{key}</span> : {typeof(session[key])=='object'?<ul className='px-10 '>{toUl(session[key][0])}</ul>:session[key]}</p>;
+                    return <p className='text-xl' key={index}><span className='text-black font-bold'>{key}</span> : {typeof(session[key])=='object'?<ul className=''>{toUl(session[key][0])}</ul>:session[key]}</p>;
                 })
             }
+            </div>
             
 
         </div>
