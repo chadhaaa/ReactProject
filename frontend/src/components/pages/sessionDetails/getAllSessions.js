@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Seance from './sessionDetails'
+import './allSessions.css'
 
 const GetSeance = () => {
 	const [sessions, setSession] = useState([])
@@ -13,24 +14,28 @@ const GetSeance = () => {
 		setSession(response.data)
 	}
 	return (
-		<div className='App'>
-			<h1>Sessions List</h1>
+		<table>
+			<caption>Sessions List</caption>
 			{sessions.map(function (session) {
 				return (
-					<Seance
-						id={session._id}
-						key={session._id}
-						day={session.day}
-						idPlace={session.idPlace}
-						cancellation={session.cancellation}
-						reason={session.reason}
-						feedback={session.feedback}
-						hour={session.hour}
-						programId={session.programId}
-					/>
+					<table>
+						<tr>
+							<Seance
+								id={session._id}
+								key={session._id}
+								day={session.day}
+								idPlace={session.idPlace}
+								cancellation={session.cancellation}
+								reason={session.reason}
+								feedback={session.feedback}
+								hour={session.hour}
+								programId={session.programId}
+							/>
+						</tr>
+					</table>
 				)
 			})}
-		</div>
+		</table>
 	)
 }
 export default GetSeance

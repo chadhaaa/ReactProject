@@ -22,10 +22,6 @@ const GetOneSeance = () => {
 			setComp(response.data.comp)
 		})
 	}
-
-	// console.log(session)
-	// console.log('stat', stat)
-	// console.log('comp', comp)
 	console.log('prog', program)
 	useEffect(() => {
 		getSession()
@@ -33,7 +29,7 @@ const GetOneSeance = () => {
 
 	return (
 		<div>
-			<table className='fl-table'>
+			<table>
 				<OneSeance
 					id={session._id}
 					reason={session.reason}
@@ -48,19 +44,27 @@ const GetOneSeance = () => {
 					<td>
 						<table>
 							<tr>
-								<td> Title : </td>
+								<td>
+									<strong> Title : </strong>
+								</td>
 								<td> {place.name} </td>
 							</tr>
 							<tr>
-								<td> Country State : </td>
+								<td>
+									<strong>Country State :</strong>{' '}
+								</td>
 								<td> {place.countryState} </td>
 							</tr>
 							<tr>
-								<td> Country : </td>
+								<td>
+									<strong>Country : </strong>
+								</td>
 								<td> {place.country} </td>
 							</tr>
 							<tr>
-								<td> Address : </td>
+								<td>
+									<strong>Address : </strong>
+								</td>
 								<td> {place.address} </td>
 							</tr>
 						</table>
@@ -73,15 +77,21 @@ const GetOneSeance = () => {
 						{comp.map((item, index) => (
 							<table>
 								<tr>
-									<td> Title : </td>
+									<td>
+										<strong>Title :</strong>
+									</td>
 									<td> {item.compId.name} </td>
 								</tr>
 								<tr>
-									<td> Description : </td>
+									<td>
+										<strong>Description :</strong>
+									</td>
 									<td> {item.compId.description} </td>
 								</tr>
 								<tr>
-									<td> Link : </td>
+									<td>
+										<strong> Link : </strong>
+									</td>
 									<td> {item.compId.link} </td>
 								</tr>
 							</table>
@@ -94,23 +104,33 @@ const GetOneSeance = () => {
 						{stat.map((item, index) => (
 							<table>
 								<tr>
-									<td> Title : </td>
+									<td>
+										<strong> Title : </strong>
+									</td>
 									<td> {item.statId.title} </td>
 								</tr>
 								<tr>
-									<td> Unit : </td>
+									<td>
+										<strong> Unit : </strong>
+									</td>
 									<td> {item.statId.unit} </td>
 								</tr>
 								<tr>
-									<td> Type : </td>
+									<td>
+										<strong> Type : </strong>
+									</td>
 									<td> {item.statId.type} </td>
 								</tr>
 								<tr>
-									<td> Description : </td>
+									<td>
+										<strong>Description : </strong>
+									</td>
 									<td> {item.statId.description} </td>
 								</tr>
 								<tr>
-									<td> Current State : </td>
+									<td>
+										<strong>Current State :</strong>
+									</td>
 									<td> {item.statId.currentState} </td>
 								</tr>
 							</table>
@@ -118,6 +138,7 @@ const GetOneSeance = () => {
 					</td>
 				</tr>
 			</table>
+			<br />
 			<button onClick={() => history('/sessionList')}> BACK </button>
 		</div>
 	)

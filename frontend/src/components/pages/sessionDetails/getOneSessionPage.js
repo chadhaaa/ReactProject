@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import './allSessions.css'
 
 export default function OneSeance({
 	day,
@@ -13,23 +14,44 @@ export default function OneSeance({
 	id,
 }) {
 	return (
-		<div className='oneSeance'>
-			<div className='title'>
-				<h1>
-					<strong>Session</strong>
-				</h1>
+		<tr>
+			<th>
+				<strong>Session Details</strong>
+			</th>
+			<td>
 				<table>
 					<tr>
-						<td>{reason}</td>
-						<td>{day}</td>
-						<td>{idPlace}</td>
-						<td>{cancellation}</td>
-						<td>{feedback}</td>
-						<td>{hour}</td>
-						<td>{programId}</td>
+						<td>
+							<strong> Date :</strong>
+						</td>
+						<td> {day} </td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Hour : </strong>
+						</td>
+						<td> {hour} </td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Cancellation :</strong>
+						</td>
+						<td> {cancellation} </td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Reason :</strong>
+						</td>
+						<td> {reason} </td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Feedback :</strong>
+						</td>
+						<td> {feedback} </td>
 					</tr>
 				</table>
-			</div>
-		</div>
+			</td>
+		</tr>
 	)
 }

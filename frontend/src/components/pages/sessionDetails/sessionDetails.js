@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import './allSessions.css'
 
 export default function Seance({
 	day,
@@ -23,20 +22,22 @@ export default function Seance({
 	}
 
 	return (
-		<div className='seance'>
-			<div className='title'>
-				<ul>
-					<h2>seance 1</h2>
-					<li>{reason}</li>
-					<li>{day}</li>
-					<li>{idPlace}</li>
-					<li>{cancellation}</li>
-					<li>{feedback}</li>
-					<li>{hour}</li>
-					<li>{programId}</li>
-				</ul>
-			</div>
-			{renderActions()}
-		</div>
+		<table>
+			<tr>
+				<th scope='col'>Day</th>
+				<th scope='col'>Hour</th>
+				<th scope='col'>Feedback</th>
+				<th scope='col'>See more</th>
+			</tr>
+
+			<tbody>
+				<tr>
+					<td data-label='Day'>{day}</td>
+					<td data-label='Hour'>{hour}</td>
+					<td data-label='Feedback'>{feedback}</td>
+					<td data-label='See more'>{renderActions()}</td>
+				</tr>
+			</tbody>
+		</table>
 	)
 }
