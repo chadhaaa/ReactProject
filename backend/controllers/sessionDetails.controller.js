@@ -4,29 +4,35 @@ const CompSession = require('../models/competenceSession')
 const StatSession = require('../models/statisticSession')
 
 const FindSessionOne = async (req, res) => {
-	const sessions = await Session.findOne({ _id: req.params.id })
+	try {
+		const sessions = await Session.findById(req.params.id)
+			.populate('idPlace')
+			.populate('programId')
+			.populate('idPlayer')
 
-	const statSession = await StatSession.find()
-		.where('seanceId')
-		.equals(req.params.id)
-		.populate('statId')
-	const compSession = await CompSession.find()
-		.where('seanceId')
-		.equals(req.params.id)
-		.populate('compId')
+		const statSession = await StatSession.find()
+			.where('seanceId')
+			.equals(req.params.id)
+			.populate('statId')
+		const compSession = await CompSession.find()
+			.where('seanceId')
+			.equals(req.params.id)
+			.populate('compId')
 
-	res.send({ session: sessions, stat: statSession, comp: compSession })
-
-	if (!sessions) {
-		res.status(500).json({ Message: 'EROOOOOOOOR seance IS NOT FOUND' })
+		res.send({
+			session: sessions,
+			stats: statSession.filter((item) => item.statId != null),
+			comp: compSession.filter((item) => item.compId != null),
+		})
+	} catch (err) {
+		res.send('Error ' + err)
 	}
-	res.send(sessions)
 }
 
 const FindAllSessions = async (req, res) => {
 	const sessions = await Session.find()
 	if (!sessions) {
-		res.status(500).json({ Message: 'EROOOOOOOOR Session IS NOT FOUND' })
+		res.status(500).json({ Message: 'Error : Cannot find session !' })
 	}
 	res.send(sessions)
 }
