@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import './addAndUpdate.css'
 
 const UpdateStat = () => {
 	const history = useNavigate()
@@ -9,9 +10,12 @@ const UpdateStat = () => {
 		visibility: '',
 		currentState: '',
 		link: '',
+		description: '',
+		title: '',
+		unit: '',
 	})
 
-	const { visibility, currentState, link } = stat
+	const { visibility, currentState, link, description, title, unit } = stat
 	const handleChange = (namee) => (event) => {
 		addStat({ ...stat, [namee]: event.target.value })
 	}
@@ -24,54 +28,106 @@ const UpdateStat = () => {
 		history('/getStat')
 	}
 	return (
-		<>
-			<h1> Update Statistic </h1>
-			<form onSubmit={updateStat}>
-				<label>
-					Enter new visibility :
-					<input
-						type='text'
-						placeholder="Enter new statistic's visibility"
-						value={visibility}
-						onChange={handleChange('visibility')}
-					/>
+		<div class='form'>
+			<div class='title'>Update Statistic </div>
+			<div class='input-container ic1'>
+				<input
+					id='title'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={title}
+					onChange={handleChange('title')}
+				/>
+				<div class='cut'></div>
+				<label for='title' class='placeholder'>
+					Title
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter new Competence s state :
-					<input
-						type='text'
-						placeholder="Enter new Competence's state"
-						value={currentState}
-						onChange={handleChange('currentState')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='unit'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={unit}
+					onChange={handleChange('unit')}
+				/>
+				<div class='cut'></div>
+				<label for='unit' class='placeholder'>
+					Unit
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter new Competence s link :
-					<input
-						type='text'
-						placeholder="Enter new Competence's note"
-						value={link}
-						onChange={handleChange('link')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='visibility'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={visibility}
+					onChange={handleChange('visibility')}
+				/>
+				<div class='cut'></div>
+				<label for='visibility' class='placeholder'>
+					Visibility
 				</label>
+			</div>
 
-				<br />
-				<br />
+			<div class='input-container ic2'>
+				<input
+					id='description'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={description}
+					onChange={handleChange('description')}
+				/>
+				<div class='cut'></div>
+				<label for='description' class='placeholder'>
+					Description
+				</label>
+			</div>
 
-				<button type='submit' onClick={updateStat}>
-					{' '}
-					Update Statistic{' '}
-				</button>
-				<br />
-				<button onClick={() => history('/getStat')}> BACK </button>
-			</form>
-		</>
+			<div class='input-container ic2'>
+				<input
+					id='currentState'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={currentState}
+					onChange={handleChange('currentState')}
+				/>
+				<div class='cut'></div>
+				<label for='currentState' class='placeholder'>
+					Current State
+				</label>
+			</div>
+
+			<div class='input-container ic2'>
+				<input
+					id='link'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={link}
+					onChange={handleChange('link')}
+				/>
+				<div class='cut'></div>
+				<label for='link' class='placeholder'>
+					Link
+				</label>
+			</div>
+
+			<button type='text' class='submit' onClick={updateStat}>
+				Update Statistic
+			</button>
+			<button type='text' class='submit' onClick={() => history('/getStat')}>
+				{' '}
+				BACK{' '}
+			</button>
+		</div>
 	)
 }
 

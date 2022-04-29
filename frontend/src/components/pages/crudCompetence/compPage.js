@@ -8,31 +8,40 @@ export default function Competence({ name, description, link, visibility, id }) 
 	const deleteCompetence = async (event) => {
 		event.preventDefault()
 		await axios.delete(`/api/competence/${id}`)
-		history('/addCompetence')
+		history('/getCompetence')
+		window.location.reload(false)
 	}
 
 	function renderActions() {
 		return (
 			<div className='actions'>
 				<button onClick={() => history(`/updateCompetence/${id}`)}>UPDATE</button>
+				<button onClick={() => history(`/compDetails/${id}`)}>VIEW MORE</button>
 				<button onClick={deleteCompetence}> DELETE</button>
 			</div>
 		)
 	}
 
 	return (
-		<div className='competence'>
-			<div className='title'>
-				<ul>
-					<li>{name}</li>
-					<li>{description}</li>
-					<li>{visibility}</li>
-					<li>{link}</li>
-				</ul>
-			</div>
-			{renderActions()}
-			<br />
-			<button onClick={() => history('/addCompetence')}> Add New Competence </button>
+		<div class='container'>
+			<table>
+				<thead>
+					<tr>
+						<th scope='col'>Name</th>
+						<th scope='col'>Description</th>
+						<th scope='col'>Link</th>
+						<th scope='col'>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-label='Title'>{name}</td>
+						<td data-label='Description'>{description}</td>
+						<td data-label='Type'>{link}</td>
+						<td data-label='Actions'>{renderActions()}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	)
 }

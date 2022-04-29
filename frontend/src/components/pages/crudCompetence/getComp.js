@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Competence from './compPage'
 
 const GetCompetences = () => {
 	const [comp, setComp] = useState([])
+	const history = useNavigate()
 
 	useEffect(() => {
 		getComps()
@@ -16,6 +18,7 @@ const GetCompetences = () => {
 	return (
 		<div className='App'>
 			<h1>Liste des competences </h1>
+			<button onClick={() => history('/addCompetence')}> Add New Competence </button>
 			{comp.map(function (comps) {
 				return (
 					<Competence

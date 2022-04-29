@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Statistic from './statPage'
+import './stat.css'
 
 const GetStatistics = () => {
 	const [stats, setStat] = useState([])
+	const history = useNavigate()
 
 	useEffect(() => {
 		getStats()
@@ -16,6 +19,8 @@ const GetStatistics = () => {
 	return (
 		<div className='App'>
 			<h1>Liste des statistiques </h1>
+			<button onClick={() => history('/addStat')}> Add New Statistic </button>
+
 			{stats.map(function (stats) {
 				return (
 					<Statistic
@@ -26,6 +31,7 @@ const GetStatistics = () => {
 						currentState={stats.currentState}
 						link={stats.link}
 						visibility={stats.visibility}
+						unit={stats.unit}
 					/>
 				)
 			})}

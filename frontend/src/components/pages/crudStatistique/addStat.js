@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './addAndUpdate.css'
 
 const AddStatistic = () => {
 	const [stat, addStat] = useState({
@@ -30,77 +31,90 @@ const AddStatistic = () => {
 		history('/getStat')
 	}
 	return (
-		<>
-			<h1> Add Statistic </h1>
-			<form onSubmit={handleSubmit}>
-				<label>
-					Enter title :
-					<input
-						type='text'
-						placeholder="Enter Stat's title"
-						value={title}
-						onChange={handleChange('title')}
-					/>
+		<div class='form'>
+			<div class='title'>Add Statistic</div>
+			<div class='input-container ic1'>
+				<input
+					id='title'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={title}
+					onChange={handleChange('title')}
+				/>
+				<div class='cut'></div>
+				<label for='title' class='placeholder'>
+					Title
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Stat s description :
-					<input
-						type='text'
-						placeholder="Enter Stat's description"
-						value={description}
-						onChange={handleChange('description')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='visibility'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={visibility}
+					onChange={handleChange('visibility')}
+				/>
+				<div class='cut'></div>
+				<label for='visibility' class='placeholder'>
+					Visibility
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Stat's link :
-					<input
-						type='text'
-						placeholder="Enter Stat's link"
-						value={link}
-						onChange={handleChange('link')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='description'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={description}
+					onChange={handleChange('description')}
+				/>
+				<div class='cut'></div>
+				<label for='description' class='placeholder'>
+					Description
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Stat's visibility :
-					<input
-						type='text'
-						placeholder="Enter Stat's visibility"
-						value={visibility}
-						onChange={handleChange('visibility')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='currentState'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={currentState}
+					onChange={handleChange('currentState')}
+				/>
+				<div class='cut'></div>
+				<label for='currentState' class='placeholder'>
+					Current State
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Stat's Limit :
-					<input
-						type='text'
-						placeholder="Enter Stat's Limit"
-						value={currentState}
-						onChange={handleChange('currentState')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='link'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={link}
+					onChange={handleChange('link')}
+				/>
+				<div class='cut'></div>
+				<label for='link' class='placeholder'>
+					Link
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<button type='submit' onClick={handleSubmit}>
-					{' '}
-					Add Competence{' '}
-				</button>
-				<br />
-				<button onClick={() => history('/getStat')}> BACK </button>
-			</form>
-		</>
+			<button type='text' class='submit' onClick={handleSubmit}>
+				Add Statistic
+			</button>
+			<button type='text' class='submit' onClick={() => history('/getStat')}>
+				BACK
+			</button>
+		</div>
 	)
 }
 

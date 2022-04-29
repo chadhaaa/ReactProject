@@ -28,65 +28,74 @@ const AddCompetence = () => {
 		history('/getCompetence')
 	}
 	return (
-		<>
-			<h1> Add Competence </h1>
-			<form onSubmit={handleSubmit}>
-				<label>
-					Enter name :
-					<input
-						type='text'
-						placeholder="Enter Competence's name"
-						value={name}
-						onChange={handleChange('name')}
-					/>
+		<div class='form'>
+			<div class='title'>Add Competence</div>
+			<div class='input-container ic1'>
+				<input
+					id='name'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={name}
+					onChange={handleChange('name')}
+				/>
+				<div class='cut'></div>
+				<label for='name' class='placeholder'>
+					Name
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Competence s description :
-					<input
-						type='text'
-						placeholder="Enter Competence's description"
-						value={description}
-						onChange={handleChange('description')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='visibility'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={visibility}
+					onChange={handleChange('visibility')}
+				/>
+				<div class='cut'></div>
+				<label for='visibility' class='placeholder'>
+					Visibility
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter Competence's link :
-					<input
-						type='text'
-						placeholder="Enter Competence's link"
-						value={link}
-						onChange={handleChange('link')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='link'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={link}
+					onChange={handleChange('link')}
+				/>
+				<div class='cut'></div>
+				<label for='link' class='placeholder'>
+					Link
 				</label>
-				<br />
-				<br />
+			</div>
 
-				<label>
-					Enter player's visibility :
-					<input
-						type='text'
-						placeholder="Enter player's visibility"
-						value={visibility}
-						onChange={handleChange('visibility')}
-					/>
+			<div class='input-container ic2'>
+				<input
+					id='description'
+					class='input'
+					type='text'
+					placeholder=' '
+					value={description}
+					onChange={handleChange('description')}
+				/>
+				<div class='cut'></div>
+				<label for='description' class='placeholder'>
+					Description
 				</label>
-				<br />
-				<br />
-
-				<button type='submit' onClick={handleSubmit}>
-					{' '}
-					Add Competence{' '}
-				</button>
-				<br />
-				<button onClick={() => history('/getCompetence')}> BACK </button>
-			</form>
-		</>
+			</div>
+			<button type='text' class='submit' onClick={handleSubmit}>
+				Update Competence
+			</button>
+			<button type='text' class='submit' onClick={() => history('/getCompetence')}>
+				BACK
+			</button>
+		</div>
 	)
 }
 
