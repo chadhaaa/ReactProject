@@ -20,6 +20,8 @@ const CompetencePlayer = require('./models/competencePlayer')
 const StatisticPlayer = require('./models/statisticPlayer')
 const CompetenceSession = require('./models/competenceSession')
 const StatisticSession = require('./models/statisticSession')
+const routerViewProfile = require('./routes/viewProfile.js')
+const routerUpdateProfile = require('./routes/updateProfile.js')
 
 // Database connection
 mongoose
@@ -49,3 +51,6 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use('/api', routerViewProfile)
+app.use('/api', routerUpdateProfile)
+app.use(express.static('uploads'))

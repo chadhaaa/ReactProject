@@ -4,23 +4,26 @@ const CompPlayer = require('../models/competencePlayer')
 const StatPlayer = require('../models/statisticPlayer')
 
 const FindPlayerOne = async (req, res) => {
-	const players = await Player.findOne({ _id: req.params.id })
+	try {
+		const players = await Player.findById(req.params.id)
 
-	const statPlayer = await StatPlayer.find()
-		.where('playerId')
-		.equals(req.params.id)
-		.populate('statId')
-	const compPlayer = await CompPlayer.find()
-		.where('playerId')
-		.equals(req.params.id)
-		.populate('compId')
+		const statPlayer = await StatPlayer.find()
+			.where('playerId')
+			.equals(req.params.id)
+			.populate('statId')
+		const compPlayer = await CompPlayer.find()
+			.where('playerId')
+			.equals(req.params.id)
+			.populate('compId')
 
-	res.send({ player: players, stat: statPlayer, comp: compPlayer })
-
-	if (!players) {
-		res.status(500).json({ Message: 'EROOOOOOOOR player IS NOT FOUND' })
+		res.send({
+			player: players,
+			stats: statPlayer.filter((item) => item.statId != null),
+			comp: compPlayer.filter((item) => item.compId != null),
+		})
+	} catch (err) {
+		'Error ' + err
 	}
-	res.send(players)
 }
 
 module.exports = {
