@@ -6,7 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 const GetOneSeance = () => {
 	const [session, setSession] = useState([])
 	const [place, setPlace] = useState([])
-	const [program, setProgram] = useState([])
+	const [programs, setProgram] = useState([])
 	const [stat, setStat] = useState([])
 	const [comp, setComp] = useState([])
 
@@ -22,7 +22,9 @@ const GetOneSeance = () => {
 			setComp(response.data.comp)
 		})
 	}
-	console.log('prog', program)
+	console.log('prog', programs)
+	console.log('place', place)
+
 	useEffect(() => {
 		getSession()
 	}, [])
@@ -42,104 +44,180 @@ const GetOneSeance = () => {
 				<tr>
 					<th> Place of Session</th>
 					<td>
-						<table>
+						{place && place?.length === 0 ? (
 							<tr>
 								<td>
-									<strong> Title : </strong>
+									<strong> No data </strong>
 								</td>
-								<td> {place.name} </td>
 							</tr>
-							<tr>
-								<td>
-									<strong>Country State :</strong>{' '}
-								</td>
-								<td> {place.countryState} </td>
-							</tr>
-							<tr>
-								<td>
-									<strong>Country : </strong>
-								</td>
-								<td> {place.country} </td>
-							</tr>
-							<tr>
-								<td>
-									<strong>Address : </strong>
-								</td>
-								<td> {place.address} </td>
-							</tr>
-						</table>
+						) : (
+							<table>
+								<tr>
+									<td>
+										<strong> Title : </strong>
+									</td>
+									<td> {place.name} </td>
+								</tr>
+								<tr>
+									<td>
+										<strong>Country State :</strong>{' '}
+									</td>
+									<td> {place.countryState} </td>
+								</tr>
+								<tr>
+									<td>
+										<strong>Country : </strong>
+									</td>
+									<td> {place.country} </td>
+								</tr>
+								<tr>
+									<td>
+										<strong>Address : </strong>
+									</td>
+									<td> {place.address} </td>
+								</tr>
+							</table>
+						)}
 					</td>
 				</tr>
 
 				<tr>
 					<th>Competences</th>
 					<td>
-						{comp.map((item, index) => (
-							<table>
-								<tr>
-									<td>
-										<strong>Title :</strong>
-									</td>
-									<td> {item.compId.name} </td>
-								</tr>
-								<tr>
-									<td>
-										<strong>Description :</strong>
-									</td>
-									<td> {item.compId.description} </td>
-								</tr>
-								<tr>
-									<td>
-										<strong> Link : </strong>
-									</td>
-									<td> {item.compId.link} </td>
-								</tr>
-							</table>
-						))}
+						{comp && comp?.length === 0 ? (
+							<tr>
+								<td>
+									<strong> No data </strong>
+								</td>
+							</tr>
+						) : (
+							comp.map((item, index) => (
+								<table>
+									<tr>
+										<td>
+											<strong>Title :</strong>
+										</td>
+										<td> {item.compId.name} </td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Description :</strong>
+										</td>
+										<td> {item.compId.description} </td>
+									</tr>
+									<tr>
+										<td>
+											<strong> Link : </strong>
+										</td>
+										<td> {item.compId.link} </td>
+									</tr>
+								</table>
+							))
+						)}
 					</td>
 				</tr>
 				<tr>
 					<th>Statistics</th>
 					<td>
-						{stat.map((item, index) => (
+						{stat && stat?.length === 0 ? (
+							<tr>
+								<td>
+									<strong> No data </strong>
+								</td>
+							</tr>
+						) : (
+							stat.map((item, index) => (
+								<table>
+									<tr>
+										<td>
+											<strong> Title : </strong>
+										</td>
+										<td> {item.statId.title} </td>
+									</tr>
+									<tr>
+										<td>
+											<strong> Unit : </strong>
+										</td>
+										<td> {item.statId.unit} </td>
+									</tr>
+									<tr>
+										<td>
+											<strong> Type : </strong>
+										</td>
+										<td> {item.statId.type} </td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Description : </strong>
+										</td>
+										<td> {item.statId.description} </td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Current State :</strong>
+										</td>
+										<td> {item.statId.currentState} </td>
+									</tr>
+								</table>
+							))
+						)}
+					</td>
+				</tr>
+				<tr>
+					<th>Program</th>
+					<td>
+						{programs && programs?.length === 0 ? (
+							<tr>
+								<td>
+									<strong> No data</strong>
+								</td>
+							</tr>
+						) : (
 							<table>
 								<tr>
 									<td>
-										<strong> Title : </strong>
+										{' '}
+										<strong>Title : </strong>{' '}
 									</td>
-									<td> {item.statId.title} </td>
+									<td> {programs && programs.title} </td>
 								</tr>
 								<tr>
 									<td>
-										<strong> Unit : </strong>
-									</td>
-									<td> {item.statId.unit} </td>
-								</tr>
-								<tr>
-									<td>
-										<strong> Type : </strong>
-									</td>
-									<td> {item.statId.type} </td>
-								</tr>
-								<tr>
-									<td>
+										{' '}
 										<strong>Description : </strong>
 									</td>
-									<td> {item.statId.description} </td>
+									<td> {programs && programs.description} </td>
 								</tr>
 								<tr>
 									<td>
-										<strong>Current State :</strong>
+										<strong> Link : </strong>
 									</td>
-									<td> {item.statId.currentState} </td>
+									<td> {programs && programs.link} </td>
+								</tr>
+								<tr>
+									<td>
+										{' '}
+										<strong> Picture :</strong>
+									</td>
+									<td>
+										<img
+											src={`//localhost:8000/${programs && programs.picture}`}
+											alt=''
+											width='300'
+											height='200'
+										/>
+									</td>
 								</tr>
 							</table>
-						))}
+						)}
 					</td>
 				</tr>
 			</table>
 			<br />
-			<button onClick={() => history('/sessionList')}> BACK </button>
+			<button type='text' class='submit' onClick={() => history('/sessionList')}>
+				{' '}
+				BACK{' '}
+			</button>
 		</div>
 	)
 }
