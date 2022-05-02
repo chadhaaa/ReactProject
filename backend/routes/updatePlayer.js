@@ -1,7 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const { UpdatePlayer } = require("../controllers/updatePlayer.controller");
+const express = require('express')
+const router = express.Router()
+const { UpdatePlayer, FindAllComp } = require('../controllers/updatePlayer.controller')
 
-router.put("/player/:id", UpdatePlayer);
+router.put('/player/:id', UpdatePlayer)
+router.get('/com', FindAllComp)
 
-module.exports = router;
+module.exports = router
