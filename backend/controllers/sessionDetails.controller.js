@@ -21,8 +21,8 @@ const FindSessionOne = async (req, res) => {
 
 		res.send({
 			session: sessions,
-			stats: statSession.filter((item) => item.statId != null),
-			comp: compSession.filter((item) => item.compId != null),
+			stats: statSession,
+			comp: compSession,
 		})
 	} catch (err) {
 		res.send('Error ' + err)
