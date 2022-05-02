@@ -8,88 +8,123 @@ const UpdatePlayer = () => {
 	const [sessionPrice, setSessionPrice] = useState('')
 	const [sessionNumbers, setSessionNumbers] = useState('')
 	const [active, setActive] = useState(false)
-	const [comp, setComp] = useState([])
-	const [compState, setCompState] = useState([])
-	const [compsAll, setCompsAll] = useState([])
+	// const [comp, setComp] = useState([])
+	// const [compState, setCompState] = useState([])
+	// const [compsAll, setCompsAll] = useState([])
+	// const [stats, setStats] = useState([])
+	// const [statsState, setStatsState] = useState([])
+	// const [statsAll, setStatsAll] = useState([])
 	const [errors, setErrors] = useState({})
+	console.log('hhihih', sessionNumbers)
 
-	const updateProf = async (event) => {
+	const updateProfile = (event) => {
+		// event.preventDefault()
+
 		const formdata = new FormData()
 		formdata.append('sessionPrice', sessionPrice)
 		formdata.append('sessionNumbers', sessionNumbers)
-		formdata.append('comp', comp)
 		formdata.append('active', active)
 
-		axios
-			.put(`http://localhost:8000/api/player/${id}`, formdata)
-			.then((res) => {
-				console.log(res.data)
-			})
-			.catch((err) => setErrors(err.res))
-	}
-
-	useEffect(() => {
-		axios.get('http://localhost:8000/api/com').then((response) => {
-			setCompsAll(response.data)
-			console.log('test', response.data)
-			console.log('test2', comp)
+		axios.put(`http://localhost:8000/api/player/${id}`, formdata, {
+			headers: { 'Content-Type': 'multipart/form-data' },
 		})
-	}, [])
 
+		history(`/Profile/${id}`)
+	}
 	useEffect(() => {
-		axios.get(`http://localhost:8000/api/sessionUpdate/${id}`).then((res) => {
-			sessionNumbers(res.data.player.sessionNumbers)
-			sessionPrice(res.data.player.sessionPrice)
-			setComp(res.data.comp)
+		axios.get(`http://localhost:8000/api/player/${id}`).then((res) => {
+			setSessionPrice(res.data.player.sessionPrice)
+			setSessionNumbers(res.data.player.sessionNumbers)
 			setActive(res.data.player.active)
 		})
 	}, [])
-	console.log('dkjhkjhkj', sessionPrice)
-	const dataC = []
-	compsAll.map((item, index) =>
-		dataC.push({
-			id: item._id,
-			name: item.name,
-			checked: true,
-		})
-	)
-	console.log('hjgh', dataC)
 
-	const handleCheckboxC = (e) => {
-		if (e.target.checked) {
-			compState.push(e.target.value)
-		} else {
-			const index = compState.indexOf(e.target.value)
-			if (index > -1) {
-				compState.splice(index, 1)
-			}
-		}
-	}
+	// useEffect(() => {
+	// 	axios.get('http://localhost:8000/api/com').then((response) => {
+	// 		setCompsAll(response.data)
+	// 		console.log('test', response.data)
+	// 		console.log('test2', comp)
+	// 	})
+	// }, [])
 
+	// useEffect(() => {
+	// 	axios.get(`http://localhost:8000/api/stats/${id}`).then((response) => {
+	// 		setStatsAll(response.data)
+	// 	})
+	// }, [])
+
+	console.log('sessionPrice', sessionPrice)
+	console.log('sessionNumbers', sessionNumbers)
+	// console.log('active', active)
+	// console.log('stats', stats)
+
+	// const dataC = []
+	// compsAll.map((item, index) =>
+	// 	dataC.push({
+	// 		id: item._id,
+	// 		name: item.name,
+	// 		checked: true,
+	// 	})
+	// )
+
+	// console.log('hjgh', dataC)
+
+	// const handleCheckboxC = (e) => {
+	// 	if (e.target.checked) {
+	// 		compState.push(e.target.value)
+	// 	} else {
+	// 		const index = compState.indexOf(e.target.value)
+	// 		if (index > -1) {
+	// 			compState ? compState.splice(index, 1) : []
+	// 		}
+	// 	}
+	// }
+
+	// const dataS = []
+	// statsAll.map((item, index) =>
+	// 	dataS.push({
+	// 		id: item._id,
+	// 		title: item.title,
+	// 		checked: true,
+	// 	})
+	// )
+
+	// const handleCheckboxS = (e) => {
+	// 	if (e.target.checked) {
+	// 		statsState.push(e.target.value)
+	// 	} else {
+	// 		const index = statsState.indexOf(e.target.value)
+	// 		if (index > -1) {
+	// 			statsState ? statsState.splice(index, 1) : []
+	// 		}
+	// 	}
+	// }
 	const handleOnChange = () => {
 		setActive(!active)
 	}
 
 	return (
 		<>
-			<form onSubmit={updateProf} encType='multipart/form-data' className='form' id='msform'>
+			<form
+				onSubmit={updateProfile}
+				encType='multipart/form-data'
+				className='form'
+				id='msform'>
 				<fieldset>
 					<h2 className='fs-title'>Update Player</h2>
 
 					<input
-						type='text'
+						type='number'
 						value={sessionNumbers}
 						onChange={(e) => setSessionNumbers(e.target.value)}
 						name='sessionNumbers'
-						required='required'
 						placeholder='Session Numbers'
 					/>
 					<input
-						type='text'
+						type='number'
 						value={sessionPrice}
 						onChange={(e) => setSessionPrice(e.target.value)}
 						name='sessionPrice'
-						required='required'
 						placeholder='Session Price'
 					/>
 					<label>
@@ -97,7 +132,7 @@ const UpdatePlayer = () => {
 						Active ?
 					</label>
 					<br />
-					<table>
+					{/* <table>
 						{' '}
 						<tr>
 							<td>
@@ -115,10 +150,25 @@ const UpdatePlayer = () => {
 									</div>
 								))}
 							</td>
+							<td>
+								<h3>Choose statistiques</h3>
+								{dataS.map((item, index) => (
+									<div key={index}>
+										<input
+											value={item.id}
+											type='checkbox'
+											name='stats'
+											checked={dataS.checked}
+											onChange={handleCheckboxS}
+										/>
+										<label htmlFor='scales'>{item.title}</label>
+									</div>
+								))}
+							</td>
 						</tr>
-					</table>
+					</table> */}
 
-					<button type='submit' className='button'>
+					<button type='submit' className='button' onClick={() => updateProfile()}>
 						Update Player
 					</button>
 				</fieldset>
