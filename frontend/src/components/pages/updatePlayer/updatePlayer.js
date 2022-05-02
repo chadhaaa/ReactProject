@@ -1,98 +1,130 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const UpdatePlayer = () => {
 	const history = useNavigate()
 	const { id } = useParams()
-	const [player, updatePlayer] = useState({
-		firstname: '',
-		lastname: '',
-		height: '',
-		weight: '',
-		active: '',
-	})
-
-	const { firstname, lastname, active, height, weight } = player
-	const handleChange = (namee) => (event) => {
-		updatePlayer({ ...comp, [namee]: event.target.value })
-	}
+	const [sessionPrice, setSessionPrice] = useState('')
+	const [sessionNumbers, setSessionNumbers] = useState('')
+	const [active, setActive] = useState(false)
+	const [comp, setComp] = useState([])
+	const [compState, setCompState] = useState([])
+	const [compsAll, setCompsAll] = useState([])
+	const [errors, setErrors] = useState({})
 
 	const updateProf = async (event) => {
-		event.preventDefault()
+		const formdata = new FormData()
+		formdata.append('sessionPrice', sessionPrice)
+		formdata.append('sessionNumbers', sessionNumbers)
+		formdata.append('comp', comp)
+		formdata.append('active', active)
 
-		await axios.put(`/api/player/${id}`, player)
-		history('/getProfile')
+		axios
+			.put(`http://localhost:8000/api/player/${id}`, formdata)
+			.then((res) => {
+				console.log(res.data)
+			})
+			.catch((err) => setErrors(err.res))
 	}
+
+	useEffect(() => {
+		axios.get('http://localhost:8000/api/com').then((response) => {
+			setCompsAll(response.data)
+			console.log('test', response.data)
+			console.log('test2', comp)
+		})
+	}, [])
+
+	useEffect(() => {
+		axios.get(`http://localhost:8000/api/sessionUpdate/${id}`).then((res) => {
+			sessionNumbers(res.data.player.sessionNumbers)
+			sessionPrice(res.data.player.sessionPrice)
+			setComp(res.data.comp)
+			setActive(res.data.player.active)
+		})
+	}, [])
+	console.log('dkjhkjhkj', sessionPrice)
+	const dataC = []
+	compsAll.map((item, index) =>
+		dataC.push({
+			id: item._id,
+			name: item.name,
+			checked: true,
+		})
+	)
+	console.log('hjgh', dataC)
+
+	const handleCheckboxC = (e) => {
+		if (e.target.checked) {
+			compState.push(e.target.value)
+		} else {
+			const index = compState.indexOf(e.target.value)
+			if (index > -1) {
+				compState.splice(index, 1)
+			}
+		}
+	}
+
+	const handleOnChange = () => {
+		setActive(!active)
+	}
+
 	return (
 		<>
-			<h1> Update Player </h1>
-			<form onSubmit={updateProf}>
-				<label>
-					Enter new firstname :
+			<form onSubmit={updateProf} encType='multipart/form-data' className='form' id='msform'>
+				<fieldset>
+					<h2 className='fs-title'>Update Player</h2>
+
 					<input
 						type='text'
-						placeholder="Enter new Player's firstname"
-						value={firstname}
-						onChange={handleChange('firstname')}
+						value={sessionNumbers}
+						onChange={(e) => setSessionNumbers(e.target.value)}
+						name='sessionNumbers'
+						required='required'
+						placeholder='Session Numbers'
 					/>
-				</label>
-				<br />
-				<br />
-
-				<label>
-					Enter new Player s lastname :
 					<input
 						type='text'
-						placeholder="Enter new Player's lastname"
-						value={lastname}
-						onChange={handleChange('lastname')}
+						value={sessionPrice}
+						onChange={(e) => setSessionPrice(e.target.value)}
+						name='sessionPrice'
+						required='required'
+						placeholder='Session Price'
 					/>
-				</label>
-				<br />
-				<br />
+					<label>
+						<input type='checkbox' checked={active.checked} onChange={handleOnChange} />
+						Active ?
+					</label>
+					<br />
+					<table>
+						{' '}
+						<tr>
+							<td>
+								<h3>Choose Competences</h3>
+								{dataC.map((item, index) => (
+									<div key={index}>
+										<input
+											value={item.id}
+											type='checkbox'
+											name='comp'
+											checked={dataC.checked}
+											onChange={handleCheckboxC}
+										/>
+										<label htmlFor='scales'>{item.name}</label>
+									</div>
+								))}
+							</td>
+						</tr>
+					</table>
 
-				<label>
-					Enter new Player s weight :
-					<input
-						type='text'
-						placeholder="Enter new Player's weight"
-						value={weight}
-						onChange={handleChange('weight')}
-					/>
-				</label>
-				<br />
-				<br />
-
-				<label>
-					Enter new Player s height :
-					<input
-						type='text'
-						placeholder="Enter new Player's lastname"
-						value={height}
-						onChange={handleChange('height')}
-					/>
-				</label>
-				<br />
-				<br />
-
-				<label>
-					Enter new Player s active :
-					<input
-						type='text'
-						placeholder="Enter new Player's active"
-						value={active}
-						onChange={handleChange('active')}
-					/>
-				</label>
-				<br />
-				<br />
-
-				<button type='submit' onClick={updateProf}>
-					{' '}
-					Update Player Info{' '}
-				</button>
+					<button type='submit' className='button'>
+						Update Player
+					</button>
+				</fieldset>
 			</form>
+
+			<br />
 		</>
 	)
 }
