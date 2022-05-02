@@ -18,7 +18,7 @@ const playerSchema = mongoose.Schema({
 	goal: { type: String, required: false },
 	coachId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coach' },
 	sessionPrice: { type: Number, required: false },
-	sessionNumbers: { type: Number, required: true },
+	sessionNumbers: { type: Number, required: false },
 	active: { type: Boolean, required: false },
 })
 
