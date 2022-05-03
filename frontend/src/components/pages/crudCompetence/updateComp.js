@@ -6,6 +6,7 @@ import './addAndUpdate.css'
 const UpdateCompetence = () => {
 	const history = useNavigate()
 	const { id } = useParams()
+
 	const [comp, addComp] = useState({
 		visibility: '',
 		link: '',
