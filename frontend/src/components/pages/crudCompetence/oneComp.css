@@ -1,6 +1,7 @@
 .check-list {
     margin: 0;
     padding-left: 1.2rem;
+    font-size: 20px;
   }
   
   .check-list li {
@@ -62,5 +63,4 @@
   div {
     margin: auto;
   }
-  
   

@@ -27,6 +27,7 @@ const GetStatistics = () => {
 						id={stats._id}
 						key={stats._id}
 						title={stats.title}
+						type={stats.type}
 						description={stats.description}
 						currentState={stats.currentState}
 						link={stats.link}

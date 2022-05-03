@@ -21,11 +21,11 @@ const GetOneCompetence = () => {
 				<h1 key={oneComp._id}>Details of Competence : {oneComp.name} </h1>
 				<br />
 				<ul className='check-list'>
-					<li>description : {oneComp.description}</li>
+					<li>Name : {oneComp.name}</li>
 					<br />
-					<li>visibility : {oneComp.visibility}</li>
+					<li>Description : {oneComp.description}</li>
 					<br />
-					<li>link : {oneComp.link}</li>
+					<li>Link : {oneComp.link}</li>
 					<br />
 				</ul>
 				<button onClick={() => history('/getCompetence')}> BACK </button>

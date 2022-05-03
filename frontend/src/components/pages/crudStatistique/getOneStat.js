@@ -23,8 +23,6 @@ const GetOneStatistic = () => {
 				<ul className='check-list'>
 					<li>description : {oneStat.description}</li>
 					<br />
-					<li>visibility : {oneStat.visibility}</li>
-					<br />
 					<li>link : {oneStat.link}</li>
 					<br />
 					<li>unit : {oneStat.unit}</li>
