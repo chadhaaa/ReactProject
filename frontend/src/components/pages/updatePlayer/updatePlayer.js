@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import './updatePlayer.css'
 
 const UpdatePlayer = () => {
 	const history = useNavigate()
@@ -25,12 +26,15 @@ const UpdatePlayer = () => {
 		formdata.append('sessionNumbers', sessionNumbers)
 		formdata.append('active', active)
 
+		console.log('formdata', formdata)
+
 		axios.put(`http://localhost:8000/api/player/${id}`, formdata, {
 			headers: { 'Content-Type': 'multipart/form-data' },
 		})
 
 		history(`/Profile/${id}`)
 	}
+
 	useEffect(() => {
 		axios.get(`http://localhost:8000/api/player/${id}`).then((res) => {
 			setSessionPrice(res.data.player.sessionPrice)
@@ -55,6 +59,7 @@ const UpdatePlayer = () => {
 
 	console.log('sessionPrice', sessionPrice)
 	console.log('sessionNumbers', sessionNumbers)
+	console.log('active', active)
 	// console.log('active', active)
 	// console.log('stats', stats)
 
@@ -127,9 +132,14 @@ const UpdatePlayer = () => {
 						name='sessionPrice'
 						placeholder='Session Price'
 					/>
-					<label>
-						<input type='checkbox' checked={active.checked} onChange={handleOnChange} />
-						Active ?
+
+					<label class='toggle-switch'>
+						<br />
+						<p>Show competences and statistics ?</p>
+						<br />
+						<input type='checkbox' checked={active} onChange={handleOnChange} />
+
+						<span class='switch' />
 					</label>
 					<br />
 					{/* <table>
