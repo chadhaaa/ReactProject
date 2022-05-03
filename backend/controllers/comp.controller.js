@@ -40,6 +40,8 @@ const UpdateComp = async (req, res) => {
 		{
 			link: req.body.link,
 			visibility: req.body.visibility,
+			name: req.body.name,
+			description: req.body.description,
 		},
 		{ new: true }
 	)
