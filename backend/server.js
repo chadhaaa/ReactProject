@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const http = require('http')
 const mongoose = require('mongoose')
 
 // Adding tables to database
@@ -54,17 +53,11 @@ app.use(express.urlencoded({ extended: false }))
 const cron = require('node-cron')
 const mailer = require('nodemailer')
 
-// credentials for your Mail
-
 const currentDate = new Date().toString().split(' ')
 
 let cYear = currentDate[3]
 let cMonth = currentDate[1]
 let cDay = currentDate[2]
-
-console.log('day', cDay)
-console.log('Month', cMonth)
-console.log('year', cYear)
 
 var transporter = mailer.createTransport({
 	service: 'gmail',
@@ -74,29 +67,27 @@ var transporter = mailer.createTransport({
 	},
 })
 
-cron.schedule('* * * * * *', () => {
-	///The Main Function
-	const sendWishes =
-		// looping through the users
-		Seance.find({}, (err, dates) => {
-			dates.forEach((element) => {
-				let d = element.date.toString().split(' ')
-
-				// Sending the Mail
-				if (d[2] === cDay && d[1] === cMonth && d[3] === cYear) {
-					const mailOptions = {
-						from: 'nodeisamm@gmail.com',
-						to: 'chadha.hadji@gmail.com',
-						subject: `Fitness App Email Reminder `,
-						html: `We remind you that there is an upcoming session </b> at ${element.time} , Enjoy !`,
-					}
-					return transporter.sendMail(mailOptions, (error, data) => {
-						if (error) {
-							console.log(error)
-							return
-						}
-					})
+// Send Email Every Wednesday
+cron.schedule('* * * * * 3', () => {
+	const sendEmailRemainder = Session.find({}, (err, dates) => {
+		dates.forEach((element) => {
+			let d = element.day.toString().split(' ')
+			if (d[2] === cDay && d[1] === cMonth && d[3] === cYear) {
+				const mailOptions = {
+					from: 'nodeisamm@gmail.com',
+					to: 'chadha.hadji@gmail.com',
+					subject: `Fitness App Email Reminder `,
+					html: `We remind you that there is an upcoming session </b> at ${element.hour} , Enjoy !`,
 				}
-			})
+				return transporter.sendMail(mailOptions, (error, data) => {
+					if (error) {
+						console.log(error)
+						return
+					} else {
+						console.log('Email successfully sent!')
+					}
+				})
+			}
 		})
+	})
 })
