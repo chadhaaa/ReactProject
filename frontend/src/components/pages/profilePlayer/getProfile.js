@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Profile from './profilePage'
 import { useParams } from 'react-router-dom'
+import ReactStars from 'react-stars'
 import './profile.css'
 
 const GetProfile = () => {
@@ -59,7 +60,7 @@ const GetProfile = () => {
 													{' '}
 													<strong>Unit : </strong>
 												</td>
-												<td> {item.statId.unit} </td>
+												<td> {item.statId.unit && item.statId.unit[0].value} </td>
 											</tr>
 											<tr>
 												<td>
@@ -73,7 +74,14 @@ const GetProfile = () => {
 													{' '}
 													<strong>Type :</strong>{' '}
 												</td>
-												<td> {item.statId.type} </td>
+												<td> {item.statId.type && item.statId.type[0].value} </td>
+											</tr>
+											<tr>
+												<td>
+													{' '}
+													<strong>Min or Max ? : </strong>
+												</td>
+												<td> {item.statId.minMax && item.statId.minMax[0].value} </td>
 											</tr>
 											<tr>
 												<td>
@@ -122,6 +130,21 @@ const GetProfile = () => {
 													<strong> Link : </strong>
 												</td>
 												<td> {item.compId.link} </td>
+											</tr>
+											<tr>
+												<td>
+													<strong> Star Rating : </strong>
+												</td>
+												<td>
+													{' '}
+													<ReactStars
+														count={5}
+														value={item.compId.stars}
+														edit={false}
+														size={30}
+														color2={'#ffd700'}
+													/>{' '}
+												</td>
 											</tr>
 										</tbody>
 									</table>
