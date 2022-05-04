@@ -9,6 +9,7 @@
     list-style-type: none;
     padding-left: 2.5rem;
     margin-bottom: 0.5rem;
+    
   }
   
   .check-list li:before {
@@ -64,3 +65,9 @@
     margin: auto;
   }
   
+  .starsRatings {
+    /* text-align: center; */
+    display: inline-block;
+    position: relative;
+    padding-right: 1.2rem;
+  }

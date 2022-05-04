@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ReactStars from 'react-stars'
 
 const AddCompetence = () => {
 	const history = useNavigate()
@@ -8,17 +9,22 @@ const AddCompetence = () => {
 	const [name, setName] = useState('')
 	const [description, setDescription] = useState('')
 	const [link, setLink] = useState('')
+	const [stars, setStars] = useState('')
 	const [visibility, setVisibility] = useState(false)
 
 	const changeVisibility = () => {
 		setVisibility(!visibility)
 	}
 
+	const ratingStars = (value) => {
+		setStars(value)
+	}
 	const addComp = (event) => {
 		const formdata = {
 			name: name,
 			description: description,
 			link: link,
+			stars: stars,
 			visibility: visibility,
 		}
 		axios.post('http://localhost:8000/api/competence', formdata)
@@ -32,6 +38,7 @@ const AddCompetence = () => {
 			setDescription(res.data.competence.description)
 			setLink(res.data.competence.link)
 			setVisibility(res.data.competence.visibility)
+			setStars(res.data.competence.stars)
 		})
 	}, [])
 
@@ -82,8 +89,19 @@ const AddCompetence = () => {
 					Description
 				</label>
 			</div>
+			<div>
+				<h4> Competence Rating </h4>
+				<ReactStars
+					className='starsRatings'
+					count={5}
+					value={stars}
+					onChange={ratingStars}
+					size={30}
+					color2={'#ffd700'}
+				/>
+			</div>
 
-			<h4>Do you want to set this competence to Visible to Player ? </h4>
+			<h4>Do you want to set this competence to be Visible to Player ? </h4>
 			<label class='toggle-switch'>
 				<input type='checkbox' checked={visibility} onChange={changeVisibility} />
 				<span class='switch' />

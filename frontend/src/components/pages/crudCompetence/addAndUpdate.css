@@ -171,3 +171,9 @@ body {
     font-size: 18px;
     
   }
+
+  .starsRatings {
+    text-align: center;
+    display: inline-block;
+    position: relative;
+  }

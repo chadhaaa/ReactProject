@@ -26,7 +26,7 @@ const GetCompetences = () => {
 						key={comps._id}
 						name={comps.name}
 						description={comps.description}
-						visibility={comps.visibility}
+						visibility={String(comps.visibility)}
 						link={comps.link}
 					/>
 				)

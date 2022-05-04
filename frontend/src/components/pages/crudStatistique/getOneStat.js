@@ -1,17 +1,19 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import Select from 'react-select'
 import './oneStat.css'
+
 const GetOneStatistic = () => {
 	const [oneStat, setOneStat] = useState([])
 	const { id } = useParams()
 	const history = useNavigate()
 
 	useEffect(() => {
-		getOneComp()
+		getOneStat()
 	}, [])
 
-	const getOneComp = async () => {
+	const getOneStat = async () => {
 		const response = await axios.get(`/api/statistic/${id}`)
 		setOneStat(response.data)
 	}
@@ -25,11 +27,18 @@ const GetOneStatistic = () => {
 					<br />
 					<li>link : {oneStat.link}</li>
 					<br />
-					<li>unit : {oneStat.unit}</li>
+					<li>unit : {oneStat.unit && oneStat.unit[0].value}</li>
 					<br />
-					<li>type : {oneStat.type}</li>
+					<li>type : {oneStat.type && oneStat.type[0].value}</li>
+
+					<br />
+					<li>Visibility : {String(oneStat.visibility)}</li>
 					<br />
 					<li>current State : {oneStat.currentState}</li>
+					<br />
+					<li>Show alert : {String(oneStat.statAlert)}</li>
+					<br />
+					<li>Min or Max: {oneStat.minMax && oneStat.minMax[0].value}</li>
 					<br />
 				</ul>
 				<button onClick={() => history('/getStat')}> BACK </button>

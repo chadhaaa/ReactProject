@@ -20,19 +20,28 @@ const GetStatistics = () => {
 		<div className='App'>
 			<h1>Liste des statistiques </h1>
 			<button onClick={() => history('/addStat')}> Add New Statistic </button>
+			{/* {stats.forEach((element) => {
+				// console.log(element.minMax[0].value)
+				console.log(element.unit[0].value)
+			})} */}
 
+			{stats.map((el) => {
+				console.log('test', el.minMax[0] && el.minMax[0].value)
+			})}
 			{stats.map(function (stats) {
 				return (
 					<Statistic
 						id={stats._id}
 						key={stats._id}
 						title={stats.title}
-						type={stats.type}
+						type={stats.type[0].value}
 						description={stats.description}
 						currentState={stats.currentState}
 						link={stats.link}
-						visibility={stats.visibility}
-						unit={stats.unit}
+						visibility={String(stats.visibility)}
+						unit={stats.unit[0].value}
+						minMax={stats.minMax[0] && stats.minMax[0].value}
+						statAlert={String(stats.statAlert)}
 					/>
 				)
 			})}

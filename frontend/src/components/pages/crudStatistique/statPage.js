@@ -9,6 +9,7 @@ export default function Statistic({
 	visibility,
 	currentState,
 	unit,
+	minMax,
 	type,
 	id,
 }) {
@@ -38,6 +39,8 @@ export default function Statistic({
 						<th scope='col'>Title</th>
 						<th scope='col'>Description</th>
 						<th scope='col'>Type</th>
+						<th scope='col'>Unit</th>
+						<th scope='col'>Minimize or Maximize</th>
 						<th scope='col'>Actions</th>
 					</tr>
 				</thead>
@@ -46,24 +49,12 @@ export default function Statistic({
 						<td data-label='Title'>{title}</td>
 						<td data-label='Description'>{description}</td>
 						<td data-label='Type'>{type}</td>
+						<td data-label='Unit'>{unit}</td>
+						<td data-label='minMax'>{minMax}</td>
 						<td data-label='Actions'>{renderActions()}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		// <div className='statistic'>
-		// 	<div className='title'>
-		// 		<ul>
-		// 			<li>{title}</li>
-		// 			<li>{description}</li>
-		// 			<li>{currentState}</li>
-		// 			<li>{String(visibility)}</li>
-		// 			<li>{link}</li>
-		// 			<li>{unit}</li>
-		// 		</ul>
-		// 	</div>
-		// 	{renderActions()}
-		// 	<br />
-		// </div>
 	)
 }

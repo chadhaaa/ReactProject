@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Select from 'react-select'
 import './addAndUpdate.css'
 
 const AddStatistic = () => {
@@ -9,13 +10,52 @@ const AddStatistic = () => {
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
 	const [link, setLink] = useState('')
-	const [unit, setUnit] = useState('')
+	const [unit, setUnit] = useState([])
 	const [currentState, setCurrentState] = useState('')
-	const [type, setType] = useState('')
+	const [type, setType] = useState([])
+	const [minMax, setMinMax] = useState([])
+	const [statAlert, setStatAlert] = useState(false)
 	const [visibility, setVisibility] = useState(false)
+
+	const options = [
+		{ value: 'Compteur', label: 'Compteur' },
+		{ value: 'Timer', label: 'Timer' },
+		{ value: '+/-', label: '+/-' },
+	]
+
+	const optionsUnit = [
+		{ value: 'fois', label: 'fois' },
+		{ value: 's', label: 's' },
+		{ value: 'min', label: 'min' },
+		{ value: 'km', label: 'km' },
+		{ value: 'm', label: 'm' },
+		{ value: 'h', label: 'h' },
+		{ value: 'kg', label: 'kg' },
+	]
+
+	const optionsMinMax = [
+		{ value: 'Minimiser', label: 'Minimiser' },
+		{ value: 'Maximiser', label: 'Maximiser' },
+	]
 
 	const changeVisibility = () => {
 		setVisibility(!visibility)
+	}
+
+	const changeStatAlertState = () => {
+		setStatAlert(!statAlert)
+	}
+
+	const chooseStatType = (value) => {
+		setType(value)
+	}
+
+	const chooseStatUnit = (valueUnit) => {
+		setUnit(valueUnit)
+	}
+
+	const chooseStatMinMax = (valueMinMax) => {
+		setMinMax(valueMinMax)
 	}
 
 	const addStat = (event) => {
@@ -27,6 +67,8 @@ const AddStatistic = () => {
 			unit: unit,
 			currentState: currentState,
 			type: type,
+			minMax: minMax,
+			statAlert: statAlert,
 		}
 		axios.post('http://localhost:8000/api/statistic', formdata)
 
@@ -42,6 +84,8 @@ const AddStatistic = () => {
 			setUnit(res.data.statistics.unit)
 			setCurrentState(res.data.statistics.currentState)
 			setType(res.data.statistics.type)
+			setMinMax(res.data.statistics.minMax)
+			setStatAlert(res.data.statistics.statAlert)
 		})
 	}, [])
 
@@ -63,21 +107,6 @@ const AddStatistic = () => {
 				</label>
 			</div>
 
-			{/* <div class='input-container ic2'>
-				<input
-					id='visibility'
-					class='input'
-					type='text'
-					placeholder=' '
-					value={visibility}
-					onChange={(e) => setVisibility(e.target.value)}
-				/>
-				<div class='cut'></div>
-				<label for='visibility' class='placeholder'>
-					Visibility
-				</label>
-			</div> */}
-
 			<div class='input-container ic2'>
 				<input
 					id='description'
@@ -90,21 +119,6 @@ const AddStatistic = () => {
 				<div class='cut'></div>
 				<label for='description' class='placeholder'>
 					Description
-				</label>
-			</div>
-
-			<div class='input-container ic2'>
-				<input
-					id='currentState'
-					class='input'
-					type='text'
-					placeholder=' '
-					value={currentState}
-					onChange={(e) => setCurrentState(e.target.value)}
-				/>
-				<div class='cut'></div>
-				<label for='currentState' class='placeholder'>
-					Current State
 				</label>
 			</div>
 
@@ -125,35 +139,34 @@ const AddStatistic = () => {
 
 			<div class='input-container ic2'>
 				<input
-					id='unit'
+					id='currentState'
 					class='input'
 					type='text'
 					placeholder=' '
-					value={unit}
-					onChange={(e) => setUnit(e.target.value)}
+					value={currentState}
+					onChange={(e) => setCurrentState(e.target.value)}
 				/>
 				<div class='cut'></div>
-				<label for='link' class='placeholder'>
-					Unit
+				<label for='currentState' class='placeholder'>
+					Current State
 				</label>
 			</div>
-			<div class='input-container ic2'>
-				<input
-					id='type'
-					class='input'
-					type='text'
-					placeholder=' '
-					value={type}
-					onChange={(e) => setType(e.target.value)}
-				/>
-				<div class='cut'></div>
-				<label for='link' class='placeholder'>
-					Type
-				</label>
-			</div>
+
+			<h4>Select Type : </h4>
+			<Select options={options} value={type} onChange={chooseStatType} />
+			<h4>Select A Unit : </h4>
+			<Select options={optionsUnit} value={unit} onChange={chooseStatUnit} />
+			<h4>Do you want to Maximize or Minimize this Statistic ? </h4>
+			<Select options={optionsMinMax} value={minMax} onChange={chooseStatMinMax} />
 			<h4>Do you want to set this Statistic to Visible to Player ? </h4>
 			<label class='toggle-switch'>
 				<input type='checkbox' checked={visibility} onChange={changeVisibility} />
+				<span class='switch' />
+			</label>
+			<br />
+			<h4>Do you want this Statistic to be accompagned with an Alert ? </h4>
+			<label class='toggle-switch'>
+				<input type='checkbox' checked={statAlert} onChange={changeStatAlertState} />
 				<span class='switch' />
 			</label>
 			<br />
