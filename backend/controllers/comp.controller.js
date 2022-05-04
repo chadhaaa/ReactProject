@@ -23,6 +23,7 @@ const AddNewComp = async (req, res) => {
 		description: req.body.description,
 		link: req.body.link,
 		visibility: req.body.visibility,
+		stars: req.body.stars,
 	})
 	newComp = await newComp.save()
 	if (!newComp) {
@@ -42,6 +43,7 @@ const UpdateComp = async (req, res) => {
 			visibility: req.body.visibility,
 			name: req.body.name,
 			description: req.body.description,
+			stars: req.body.stars,
 		},
 		{ new: true }
 	)

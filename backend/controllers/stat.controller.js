@@ -38,6 +38,8 @@ const AddNewStat = async (req, res) => {
 		description: req.body.description,
 		link: req.body.link,
 		visibility: req.body.visibility,
+		minMax: req.body.minMax,
+		statAlert: req.body.statAlert,
 		currentState: req.body.currentState,
 		disciplineId: req.body.disciplineId,
 	})
@@ -62,6 +64,8 @@ const UpdateStat = async (req, res) => {
 			link: req.body.link,
 			visibility: req.body.visibility,
 			currentState: req.body.currentState,
+			minMax: req.body.minMax,
+			statAlert: req.body.statAlert,
 			disciplineId: req.body.disciplineId,
 		},
 		{ new: true }
