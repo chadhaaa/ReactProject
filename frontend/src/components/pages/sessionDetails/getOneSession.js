@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import OneSeance from './getOneSessionPage'
 import { useParams, useNavigate } from 'react-router-dom'
+import OneSeance from './getOneSessionPage'
+import ReactStars from 'react-stars'
 
 const GetOneSeance = () => {
 	const [session, setSession] = useState([])
@@ -24,6 +25,7 @@ const GetOneSeance = () => {
 	}
 	console.log('prog', programs)
 	console.log('place', place)
+	console.log('stat', stat)
 
 	useEffect(() => {
 		getSession()
@@ -111,6 +113,21 @@ const GetOneSeance = () => {
 										</td>
 										<td> {item.compId.link} </td>
 									</tr>
+									<tr>
+										<td>
+											<strong> Star Rating : </strong>
+										</td>
+										<td>
+											{' '}
+											<ReactStars
+												count={5}
+												value={item.compId.stars}
+												edit={false}
+												size={30}
+												color2={'#ffd700'}
+											/>{' '}
+										</td>
+									</tr>
 								</table>
 							))
 						)}
@@ -138,13 +155,19 @@ const GetOneSeance = () => {
 										<td>
 											<strong> Unit : </strong>
 										</td>
-										<td> {item.statId.unit} </td>
+										<td> {item.statId.unit && item.statId.unit[0].value} </td>
 									</tr>
 									<tr>
 										<td>
 											<strong> Type : </strong>
 										</td>
-										<td> {item.statId.type} </td>
+										<td> {item.statId.type && item.statId.type[0].value} </td>
+									</tr>
+									<tr>
+										<td>
+											<strong> Min or Max ? : </strong>
+										</td>
+										<td> {item.statId.minMax && item.statId.minMax[0].value} </td>
 									</tr>
 									<tr>
 										<td>
