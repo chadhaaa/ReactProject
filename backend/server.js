@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const http = require('http')
 const mongoose = require('mongoose')
 
 // Adding tables to database
@@ -23,6 +22,10 @@ const StatisticSession = require('./models/statisticSession')
 
 // app routes
 const routerPlace = require('./routes/place.js')
+
+// App routes
+const routerCompetence = require('./routes/comp.js')
+const routerStatistic = require('./routes/statistic.js')
 
 // Database connection
 mongoose
@@ -53,5 +56,8 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// route to crud place
+
+app.use('/api', routerCompetence)
+app.use('/api', routerStatistic)
 app.use('/api', routerPlace)
+
