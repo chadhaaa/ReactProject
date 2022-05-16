@@ -1,12 +1,10 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ReactStars from 'react-stars'
-import './addAndUpdate.css'
 
-const UpdateCompetence = () => {
+const AddCompetence = () => {
 	const history = useNavigate()
-	const { id } = useParams()
 
 	const [name, setName] = useState('')
 	const [description, setDescription] = useState('')
@@ -21,8 +19,7 @@ const UpdateCompetence = () => {
 	const ratingStars = (value) => {
 		setStars(value)
 	}
-
-	const updateComp = (event) => {
+	const addComp = (event) => {
 		const formdata = {
 			name: name,
 			description: description,
@@ -30,24 +27,24 @@ const UpdateCompetence = () => {
 			stars: stars,
 			visibility: visibility,
 		}
-		axios.put(`http://localhost:8000/api/competence/${id}`, formdata)
+		axios.post('http://localhost:8000/api/competence', formdata)
 
-		history('/getCompetence')
+		history('/competence')
 	}
 
 	useEffect(() => {
-		axios.get(`http://localhost:8000/api/competence/${id}`).then((res) => {
+		axios.get('http://localhost:8000/api/competence').then((res) => {
 			setName(res.data.competence.name)
 			setDescription(res.data.competence.description)
 			setLink(res.data.competence.link)
-			setStars(res.data.competence.stars)
 			setVisibility(res.data.competence.visibility)
+			setStars(res.data.competence.stars)
 		})
 	}, [])
 
 	return (
-		<div class='form' encType='multipart/form-data'>
-			<div class='title'>Update Competence</div>
+		<div class='form'>
+			<div class='title'>Add Competence</div>
 			<div class='input-container ic1'>
 				<input
 					id='name'
@@ -62,6 +59,7 @@ const UpdateCompetence = () => {
 					Name
 				</label>
 			</div>
+
 			<div class='input-container ic2'>
 				<input
 					id='link'
@@ -91,7 +89,6 @@ const UpdateCompetence = () => {
 					Description
 				</label>
 			</div>
-			<br />
 			<div>
 				<h4> Competence Rating </h4>
 				<ReactStars
@@ -104,20 +101,20 @@ const UpdateCompetence = () => {
 				/>
 			</div>
 
-			<h4>Do you want this Competence to be visible to the player ? </h4>
+			<h4>Do you want to set this competence to be Visible to Player ? </h4>
 			<label class='toggle-switch'>
 				<input type='checkbox' checked={visibility} onChange={changeVisibility} />
 				<span class='switch' />
 			</label>
 			<br />
-			<button type='text' class='submit' onClick={updateComp}>
-				Update Competence
+			<button type='text' class='submit' onClick={addComp}>
+				Add Competence
 			</button>
-			<button type='text' class='submit' onClick={() => history('/getCompetence')}>
+			<button type='text' class='submit' onClick={() => history('/competence')}>
 				BACK
 			</button>
 		</div>
 	)
 }
 
-export default UpdateCompetence
+export default AddCompetence

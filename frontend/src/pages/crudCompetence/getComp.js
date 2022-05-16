@@ -6,10 +6,15 @@ import Competence from './compPage'
 const GetCompetences = () => {
 	const [comp, setComp] = useState([])
 	const history = useNavigate()
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-		getComps()
-	}, [])
+
+		if(isLoading){
+			getComps()
+			setIsLoading(false);
+		}
+	}, [isLoading])
 
 	const getComps = async () => {
 		const response = await axios.get('http://localhost:8000/api/competences')
@@ -19,7 +24,7 @@ const GetCompetences = () => {
 		<div className='App'>
 			<h1>Liste des competences </h1>
 			<button onClick={() => history('/addCompetence')}> Add New Competence </button>
-			{comp.map(function (comps) {
+			{ isLoading ? <p>Loading...</p> : comp.map(function (comps) {
 				return (
 					<Competence
 						id={comps._id}

@@ -8,7 +8,7 @@ export default function Competence({ name, description, link, visibility, id }) 
 	const deleteCompetence = async (event) => {
 		event.preventDefault()
 		await axios.delete(`/api/competence/${id}`)
-		history('/getCompetence')
+		history('/competence')
 		window.location.reload(false)
 	}
 

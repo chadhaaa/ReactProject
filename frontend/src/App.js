@@ -1,19 +1,19 @@
 
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import AddCompetence from './components/pages/crudCompetence/addComp'
-import GetCompetences from './components/pages/crudCompetence/getComp'
-import UpdateCompetence from './components/pages/crudCompetence/updateComp'
-import AddStatistic from './components/pages/crudStatistique/addStat'
-import GetStatistics from './components/pages/crudStatistique/getStat'
-import UpdateStat from './components/pages/crudStatistique/updateStat'
-import GetOneCompetence from './components/pages/crudCompetence/getOneComp'
-import GetOneStatistic from './components/pages/crudStatistique/getOneStat'
-import Addplace from './pages/crudplace/addComp'
-import Getplaces from './pages/crudplace/getComp'
-import Updateplace from './pages/crudplace/updateComp'
-
+import AddCompetence from './pages/crudCompetence/addComp';
+import GetCompetences from './pages/crudCompetence/getComp';
+import UpdateCompetence from './pages/crudCompetence/updateComp';
+import AddStatistic from './pages/crudStatistique/addStat';
+import GetStatistics from './pages/crudStatistique/getStat';
+import UpdateStat from './pages/crudStatistique/updateStat';
+import GetOneCompetence from './pages/crudCompetence/getOneComp';
+import GetOneStatistic from './pages/crudStatistique/getOneStat';
+/*import Addplace from './pages/crudplace/addPlace';
+import Getplaces from './pages/crudplace/GetPlaces';
+import Updateplace from './pages/crudplace/updatePlace';
+*/
 function App() {
 	return (
 		<Router>
@@ -21,7 +21,7 @@ function App() {
 				<Routes>
 					<Route exact path='/addCompetence' element={<AddCompetence />}></Route>
 
-					<Route exact path='/getCompetence' element={<GetCompetences />}></Route>
+					<Route exact path='/competence' element={<GetCompetences />}></Route>
 
 					<Route exact path='/updateCompetence/:id' element={<UpdateCompetence />}></Route>
 
@@ -34,17 +34,18 @@ function App() {
 					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
 
 					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}></Route>
+          {/*
            <Route exact path='/addplace' element={<AddPlace />}></Route>
 
 					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
 
-					<Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route>
+  <Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route> */}
 				</Routes>
 			</div>
 		</Router>
-	)
+	);
 
 
 }
 
-export default App
+export default App;

@@ -44,7 +44,7 @@ const GetOneCompetence = () => {
 					</li>
 					<br />
 				</ul>
-				<button onClick={() => history('/getCompetence')}> BACK </button>
+				<button onClick={() => history('/competence')}> BACK </button>
 			</div>
 		</section>
 	)
