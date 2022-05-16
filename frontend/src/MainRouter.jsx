@@ -30,7 +30,7 @@ export function MainRouter(){
             <h1 className="text-3xl font-bold mb-10 to-black">{locationString}</h1>
             <Routes>
                 <Route exact path="session" element={<Session />} />
-                <Route exact path="invitation/:inviationToken" element={<Invitation />} />
+                <Route exact path="invitation/:invitationToken" element={<Invitation />} />
                 <Route exact path="session/:sessionId" element={<SessionView />} />
                 <Route exact path="pricing" element={<Pricing />} />
                 <Route exact path="program/" element={<Program />} />

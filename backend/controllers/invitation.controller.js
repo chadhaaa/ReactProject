@@ -35,7 +35,9 @@ module.exports = {
 					},
 				},
             ])
-            if(!token){
+            console.log(token)
+            if(!token.length){
+                console.log("here")
                 return res.status(404).json({
                     message: "Invitation token not found"
                 });
