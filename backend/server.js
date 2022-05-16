@@ -15,6 +15,13 @@ const Program = require('./models/program')
 const Session = require('./models/session')
 const Subscription = require('./models/subscription')
 const Discipline = require('./models/discipline')
+const CompetencePlayer = require('./models/competencePlayer')
+const StatisticPlayer = require('./models/statisticPlayer')
+const CompetenceSession = require('./models/competenceSession')
+const StatisticSession = require('./models/statisticSession')
+
+// app routes
+const routerPlace = require('./routes/place.js')
 
 // App routes
 const routerCompetence = require('./routes/comp.js')
@@ -49,6 +56,8 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// Route to Crud Comp and Crud Stat
+
 app.use('/api', routerCompetence)
 app.use('/api', routerStatistic)
+app.use('/api', routerPlace)
+

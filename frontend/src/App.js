@@ -1,3 +1,4 @@
+
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -9,6 +10,9 @@ import GetStatistics from './components/pages/crudStatistique/getStat'
 import UpdateStat from './components/pages/crudStatistique/updateStat'
 import GetOneCompetence from './components/pages/crudCompetence/getOneComp'
 import GetOneStatistic from './components/pages/crudStatistique/getOneStat'
+import Addplace from './pages/crudplace/addComp'
+import Getplaces from './pages/crudplace/getComp'
+import Updateplace from './pages/crudplace/updateComp'
 
 function App() {
 	return (
@@ -30,10 +34,17 @@ function App() {
 					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
 
 					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}></Route>
+           <Route exact path='/addplace' element={<AddPlace />}></Route>
+
+					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
+
+					<Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route>
 				</Routes>
 			</div>
 		</Router>
 	)
+
+
 }
 
 export default App
