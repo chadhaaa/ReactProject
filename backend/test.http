@@ -1,0 +1,9 @@
+POST http://localhost:8000/api/place
+Content-Type: application/json 
+
+{
+    "Name": "9oba",
+	"countryState": "Ariana",
+	"country": "Tunisia",
+	"address": "Menzah 1"
+}
