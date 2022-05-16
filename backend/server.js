@@ -2,23 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
-// Adding tables to database
-const Coach = require('./models/coach')
-const Player = require('./models/player')
-const Stats = require('./models/statistics')
-const Comp = require('./models/competence')
-const Alert = require('./models/alert')
-const Challenge = require('./models/challenge')
-const Event = require('./models/event')
-const Place = require('./models/place')
-const Program = require('./models/program')
-const Session = require('./models/session')
-const Subscription = require('./models/subscription')
-const Discipline = require('./models/discipline')
-const CompetencePlayer = require('./models/competencePlayer')
-const StatisticPlayer = require('./models/statisticPlayer')
-const CompetenceSession = require('./models/competenceSession')
-const StatisticSession = require('./models/statisticSession')
+
 
 // app routes
 const routerPlace = require('./routes/place.js')
@@ -26,6 +10,7 @@ const routerPlace = require('./routes/place.js')
 // App routes
 const routerCompetence = require('./routes/comp.js')
 const routerStatistic = require('./routes/statistic.js')
+const morgan = require('morgan')
 
 // Database connection
 mongoose
@@ -42,6 +27,8 @@ mongoose
 app.listen(8000, () => {
 	console.log('Listening on port 8000')
 })
+
+app.use(morgan("dev"))
 
 app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*')
