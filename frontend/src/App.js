@@ -1,4 +1,3 @@
-
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
@@ -12,6 +11,7 @@ import UpdateStat from './pages/crudStatistique/updateStat';
 import GetOneCompetence from './pages/crudCompetence/getOneComp';
 import GetOneStatistic from './pages/crudStatistique/getOneStat';
 import GetAlerts from './pages/alert/getAlert';
+import Signup from './components/signup';
 
 /*import Addplace from './pages/crudplace/addPlace';
 import Getplaces from './pages/crudplace/GetPlaces';
@@ -39,6 +39,8 @@ function App() {
 					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}></Route>
 					<Route exact path='/alert' element={<GetAlerts />}></Route>
 					<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}></Route>
+					
+					<Route path="/signup" element={<Signup />}/>
 
           {/*
            <Route exact path='/addplace' element={<AddPlace />}></Route>
