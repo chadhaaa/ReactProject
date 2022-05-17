@@ -11,6 +11,7 @@ import UpdateStat from './pages/crudStatistique/updateStat';
 import GetOneCompetence from './pages/crudCompetence/getOneComp';
 import GetOneStatistic from './pages/crudStatistique/getOneStat';
 import GetAlerts from './pages/alert/getAlert';
+import UpdateCoach from './pages/updateCoach/updateCoach'
 
 /*import Addplace from './pages/crudplace/addPlace';
 import Getplaces from './pages/crudplace/GetPlaces';
@@ -34,7 +35,7 @@ function App() {
 					<Route exact path='/getStat' element={<GetStatistics />}></Route>
 
 					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
-
+					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}></Route>
 					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}></Route>
 					<Route exact path='/alert' element={<GetAlerts />}></Route>
           {/*

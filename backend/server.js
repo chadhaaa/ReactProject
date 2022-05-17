@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 // app routes
 const routerPlace = require('./routes/place.js')
 const listSession = require("./routes/listSession")
+const routerUpdateCoach = require("./routes/updateCoach")
 // App routes
 const routerCompetence = require('./routes/comp.js')
 const routerStatistic = require('./routes/statistic.js')
@@ -50,4 +51,4 @@ app.use('/api', routerStatistic)
 app.use('/api', routerPlace)
 app.use('/api',listSession)
 app.use('/api',routerAlert)
-
+app.use('/api', routerUpdateCoach)
