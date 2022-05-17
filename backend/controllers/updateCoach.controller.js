@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const Coach = require('../models/coach')
-const Alert = require('../controllers/alert.controller')
 
 const UpdateCoach = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {

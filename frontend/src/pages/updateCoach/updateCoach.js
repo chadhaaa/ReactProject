@@ -15,11 +15,6 @@ const UpdateCoach = () => {
     const [photo, setPhoto] = useState('')
     const [sex, setSex] = useState('')
 
-	// Operations on alerts
-	const [alerts, setAlerts] = useState([])
-	const [stateAlerts, setStateAlerts] = useState([])
-	const [everyAlert, setEveryAlert] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
 
 
 	const updateCoachProfile = (event) => {
@@ -34,19 +29,10 @@ const UpdateCoach = () => {
             birthDate: birthDate,
             photo : photo,
             sex: sex,
-/*             alerts: alerts,
- */		}
+ }
 
 		axios.put(`http://localhost:8000/api/CoachUpdate/${id}`, formdata)
-       /*  alert.map((item) =>{
-            axios.put(`http://localhost:8000/api/alert/${item._id}`, item)
-        }) */
-	}
 
-	// Getting All alerts
-    const getAlerts = async () => {
-		const response = await axios.get('http://localhost:8000/api/alerts')
-		setEveryAlert(response.data)
 	}
 
 	// Setting New Changes
@@ -60,24 +46,9 @@ const UpdateCoach = () => {
             setPhoto(res.data.coach.photo)
             setSex(res.data.coach.sex)
 		})
-        getAlerts()
 
 	}, [])
 
-
-    // get every name from alerts
-	const alert = []
-	everyAlert.map((item) =>
-		alert.push({
-			id: item._id,
-			name: item.name,
-            description: item.description,
-            type: item.type,
-		})
-	)
-    const HandleChange = (e, index,attribut) => {
-		alert[index].attribut =  e.target.value
-	}
 
 	return (
 		<div class='form' encType='multipart/form-data'>
