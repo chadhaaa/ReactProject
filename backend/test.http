@@ -1,8 +1,19 @@
-POST http://localhost:8000/api/signup
+PUT http://localhost:8000/api/localhost:8000/api/assignChallengePlayer/6252d30f1b3e5d84beafd947
 Content-Type: application/json 
 
 {
-    "firstname" : "iheb",
-    "lastname" : "slimen",
-    "birthDate" : "04/08/1998"
+    
+"idPlayers" : "62487882a4ef81986e1a8ad0"
+
+}
+
+
+POST http://localhost:8000/api/place
+Content-Type: application/json 
+
+{
+    "Name": "9oba",
+	"countryState": "Ariana",
+	"country": "Tunisia",
+	"address": "Menzah 1"
 }
