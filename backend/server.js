@@ -10,6 +10,7 @@ const listSession = require("./routes/listSession")
 // App routes
 const routerCompetence = require('./routes/comp.js')
 const routerStatistic = require('./routes/statistic.js')
+const routerAlert = require('./routes/alert.js')
 const morgan = require('morgan')
 
 // Database connection
@@ -48,4 +49,5 @@ app.use('/api', routerCompetence)
 app.use('/api', routerStatistic)
 app.use('/api', routerPlace)
 app.use('/api',listSession)
+app.use('/api',routerAlert)
 
