@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
 
 import AddCompetence from './pages/crudCompetence/addComp';
@@ -19,7 +19,6 @@ import Updateplace from './pages/crudplace/updatePlace';
 */
 function App() {
 	return (
-		<Router>
 			<div className='App'>
 				<Routes>
 					<Route exact path='/addCompetence' element={<AddCompetence />}></Route>
@@ -40,7 +39,7 @@ function App() {
 					<Route exact path='/alert' element={<GetAlerts />}></Route>
 					<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}></Route>
 					
-					<Route path="/signup" element={<Signup />}/>
+					<Route path="/signup" element={<Signup />}></Route>
 
           {/*
            <Route exact path='/addplace' element={<AddPlace />}></Route>
@@ -50,7 +49,7 @@ function App() {
   <Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route> */}
 				</Routes>
 			</div>
-		</Router>
+
 	);
 
 

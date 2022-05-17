@@ -92,7 +92,6 @@ class Signup extends Component{
                             />
                             
                             
-                            
                             <input type='submit' className='btn btn-danger btn-block' value='submit'/>
                         </form>
                     </div>    
