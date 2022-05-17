@@ -3,5 +3,17 @@ Content-Type: application/json
 
 {
     
-    "idPlayers" : "62487882a4ef81986e1a8ad0"
+"idPlayers" : "62487882a4ef81986e1a8ad0"
+
+}
+
+
+POST http://localhost:8000/api/place
+Content-Type: application/json 
+
+{
+    "Name": "9oba",
+	"countryState": "Ariana",
+	"country": "Tunisia",
+	"address": "Menzah 1"
 }

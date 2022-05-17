@@ -6,14 +6,10 @@
             "jsx": true
         }
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:protractor/recommended"
-      ],
+    "extends": [ "eslint-config-prettier"],
     "rules": {
-        "semi" : "error",
         "no-undef" : "warn",
-        "quotes" : ["error", "single"]
+        "quotes" : ["warn", "single"]
     }, 
 
         "env": {
