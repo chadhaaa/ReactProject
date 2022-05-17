@@ -6,14 +6,7 @@
             "jsx": true
         }
     },
-<<<<<<< HEAD
-    "extends": [
-        "eslint:recommended",
-        "plugin:protractor/recommended"
-      ],
-=======
     "extends": [ "eslint-config-prettier"],
->>>>>>> Main
     "rules": {
         "no-undef" : "warn",
         "quotes" : ["warn", "single"]
