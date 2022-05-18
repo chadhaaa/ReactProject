@@ -1,4 +1,5 @@
 
+
 import './App.css';
 import UpdatePlayer from './components/pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession';
@@ -19,6 +20,8 @@ import GetAlerts from './pages/alert/getAlert';
 import UpdateCoach from './pages/updateCoach/updateCoach'
 import SignupCoach from './pages/signup/signup'
 
+import GetSeance from './components/pages/sessionDetails/getAllSessions'
+import GetOneSeance from './components/pages/sessionDetails/getOneSession'
 
 /*import Addplace from './pages/crudplace/addPlace';
 import Getplaces from './pages/crudplace/GetPlaces';
@@ -60,8 +63,14 @@ function App(){
 					<Route exact path='/updateEvent/:id' element={<UpdateEvent />}></Route>
 
 					<Route path="/signup" element={<SignupCoach />}></Route>
+
 					<Route path="/allSession" element={<Sessions />}></Route>
-  				<Route exact path='/updatePlayerCoach/:id' element={<UpdatePlayer />}></Route>
+
+  					<Route exact path='/updatePlayerCoach/:id' element={<UpdatePlayer />}></Route>
+
+				  	<Route exact path='/sessionList' element={<GetSeance />}></Route>
+					
+					<Route exact path='/oneSession/:id' element={<GetOneSeance />}></Route>
 
           			{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>

@@ -20,6 +20,7 @@ const morgan = require('morgan')
 
 // App routes
 const routesSignup = require('./routes/signup.js')
+const routerSessionDetails = require('./routes/sessionDetails.js')
 
 
 // Database connection
@@ -54,7 +55,10 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-  app.use('/api', routerUpdatePlayer)
+
+app.use('/api', routerSessionDetails)
+
+app.use('/api', routerUpdatePlayer)
 // Route to Crud Comp and Crud Stat
 
 app.use('/api',routeEvent)
