@@ -14,13 +14,13 @@ const playerSchema = mongoose.Schema({
 	tel: { type: Number, required: false },
 	height: { type: Number, required: false },
 	weight: { type: Number, required: false },
-	//IMC:{ type: String, required: false },
 	LeftRight: { type: String, required: false },
 	goal: { type: String, required: false },
 	coachId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coach' },
 	sessionPrice: { type: Number, required: false },
-	sessionNumbers: { type: Number, required: true },
+	sessionNumbers: { type: Number, required: false },
 	active: { type: Boolean, required: false },
+
 })
 
 module.exports = mongoose.model('Player', playerSchema)

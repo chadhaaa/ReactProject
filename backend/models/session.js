@@ -6,6 +6,14 @@ const sessionSchema = mongoose.Schema({
 	cancellation: { type: String, required: false },
 	reason: { type: String, required: false },
 	feedback: { type: String, required: false },
+	// idStat: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'Stats',
+	// },
+	// idComp: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'Comp',
+	// },
 	idPlayer: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Player',
