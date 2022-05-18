@@ -7,6 +7,7 @@ const alertSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Coach',
 	},
+	type: { type: String, required: false },
 })
 
 module.exports = mongoose.model('Alert', alertSchema)
