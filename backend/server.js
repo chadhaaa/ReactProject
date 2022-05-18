@@ -16,13 +16,11 @@ const routerCompetence = require('./routes/comp.js')
 const routerStatistic = require('./routes/statistic.js')
 const routerAlert = require('./routes/alert.js')
 const morgan = require('morgan')
-
-
 // App routes
 const routesSignup = require('./routes/signup.js')
 const routerSessionDetails = require('./routes/sessionDetails.js')
-
-
+const routerViewProfile = require('./routes/viewProfile.js')
+const routerUpdateProfile = require('./routes/updateProfile.js')
 // Database connection
 mongoose
 	.connect(
@@ -54,6 +52,10 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+app.use('/api', routerViewProfile)
+app.use('/api', routerUpdateProfile)
+app.use(express.static('uploads'))
 
 
 app.use('/api', routerSessionDetails)
