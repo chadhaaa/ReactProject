@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 
+const routeEvent = require('./routes/event.js')
 
 // app routes
 const routerPlace = require('./routes/place.js')
@@ -52,6 +53,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 // Route to Crud Comp and Crud Stat
 
+app.use('/api',routeEvent)
 
 app.use('/api', routerCompetence)
 app.use('/api', routerStatistic)
