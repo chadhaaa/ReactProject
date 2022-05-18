@@ -2,9 +2,9 @@ import './App.css';
 
 import { Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
-import AddEvent from './components/pages/CRUD_defi/addEvent';
-import GetEvent from './components/pages/CRUD_defi/getEvent';
-import UpdateEvent from './components/pages/CRUD_defi/updateEvent';
+import AddEvent from './pages/pages/CRUD_defi/addEvent';
+import GetEvent from './pages/pages/CRUD_defi/getEvent';
+import UpdateEvent from './pages/pages/CRUD_defi/updateEvent';
 import AddCompetence from './pages/crudCompetence/addComp';
 import GetCompetences from './pages/crudCompetence/getComp';
 import UpdateCompetence from './pages/crudCompetence/updateComp';
@@ -14,7 +14,6 @@ import UpdateStat from './pages/crudStatistique/updateStat';
 import GetOneCompetence from './pages/crudCompetence/getOneComp';
 import GetOneStatistic from './pages/crudStatistique/getOneStat';
 import GetAlerts from './pages/alert/getAlert';
-
 import UpdateCoach from './pages/updateCoach/updateCoach'
 import SignupCoach from './pages/signup/signup'
 
@@ -41,27 +40,31 @@ function App(){
 					<Route exact path='/getStat' element={<GetStatistics />}></Route>
 
 					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
+
 					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}></Route>
+
 					<Route exact path='/signup' element={<SignupCoach />}></Route>
+
 					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}></Route>
+
 					<Route exact path='/alert' element={<GetAlerts />}></Route>
+
 					<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}></Route>
+
 					<Route exact path='/addEvent' element={<AddEvent />}></Route>
 
 					<Route exact path='/getEvent' element={<GetEvent />}></Route>
 
 					<Route exact path='/updateEvent/:id' element={<UpdateEvent />}></Route>
-					<Route path="/signup" element={<Signup />}></Route>
 
-          {/*
-           <Route exact path='/addplace' element={<AddPlace />}></Route>
-
+					<Route path="/signup" element={<SignupCoach />}></Route>
+          			{/*
+           			<Route exact path='/addplace' element={<AddPlace />}></Route>
 					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
-
-  <Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route> */}
+  					<Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route> 
+					*/}
 				</Routes>
 			</div>
-
 	);
 
 
