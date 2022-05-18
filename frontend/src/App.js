@@ -1,4 +1,3 @@
-
 import './App.css';
 import UpdatePlayer from './components/pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession';
@@ -25,6 +24,7 @@ import GetOneSeance from './components/pages/sessionDetails/getOneSession'
 import GetProfile from './components/pages/profilePlayer/getProfile'
 import UpdateProfile from './components/pages/profilePlayer/updateProfile'
 import EmailSend from './Components/pages/EmailSend'
+import GetChallenges from './pages/challengeDone/challengeDone';
 
 /*import Addplace from './pages/crudplace/addPlace';
 import Getplaces from './pages/crudplace/GetPlaces';
@@ -81,7 +81,8 @@ function App(){
 					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
 
 					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
-
+          <Route path="/challengeList" element={<GetChallenges />}>
+  
           			{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>
 					<Route exact path='/getPlace' element={<GetPlaces />}></Route>

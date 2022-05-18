@@ -1,10 +1,1 @@
-PUT http://localhost:8000/api/sessionCancel/6282bc1aa7beeceeb106a67b
-Content-Type: application/json 
 
-{
-	"day":"2022-04-27",
-	"hour":"8pm",
-	"cancellation":"true",
-	"reason":"bleda",
-	"feedback":""
-	}
