@@ -20,6 +20,7 @@ const playerSchema = mongoose.Schema({
 	sessionPrice: { type: Number, required: false },
 	sessionNumbers: { type: Number, required: false },
 	active: { type: Boolean, required: false },
+
 })
 
 module.exports = mongoose.model('Player', playerSchema)
