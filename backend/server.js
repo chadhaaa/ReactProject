@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
+
 const mongoose = require('mongoose')
 const cors = require('cors')
 
 const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
+
 
 // app routes
 const routerPlace = require('./routes/place.js')
@@ -21,6 +23,9 @@ const routesSignup = require('./routes/signup.js')
 const routerSessionDetails = require('./routes/sessionDetails.js')
 const routerViewProfile = require('./routes/viewProfile.js')
 const routerUpdateProfile = require('./routes/updateProfile.js')
+const routerInviterPlayer = require('./routes/invitePlayer.js')
+
+
 // Database connection
 mongoose
 	.connect(
@@ -38,7 +43,9 @@ app.listen(8000, () => {
 })
 
 
+
 app.use(morgan("dev"))
+
 
 app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*')
@@ -52,6 +59,9 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+
+app.use('/api', routerInviterPlayer)
 
 app.use('/api', routerViewProfile)
 app.use('/api', routerUpdateProfile)
