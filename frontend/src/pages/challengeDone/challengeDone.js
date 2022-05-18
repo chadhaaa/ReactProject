@@ -48,12 +48,12 @@ const GetPlaces = () => {
                             <td>{(place.address)}</td>
                             <td data-label='Actions'>{renderActions(place._id)}</td>
 
-                            
-						</tr>
+                            						</tr>
 					</table>
 				)
 			})}
 		</table>
+
         <button onClick={() => history('/places')}> Add New Place </button>
 
         </>
@@ -61,3 +61,4 @@ const GetPlaces = () => {
 	)
 }
 export default GetPlaces
+
