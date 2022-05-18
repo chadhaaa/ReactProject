@@ -11,7 +11,7 @@ import UpdateStat from './pages/crudStatistique/updateStat';
 import GetOneCompetence from './pages/crudCompetence/getOneComp';
 import GetOneStatistic from './pages/crudStatistique/getOneStat';
 import GetAlerts from './pages/alert/getAlert';
-*
+
 import UpdateCoach from './pages/updateCoach/updateCoach'
 import SignupCoach from './pages/signup/signup'
 
