@@ -1,12 +1,12 @@
 
 import './App.css';
-import UpdatePlayer from './components/pages/updatePlayer/updatePlayer'
+import UpdatePlayer from './pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession';
 import { Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
-import AddEvent from './pages/pages/CRUD_defi/addEvent';
-import GetEvent from './pages/pages/CRUD_defi/getEvent';
-import UpdateEvent from './pages/pages/CRUD_defi/updateEvent';
+import AddEvent from './pages/CRUD_defi/addEvent';
+import GetEvent from './pages/CRUD_defi/getEvent';
+import UpdateEvent from './pages/CRUD_defi/updateEvent';
 import AddCompetence from './pages/crudCompetence/addComp';
 import GetCompetences from './pages/crudCompetence/getComp';
 import UpdateCompetence from './pages/crudCompetence/updateComp';
@@ -20,13 +20,17 @@ import UpdateCoach from './pages/updateCoach/updateCoach'
 import SessionCancel from './pages/sessionCancel/sessionCancel'
 import SignupCoach from './pages/signup/signup'
 
-import GetSeance from './components/pages/sessionDetails/getAllSessions'
-import GetOneSeance from './components/pages/sessionDetails/getOneSession'
-import GetProfile from './components/pages/profilePlayer/getProfile'
-import UpdateProfile from './components/pages/profilePlayer/updateProfile'
-import EmailSend from './Components/pages/EmailSend'
+import GetSeance from './pages/sessionDetails/getAllSessions'
+import GetOneSeance from './pages/sessionDetails/getOneSession'
+import GetProfile from './pages/profilePlayer/getProfile'
+import UpdateProfile from './pages/profilePlayer/updateProfile'
+import EmailSend from './pages/emailSend/EmailSend'
 import GetChallenges from './pages/challengeDone/challengeDone';
+import GetPlaces from './pages/crudPlace/getPlaces';
 
+import UpdatePlace from './pages/crudPlace/updatePlace';
+import GetOnePlace from './pages/crudPlace/getOnePlace';
+import AddPlace from './pages/crudPlace/addPlace';
 
 
 
@@ -81,11 +85,11 @@ function App(){
 					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
 
 					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
-          <Route path="/challengeList" element={<GetChallenges />}>
-            <Route path="/places" element={<GetPlaces />}></Route>
-        <Route path="/updatePlace/:id" element={<UpdatePlace />}></Route>
-        <Route path="/place/:id" element={<GetOnePlace />}></Route>
-        <Route path="/addPlace/" element={<AddPlace />}></Route>
+          			<Route path="/challengeList" element={<GetChallenges />}></Route>
+            		<Route path="/places" element={<GetPlaces />}></Route>
+					<Route path="/updatePlace/:id" element={<UpdatePlace />}></Route>
+					<Route path="/place/:id" element={<GetOnePlace />}></Route>
+					<Route path="/addPlace/" element={<AddPlace />}></Route>
 
 				</Routes>
 			</div>

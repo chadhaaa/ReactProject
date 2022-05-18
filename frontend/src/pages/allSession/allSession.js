@@ -3,7 +3,6 @@ import { Row, Button, Spin, Space, Col, DatePicker, Input, Select, Table } from 
 
 import  './session.css';
 import axios from 'axios';
-import 'antd/dist/antd.css';
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;

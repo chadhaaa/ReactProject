@@ -2,12 +2,20 @@ const mongoose = require('mongoose')
 const place = require('../models/place.js')
 
 const FindOnePlace = async (req, res) => {
-	const placeToFind = await place.findOne({ _id: req.params.id })
-	if (!placeToFind) {
-		res.status(500).json({ Message: 'Error : Enable to find program' })
+	try{
+		if(mongoose.isValidObjectId(req.params.id)){
+			const placeToFind = await place.findOne({ _id: req.params.id })
+			res.json(placeToFind)
+		}
+		else{
+			res.status(400).json({Message : "Error : Invalid ID"})
+		}
+		
+	}catch(e){
+			res.status(400).json({ Message: 'Error : Enable to find program' })
 	}
+	
 
-	res.json(placeToFind)
 }
 
 const FindAllPlaces = async (req, res) => {

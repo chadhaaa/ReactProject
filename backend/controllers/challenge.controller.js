@@ -98,7 +98,7 @@ module.exports = {
 	FindOneChllg,
 	FindAllChllg,
 	AddNewChllg,
-	UpdateChllg,
+	UpdateChallenge,
 	DeleteChllg,
   assignChallengePlayer
 }
