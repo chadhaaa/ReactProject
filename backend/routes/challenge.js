@@ -16,6 +16,7 @@ router.post('/challenge', AddNewChllg)
 
 router.put('/challenge/:id', UpdateChallenge)
 
+
 router.delete('/challenge/:id', DeleteChllg)
 
 module.exports = router

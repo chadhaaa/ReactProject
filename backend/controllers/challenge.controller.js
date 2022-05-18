@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 const Challenge = require('../models/challenge')
 
+
 const FindOneChllg = async (req, res) => {
-	const chllgs = await Challenge.findOne({ _id: req.params.id })
+	const chllgs = await chllg.findOne({ _id: req.params.id })
 	if (!chllgs) {
 		res.status(500).json({ Message: 'Error : Enable to find challenge' })
 	}
@@ -17,12 +18,12 @@ const FindAllChllg = async (req, res) => {
 	res.send(challenges)
 }
 
+
 const AddNewChllg = async (req, res) => {
-	let newChllg = new Challenge({
+	let newChllg = new chllg({
 		link: req.body.link,
 		goal: req.body.goal,
-		Status: false,
-		idPlayer: req.body.idPlayer
+		idPlayers: req.body.idPlayers
 	})
 	newChllg = await newChllg.save()
 	if (!newChllg) {
@@ -30,6 +31,7 @@ const AddNewChllg = async (req, res) => {
 	}
 	res.send(newChllg)
 }
+
 
 const UpdateChallenge = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {
@@ -47,18 +49,34 @@ const UpdateChallenge = async (req, res) => {
 		},
 		{ new: true }
 	)
-
-
 	if (!challenge) {
 		return res.status(404).send({ Message: 'ERROR ! ' })
 	}
 	res.json(challenge)
 }
 
+const assignChallengePlayer = async (req, res) => {
+	if (!mongoose.isValidObjectId(req.params.id)) {
+		res.status(400).send({ Message: 'Error : Invalid Challenge Id' })
+	}
+	let chllg = new chllg;
+	chllg = await chllg.findByIdAndUpdate(req.params.id,
+		{
+			
+			idPlayers: idPlayers.push(req.body.idPlayers)
+		},
+		{ new: true }
+	)
+	if (!chllg) {
+		return res.status(404).send({ Message: 'Error : Enable to update the Challenge' })
+	}
+	res.send(chllg)
+}
+
 const DeleteChllg = (req, res) => {
-	Challenge.findByIdAndRemove(req.params.id)
-		.then((challenge) => {
-			if (challenge) {
+	chllg.findByIdAndRemove(req.params.id)
+		.then((chllg) => {
+			if (chllg) {
 				return res
 					.status(200)
 					.json({ success: true, Message: 'Challenge was successfully deleted !' })
@@ -73,10 +91,14 @@ const DeleteChllg = (req, res) => {
 		})
 }
 
+
+
+
 module.exports = {
 	FindOneChllg,
 	FindAllChllg,
 	AddNewChllg,
-	UpdateChallenge,
-	DeleteChllg
+	UpdateChllg,
+	DeleteChllg,
+  assignChallengePlayer
 }

@@ -1,11 +1,1 @@
-PUT   http://localhost:8000/api/challenge/6284f71ca643ce8c8daaacab
-Content-Type: application/json 
-
-{"_id":{"$oid":"6284f71ca643ce8c8daaacab"},
-"link":"google.com",
-"goal":"100 meter",
-"done":"true",
-"idPlayers":"5e9f9b9f9b9f9b9f9b9f9e11"}
-
-
 
