@@ -1,22 +1,4 @@
-<<<<<<< HEAD
-import logo from './logo.svg'
-import './App.css'
-import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom'
-import GetProfile from './components/pages/profilePlayer/getProfile'
-import UpdateProfile from './components/pages/profilePlayer/updateProfile'
-function App() {
-	return (
-		<Router>
-			<div className='App'>
-				<Routes>
-					<Route exact path='/Profile/:id' element={<GetProfile />}></Route>
 
-					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
-				</Routes>
-			</div>
-		</Router>
-	)
-=======
 
 
 import './App.css';
@@ -41,7 +23,8 @@ import SignupCoach from './pages/signup/signup'
 
 import GetSeance from './components/pages/sessionDetails/getAllSessions'
 import GetOneSeance from './components/pages/sessionDetails/getOneSession'
-
+import GetProfile from './components/pages/profilePlayer/getProfile'
+import UpdateProfile from './components/pages/profilePlayer/updateProfile'
 /*import Addplace from './pages/crudplace/addPlace';
 import Getplaces from './pages/crudplace/GetPlaces';
 import Updateplace from './pages/crudplace/updatePlace';
@@ -90,7 +73,9 @@ function App(){
 				  	<Route exact path='/sessionList' element={<GetSeance />}></Route>
 					
 					<Route exact path='/oneSession/:id' element={<GetOneSeance />}></Route>
+					<Route exact path='/Profile/:id' element={<GetProfile />}></Route>
 
+					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
           			{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>
 					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
@@ -100,7 +85,6 @@ function App(){
 			</div>
 	);
 
->>>>>>> Main
 }
 
 export default App
