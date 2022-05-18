@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Challenge = require('../models/challenge')
 
-
 const FindOneChllg = async (req, res) => {
 	const chllgs = await chllg.findOne({ _id: req.params.id })
 	if (!chllgs) {
@@ -18,12 +17,11 @@ const FindAllChllg = async (req, res) => {
 	res.send(challenges)
 }
 
-
 const AddNewChllg = async (req, res) => {
 	let newChllg = new chllg({
 		link: req.body.link,
 		goal: req.body.goal,
-		idPlayers: req.body.idPlayers
+		idPlayers: req.body.idPlayers,
 	})
 	newChllg = await newChllg.save()
 	if (!newChllg) {
@@ -32,7 +30,6 @@ const AddNewChllg = async (req, res) => {
 	res.send(newChllg)
 }
 
-
 const UpdateChallenge = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {
 		res.status(400).send({ Message: 'Error: Competence ID invalid !' })
@@ -40,12 +37,10 @@ const UpdateChallenge = async (req, res) => {
 	const challenge = await Challenge.findOneAndUpdate(
 		{ _id: req.params.id },
 		{
-
-            link: req.body.link,
-            goal: req.body.hour,
-            done: req.body.done,
-            idPlayers:  req.body.idPlayers,
-
+			link: req.body.link,
+			goal: req.body.hour,
+			done: req.body.done,
+			idPlayers: req.body.idPlayers,
 		},
 		{ new: true }
 	)
@@ -59,11 +54,11 @@ const assignChallengePlayer = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {
 		res.status(400).send({ Message: 'Error : Invalid Challenge Id' })
 	}
-	let chllg = new chllg;
-	chllg = await chllg.findByIdAndUpdate(req.params.id,
+	let chllg = new chllg()
+	chllg = await chllg.findByIdAndUpdate(
+		req.params.id,
 		{
-			
-			idPlayers: idPlayers.push(req.body.idPlayers)
+			idPlayers: idPlayers.push(req.body.idPlayers),
 		},
 		{ new: true }
 	)
@@ -74,7 +69,8 @@ const assignChallengePlayer = async (req, res) => {
 }
 
 const DeleteChllg = (req, res) => {
-	chllg.findByIdAndRemove(req.params.id)
+	chllg
+		.findByIdAndRemove(req.params.id)
 		.then((chllg) => {
 			if (chllg) {
 				return res
@@ -91,14 +87,11 @@ const DeleteChllg = (req, res) => {
 		})
 }
 
-
-
-
 module.exports = {
 	FindOneChllg,
 	FindAllChllg,
 	AddNewChllg,
-	UpdateChllg,
+	UpdateChallenge,
 	DeleteChllg,
-  assignChallengePlayer
+	assignChallengePlayer,
 }
