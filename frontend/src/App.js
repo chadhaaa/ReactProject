@@ -1,4 +1,6 @@
+
 import './App.css';
+import UpdatePlayer from './components/pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession';
 import { Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
@@ -59,6 +61,8 @@ function App(){
 
 					<Route path="/signup" element={<SignupCoach />}></Route>
 					<Route path="/allSession" element={<Sessions />}></Route>
+  				<Route exact path='/updatePlayerCoach/:id' element={<UpdatePlayer />}></Route>
+
           			{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>
 					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
@@ -70,4 +74,4 @@ function App(){
 
 }
 
-export default App;
+export default App

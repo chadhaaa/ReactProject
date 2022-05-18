@@ -3,7 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-
+const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
 
 // app routes
@@ -21,6 +21,7 @@ const morgan = require('morgan')
 // App routes
 const routesSignup = require('./routes/signup.js')
 
+
 // Database connection
 mongoose
 	.connect(
@@ -37,6 +38,7 @@ app.listen(8000, () => {
 	console.log('Listening on port 8000')
 })
 
+
 app.use(morgan("dev"))
 
 app.use((req, res, next) => {
@@ -51,6 +53,8 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+  app.use('/api', routerUpdatePlayer)
 // Route to Crud Comp and Crud Stat
 
 app.use('/api',routeEvent)
