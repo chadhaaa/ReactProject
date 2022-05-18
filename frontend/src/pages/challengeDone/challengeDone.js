@@ -1,51 +1,64 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState ,} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
-const GetChallenges = () => {
-	const [challenges, setChallenges] = useState([])
+
+const GetPlaces = () => {
+    const history = useNavigate()
+
+	const [places, setPlaces] = useState([])
 	useEffect(() => {
-		getChallenges()
+		getPlaces()
 	}, [])
 
-	const getChallenges = async () => {
-		const response = await axios.get('http://localhost:8000/api/challenges')
-		setChallenges(response.data)
+
+    const deletePlace = async (id) => {
+		await axios.delete(`http://localhost:8000/api/place/${id}`)
+		history('/places')
+		window.location.reload(false)
 	}
-
-    const setDone = async (id) =>{
-        const doneToSend={
-            done: true
-        }
-        const response = await axios.put(`http://localhost:8000/api/challenge/${id}`,doneToSend)
-
-
-
-    }
+	const getPlaces = async () => {
+		const response = await axios.get('http://localhost:8000/api/places')
+		setPlaces(response.data)
+	}
+    function renderActions(id) {
+		return (
+			<div className='actions'>
+				<button onClick={() => history(`/updatePlace/${id}`)}>UPDATE</button>
+                <button onClick={() => deletePlace(id)}>DELETE</button>
+			</div>
+		)
+	}
 	return (
-		<table>
-			<caption>Challenge List</caption>
-			{challenges.map(function (challenge) {
-                console.log(challenge)
+        <>
+            <table>
+			<caption>Places List</caption>
+			{places.map(function (place) {
 				return (
 					<table>
                         <tr>
-                            <th scope='col'>Link</th>
-                            <th scope='col'>Goal</th>
-                            <th scope='col'>Done</th>
+                            <th scope='col'>Country</th>
+                            <th scope='col'>Country State</th>
+                            <th scope='col'>Address</th>
                         </tr>
 						<tr>
-                            <td>{challenge.link}</td>
-                            <td>{challenge.goal}</td>
-                            <td>{(challenge.done)? 'Done' : 'On Going'}</td>
-                            <td>
-                                <button disabled={challenge.done} onClick={() => setDone(challenge._id)}>Done!</button>
-                            </td>
-						</tr>
+                            <td>{place.country}</td>
+                            <td>{place.countryState}</td>
+                            <td>{(place.address)}</td>
+                            <td data-label='Actions'>{renderActions(place._id)}</td>
+
+                            						</tr>
 					</table>
 				)
 			})}
 		</table>
+
+        <button onClick={() => history('/places')}> Add New Place </button>
+
+        </>
+		
 	)
 }
-export default GetChallenges
+export default GetPlaces
+

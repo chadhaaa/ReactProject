@@ -1,3 +1,4 @@
+
 import './App.css';
 import UpdatePlayer from './components/pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession';
@@ -26,10 +27,9 @@ import UpdateProfile from './components/pages/profilePlayer/updateProfile'
 import EmailSend from './Components/pages/EmailSend'
 import GetChallenges from './pages/challengeDone/challengeDone';
 
-/*import Addplace from './pages/crudplace/addPlace';
-import Getplaces from './pages/crudplace/GetPlaces';
-import Updateplace from './pages/crudplace/updatePlace';
-*/
+
+
+
 function App(){
 	return (
 			<div className='App'>
@@ -82,12 +82,11 @@ function App(){
 
 					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
           <Route path="/challengeList" element={<GetChallenges />}>
-  
-          			{/*
-           			<Route exact path='/addplace' element={<AddPlace />}></Route>
-					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
-  					<Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route> 
-					*/}
+            <Route path="/places" element={<GetPlaces />}></Route>
+        <Route path="/updatePlace/:id" element={<UpdatePlace />}></Route>
+        <Route path="/place/:id" element={<GetOnePlace />}></Route>
+        <Route path="/addPlace/" element={<AddPlace />}></Route>
+
 				</Routes>
 			</div>
 	);
