@@ -1,8 +1,9 @@
 import './App.css'
-import UpdatePlayer from './components/pages/updatePlayer/updatePlayer'
+
+import UpdatePlayer from './Components/pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession'
 import { Routes, Route } from 'react-router-dom'
-import AssignChallengePlayer from './components/assignChallengePlayer'
+import AssignChallengePlayer from './Components/assignChallengePlayer'
 import AddEvent from './pages/pages/CRUD_defi/addEvent'
 import GetEvent from './pages/pages/CRUD_defi/getEvent'
 import UpdateEvent from './pages/pages/CRUD_defi/updateEvent'
@@ -19,10 +20,10 @@ import UpdateCoach from './pages/updateCoach/updateCoach'
 import SessionCancel from './pages/sessionCancel/sessionCancel'
 import SignupCoach from './pages/signup/signup'
 
-import GetSeance from './components/pages/sessionDetails/getAllSessions'
-import GetOneSeance from './components/pages/sessionDetails/getOneSession'
-import GetProfile from './components/pages/profilePlayer/getProfile'
-import UpdateProfile from './components/pages/profilePlayer/updateProfile'
+import GetSeance from './Components/pages/sessionDetails/getAllSessions'
+import GetOneSeance from './Components/pages/sessionDetails/getOneSession'
+import GetProfile from './Components/pages/profilePlayer/getProfile'
+import UpdateProfile from './Components/pages/profilePlayer/updateProfile'
 import EmailSend from './Components/pages/EmailSend'
 import GetChallenges from './pages/challengeDone/challengeDone'
 
@@ -81,12 +82,10 @@ function App() {
 
 				<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
 				<Route path='/challengeList' element={<GetChallenges />}></Route>
-
-				{/*
-           			<Route exact path='/addplace' element={<AddPlace />}></Route>
-					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
-  					<Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route> 
-					*/}
+				<Route path='/places' element={<GetPlaces />}></Route>
+				<Route path='/updatePlace/:id' element={<UpdatePlace />}></Route>
+				<Route path='/place/:id' element={<GetOnePlace />}></Route>
+				<Route path='/addPlace/' element={<AddPlace />}></Route>
 			</Routes>
 		</div>
 	)

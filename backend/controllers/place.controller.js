@@ -1,47 +1,44 @@
 const mongoose = require('mongoose')
-const Place = require('../models/place')
+const place = require('../models/place.js')
 
 const FindOnePlace = async (req, res) => {
-	const Places = await Place.findOne({ _id: req.params.id })
-	if (!Places) {
-		res.status(500).json({ Message: 'Error : Enable to find Place' })
+	const placeToFind = await place.findOne({ _id: req.params.id })
+	if (!placeToFind) {
+		res.status(500).json({ Message: 'Error : Enable to find program' })
 	}
-	res.send(Places)
+
+	res.json(placeToFind)
 }
 
-const FindPlaceAll = async (req, res) => {
-	const Places = await Place.find()
-	if (!Places) {
-		res.status(500).json({ Message: 'Error : Enable to find Place' })
+const FindAllPlaces = async (req, res) => {
+	
+	const places = await place.find()
+	if (!places) {
+		res.status(500).json({ Message: 'Error : Enable to find programs' })
 	}
-	res.send(Places)
+	res.json(places)
 }
 
 const AddNewPlace = async (req, res) => {
-	let newPlace = new Place({
-
-		
-		Name: req.body.name,
+	let newPlace = new place({
+		Name: req.body.Name,
 		countryState: req.body.countryState,
 		country: req.body.country,
 		address: req.body.address,
 	})
 	newPlace = await newPlace.save()
 	if (!newPlace) {
-		return res.status(404).send({ Message: 'Error : Enable to create a new Place' })
+		return res.status(404).send({ Message: 'Error : Enable to create a new program' })
 	}
-	res.send(newPlace)
+	res.json(newPlace)
 }
 
 const UpdatePlace = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {
-		res.status(400).send({ Message: 'Error : Invalid Place Id' })
+		res.status(400).send({ Message: 'Error : Invalid program Id' })
 	}
-	const Place = await Place.findByIdAndUpdate(
-		req.params.id,
-
+	const placeTopUpdate = await place.findByIdAndUpdate(req.params.id,
 		{
-			
 			Name: req.body.Name,
 			countryState: req.body.countryState,
 			country: req.body.country,
@@ -49,23 +46,23 @@ const UpdatePlace = async (req, res) => {
 		},
 		{ new: true }
 	)
-	if (!place) {
-		return res.status(404).send({ Message: 'Error : Enable to update the Place' })
+	if (!placeTopUpdate) {
+		return res.status(404).send({ Message: 'Error : Enable to update the program' })
 	}
-	res.send(place)
+	res.json(placeTopUpdate)
 }
 
 const DeletePlace = (req, res) => {
-	Place.findByIdAndRemove(req.params.id)
-		.then((place) => {
-			if (place) {
+	place.findByIdAndRemove(req.params.id)
+		.then((placeToDelete) => {
+			if (placeToDelete) {
 				return res
 					.status(200)
-					.json({ success: true, Message: 'Place was successfully deleted !' })
+					.json({ success: true, Message: 'program was successfully deleted !' })
 			} else {
 				return res
 					.status(404)
-					.json({ success: false, Message: 'Error : Enable to delete the Place' })
+					.json({ success: false, Message: 'Error : Enable to delete the program' })
 			}
 		})
 		.catch((err) => {
@@ -75,9 +72,8 @@ const DeletePlace = (req, res) => {
 
 module.exports = {
 	FindOnePlace,
-	FindPlaceAll,
+	FindAllPlaces,
 	AddNewPlace,
 	UpdatePlace,
-	DeletePlace,
+	DeletePlace
 }
-

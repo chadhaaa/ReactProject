@@ -8,6 +8,7 @@ const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
 
 
+
 // app routes
 const routerPlace = require('./routes/place.js')
 const listSession = require("./routes/listSession")
