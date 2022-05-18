@@ -1,6 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom'
-import allSession from './components/pages/allSession/allSession';
+import Sessions from './pages/allSession/allSession';
 import { Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
 import AddEvent from './pages/pages/CRUD_defi/addEvent';
@@ -59,6 +58,7 @@ function App(){
 					<Route exact path='/updateEvent/:id' element={<UpdateEvent />}></Route>
 
 					<Route path="/signup" element={<SignupCoach />}></Route>
+					<Route path="/allSession" element={<Sessions />}></Route>
           			{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>
 					<Route exact path='/getPlace' element={<GetPlaces />}></Route>

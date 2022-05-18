@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Row, Button, Spin, Space, Col, DatePicker, Input, Select, Table } from "antd";
+import React, { useState, useEffect } from 'react';
+import { Row, Button, Spin, Space, Col, DatePicker, Input, Select, Table } from 'antd';
 
-import Session from "./session";
+import  './session.css';
 
 
 const { RangePicker } = DatePicker;
@@ -14,7 +14,7 @@ const Sessions = () => {
   const [isSessionVisible, setSessionVisible] = useState(false);
   const [places, setPlace] = useState(['tabarka','hammamet','mahdia']);
 	const [players, setPlayers] = useState(['player1','Player2']);
- 
+  const [date,setDate] = useState();
   const current = new Date();
 
   const columns = [
@@ -66,7 +66,7 @@ const Sessions = () => {
 
 
   const showModal = () => {
-    setSessionSelected({ _id: "0000" });
+    setSessionSelected({ _id: '0000' });
     setIsModalVisible(true);
   };
 
@@ -115,7 +115,7 @@ const onDateNowChange = value => {
         ))}
         </Select>
       </Space>
-      <Button type="primary" onClick={showModal} style={{ float: "right" }}>
+      <Button type="primary" onClick={showModal} style={{ float: 'right' }}>
         Nouvelle séance
       </Button>
       <div className="site-card-wrapper">
