@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import './App.css';
-import Addplace from './pages/crudplace/addComp'
-import Getplaces from './pages/crudplace/getComp'
-import Updateplace from './pages/crudplace/updateComp'
+import GetPlaces from './pages/challengeDone/challengeDone';
+import UpdatePlace from './pages/challengeDone/updatePlace';
+import AddPlace from './pages/challengeDone/addPlace'
+import GetOnePlace from './pages/challengeDone/getOnePlace'
+
 
 
 function App() {
   return (
-    <Router>
-			<div className='App'>
-				<Routes>
-					<Route exact path='/addplace' element={<AddPlace />}></Route>
-
-					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
-
-					<Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route>
-
-					
-				</Routes>
-			</div>
-		</Router>
+	<BrowserRouter>
+      <Routes>
+        <Route path="/places" element={<GetPlaces />}></Route>
+        <Route path="/updatePlace/:id" element={<UpdatePlace />}></Route>
+        <Route path="/place/:id" element={<GetOnePlace />}></Route>
+        <Route path="/addPlace/" element={<AddPlace />}></Route>
+        
+      </Routes>
+    </BrowserRouter>
+	
   );
 }
 

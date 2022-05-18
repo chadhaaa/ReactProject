@@ -2,15 +2,15 @@ const express = require('express')
 const router = express.Router()
 const {
 	FindOnePlace,
-	FindPlaceAll,
+	FindAllPlaces,
 	AddNewPlace,
 	UpdatePlace,
-	DeletePlace,
+	DeletePlace
 } = require('../controllers/place.controller')
 
 router.get('/place/:id', FindOnePlace)
 
-router.get('/place', FindPlaceAll)
+router.get('/places', FindAllPlaces)
 
 router.post('/place', AddNewPlace)
 
