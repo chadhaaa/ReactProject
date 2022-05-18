@@ -1,5 +1,6 @@
 import './App.css';
-
+import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom'
+import allSession from './components/pages/allSession/allSession';
 import { Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
 import AddEvent from './pages/pages/CRUD_defi/addEvent';
@@ -66,7 +67,6 @@ function App(){
 				</Routes>
 			</div>
 	);
-
 
 }
 
