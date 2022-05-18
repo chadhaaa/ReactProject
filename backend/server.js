@@ -12,6 +12,7 @@ const routeEvent = require('./routes/event.js')
 const routerPlace = require('./routes/place.js')
 const listSession = require("./routes/listSession")
 const routerUpdateCoach = require("./routes/updateCoach")
+const routerUpdateSession = require("./routes/sessionCancel")
 const routerSignup = require('./routes/signup.js')
 // App routes
 const routerCompetence = require('./routes/comp.js')
@@ -82,6 +83,7 @@ app.use('/api',listSession)
 app.use('/api',routerAlert)
 
 app.use('/api', routerUpdateCoach)
+app.use('/api', routerUpdateSession)
 app.use('/api', routerSignup)
 
 

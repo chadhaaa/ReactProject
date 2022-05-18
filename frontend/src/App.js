@@ -17,6 +17,7 @@ import GetOneCompetence from './pages/crudCompetence/getOneComp';
 import GetOneStatistic from './pages/crudStatistique/getOneStat';
 import GetAlerts from './pages/alert/getAlert';
 import UpdateCoach from './pages/updateCoach/updateCoach'
+import SessionCancel from './pages/sessionCancel/sessionCancel'
 import SignupCoach from './pages/signup/signup'
 
 import GetSeance from './components/pages/sessionDetails/getAllSessions'
@@ -49,6 +50,8 @@ function App(){
 					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
 
 					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}></Route>
+
+					<Route exact path='/sessionCancel/:id' element={<SessionCancel />}></Route>
 
 					<Route exact path='/signup' element={<SignupCoach />}></Route>
 
