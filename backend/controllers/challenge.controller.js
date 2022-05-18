@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const chllg = require('../models/challenge')
+const Challenge = require('../models/challenge')
 
 const FindOneChllg = async (req, res) => {
-	const chllgs = await chllg.findOne({ _id: req.params.id })
+	const chllgs = await Challenge.findOne({ _id: req.params.id })
 	if (!chllgs) {
 		res.status(500).json({ Message: 'Error : Enable to find challenge' })
 	}
@@ -10,18 +10,18 @@ const FindOneChllg = async (req, res) => {
 }
 
 const FindAllChllg = async (req, res) => {
-	const Chllgs = await chllg.find()
-	if (!Chllgs) {
+	const challenges = await Challenge.find()
+	if (!challenges) {
 		res.status(500).json({ Message: 'Error : Enable to find challenges' })
 	}
-	res.send(Chllgs)
+	res.send(challenges)
 }
 
 const AddNewChllg = async (req, res) => {
-	let newChllg = new chllg({
+	let newChllg = new Challenge({
 		link: req.body.link,
 		goal: req.body.goal,
-		Status: req.body.status,
+		Status: false,
 		idPlayer: req.body.idPlayer
 	})
 	newChllg = await newChllg.save()
@@ -31,29 +31,34 @@ const AddNewChllg = async (req, res) => {
 	res.send(newChllg)
 }
 
-const UpdateChllg = async (req, res) => {
+const UpdateChallenge = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {
-		res.status(400).send({ Message: 'Error : Invalid Challenge Id' })
+		res.status(400).send({ Message: 'Error: Competence ID invalid !' })
 	}
-	const chllg = await chllg.findByIdAndUpdate(req.params.id,
+	const challenge = await Challenge.findOneAndUpdate(
+		{ _id: req.params.id },
 		{
-			link: req.body.link,
-			goal: req.body.goal,
-			status: req.body.status,
-			idPlayer: req.body.idPlayer
+
+            link: req.body.link,
+            goal: req.body.hour,
+            done: req.body.done,
+            idPlayers:  req.body.idPlayers,
+
 		},
 		{ new: true }
 	)
-	if (!chllg) {
-		return res.status(404).send({ Message: 'Error : Enable to update the Challenge' })
+
+
+	if (!challenge) {
+		return res.status(404).send({ Message: 'ERROR ! ' })
 	}
-	res.send(chllg)
+	res.json(challenge)
 }
 
 const DeleteChllg = (req, res) => {
-	chllg.findByIdAndRemove(req.params.id)
-		.then((chllg) => {
-			if (chllg) {
+	Challenge.findByIdAndRemove(req.params.id)
+		.then((challenge) => {
+			if (challenge) {
 				return res
 					.status(200)
 					.json({ success: true, Message: 'Challenge was successfully deleted !' })
@@ -72,6 +77,6 @@ module.exports = {
 	FindOneChllg,
 	FindAllChllg,
 	AddNewChllg,
-	UpdateChllg,
+	UpdateChallenge,
 	DeleteChllg
 }

@@ -4,7 +4,7 @@ const {
 	FindOneChllg,
 	FindAllChllg,
 	AddNewChllg,
-	UpdateChllg,
+	UpdateChallenge,
 	DeleteChllg
 } = require('../controllers/challenge.controller')
 
@@ -14,7 +14,7 @@ router.get('/challenges', FindAllChllg)
 
 router.post('/challenge', AddNewChllg)
 
-router.put('/challenge/:id', UpdateChllg)
+router.put('/challenge/:id', UpdateChallenge)
 
 router.delete('/challenge/:id', DeleteChllg)
 
