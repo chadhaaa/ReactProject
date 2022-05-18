@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Row, Button, Spin, Space, Col, DatePicker, Input, Select, Table } from 'antd';
 
 import  './session.css';
-
+import axios from 'axios';
+import 'antd/dist/antd.css';
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 const Sessions = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [sessions, setSessions] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [sessionSelected, setSessionSelected] = useState({});
@@ -15,8 +16,8 @@ const Sessions = () => {
   const [places, setPlace] = useState(['tabarka','hammamet','mahdia']);
 	const [players, setPlayers] = useState(['player1','Player2']);
   const [date,setDate] = useState();
+  const [currentUser, setCurrentUser] = useState({id:'id'});
   const current = new Date();
-
   const columns = [
     {title: 'day',dataIndex: 'day',key: 'day'},
     {title: 'hour',dataIndex: 'hour',key: 'hour'},
@@ -71,12 +72,12 @@ const Sessions = () => {
   };
 
   async function getSessions() {
-    await getAllSessionApi({ creacteBy: currentUser.id })
+    axios.get('http://localhost:8000/api/listSession')
       .then((response) => {
+        console.log('here')
         setSessions(response.data);
-        setLoading(true);
       })
-      .catch(() => {});
+      .catch((e) => {console.log(e)});
   }
 const onJoueurChange = value => {
   const dataChange = data2.filter(session => session.player === value)
@@ -97,8 +98,11 @@ const onDateNowChange = value => {
 
 
   useEffect(() => {
-    getSessions();
-  }, []);
+    if(isLoading){
+      getSessions();
+      setIsLoading(false);
+    }
+  }, [isLoading]);
   return (
     <>
       <Space style={{ marginBottom: 16 }}>
@@ -119,10 +123,10 @@ const onDateNowChange = value => {
         Nouvelle séance
       </Button>
       <div className="site-card-wrapper">
-        {loading && (
-<Table columns={columns} dataSource={data} />
+        {!isLoading && (
+        <Table columns={columns} dataSource={data} />
         )}
-        {!loading && (
+        {isLoading && (
           <Row gutter={16}>
             <Col span={8}>
               <Space size="middle" style={{ marginTop: 250, marginLeft: 600 }}>
