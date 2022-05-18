@@ -1,0 +1,21 @@
+const express = require('express')
+const router = express.Router()
+const {
+	FindOneChllg,
+	FindAllChllg,
+	AddNewChllg,
+	UpdateChllg,
+	DeleteChllg
+} = require('../controllers/challenge.controller')
+
+router.get('/challenge/:id', FindOneChllg)
+
+router.get('/challenges', FindAllChllg)
+
+router.post('/challenge', AddNewChllg)
+
+router.put('/challenge/:id', UpdateChllg)
+
+router.delete('/challenge/:id', DeleteChllg)
+
+module.exports = router
