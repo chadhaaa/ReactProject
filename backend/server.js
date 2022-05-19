@@ -26,6 +26,7 @@ const routerUpdateProfile = require('./routes/updateProfile.js')
 const routerInviterPlayer = require('./routes/invitePlayer.js')
 
 
+
 // Database connection
 mongoose
 	.connect(
@@ -61,6 +62,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 
+
 app.use('/api', routerInviterPlayer)
 
 app.use('/api', routerViewProfile)
@@ -83,6 +85,7 @@ app.use('/api',routerAlert)
 
 app.use('/api', routerUpdateCoach)
 app.use('/api', routerSignup)
+
 
 
 
