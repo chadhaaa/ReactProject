@@ -1,12 +1,42 @@
 const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
-const morgan = require('morgan')
 const env = require('dotenv').config({path: './.env'});
+
+const mongoose = require('mongoose')
+const cors = require('cors')
+
+const routerUpdatePlayer = require('./routes/updatePlayer.js')
+const routeEvent = require('./routes/event.js')
+const routerPlayerProfileByCoach = require('./routes/playerProfileCoach')
+
+// app routes
+const routerPlace = require('./routes/place.js')
+const listSession = require("./routes/listSession")
+const routerUpdateCoach = require("./routes/updateCoach")
+const routerUpdateSession = require("./routes/sessionCancel")
+const routerSignup = require('./routes/signup.js')
+// App routes
+const routerCompetence = require('./routes/comp.js')
+const routerStatistic = require('./routes/statistic.js')
+const routerAlert = require('./routes/alert.js')
+const morgan = require('morgan')
+// App routes
+const routesSignup = require('./routes/signup.js')
+const routerSessionDetails = require('./routes/sessionDetails.js')
+const routerViewProfile = require('./routes/viewProfile.js')
+const routerUpdateProfile = require('./routes/updateProfile.js')
+const routerInviterPlayer = require('./routes/invitePlayer.js')
+const routerLogin = require('./routes/login')
+
+
+//App routes
+const routeChallenge = require('./routes/challenge.js')
+
+
+// sayed routes 
 
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
 
 // routes
 const routeProgram = require('./routes/program.route.js')
@@ -55,6 +85,39 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+
+app.use('/api',routeChallenge)
+
+app.use('/api', routerInviterPlayer)
+
+app.use('/api', routerViewProfile)
+app.use('/api', routerUpdateProfile)
+app.use(express.static('uploads'))
+
+
+app.use('/api', routerSessionDetails)
+
+app.use('/api', routerUpdatePlayer)
+// Route to Crud Comp and Crud Stat
+
+app.use('/api',routeEvent)
+
+app.use('/api', routerCompetence)
+app.use('/api', routerStatistic)
+app.use('/api', routerPlace)
+app.use('/api',listSession)
+app.use('/api',routerAlert)
+
+app.use('/api', routerUpdateCoach)
+app.use('/api', routerUpdateSession)
+app.use('/api', routerSignup)
+
+app.use('/api', routerLogin)
+
+app.use('/api', routerPlayerProfileByCoach)
+
+// sayed routes 
 app.use('/api',routeProgram)
 app.use('/api',planRoute)
 app.use('/api',sessionRoute)
@@ -134,4 +197,8 @@ app.post('/webhook', async (req, res) => {
   }
   res.sendStatus(200);
 });
+
+
+
+
 

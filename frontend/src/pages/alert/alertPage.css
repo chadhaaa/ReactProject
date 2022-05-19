@@ -1,0 +1,13 @@
+p{
+    text-align: left;
+}
+
+.utile{
+    color: green;
+}
+.inutile{
+    color: yellow;
+}
+.incorrect{
+    color: red;
+}
