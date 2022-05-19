@@ -31,6 +31,7 @@ import GetPlaces from './pages/crudPlace/getPlaces';
 import UpdatePlace from './pages/crudPlace/updatePlace';
 import GetOnePlace from './pages/crudPlace/getOnePlace';
 import AddPlace from './pages/crudPlace/addPlace';
+import CoachViewPlayer from './pages/CoachViewPlayer/CoachViewPlayer';
 
 
 
@@ -81,6 +82,7 @@ function App(){
 					
 					<Route exact path='/oneSession/:id' element={<GetOneSeance />}></Route>
 					<Route exact path='/Profile/:id' element={<GetProfile />}></Route>
+					<Route exact path='/CoachViewPlayer/:id' element={<CoachViewPlayer />}></Route>
 
 					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
 

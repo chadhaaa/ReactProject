@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
+const routerPlayerProfileByCoach = require('./routes/playerProfileCoach')
 
 
 
@@ -91,6 +92,7 @@ app.use('/api',routerAlert)
 app.use('/api', routerUpdateCoach)
 app.use('/api', routerUpdateSession)
 app.use('/api', routerSignup)
+app.use('/api', routerPlayerProfileByCoach)
 
 
 
