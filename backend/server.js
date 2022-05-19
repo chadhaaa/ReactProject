@@ -1,22 +1,31 @@
 const express = require('express')
 const app = express()
-
 const mongoose = require('mongoose')
 const cors = require('cors')
+
+
+
+
+// Iheb Slimen routes
+const routerSignup = require('./routes/signup.js')
+const routerUpdateCoach = require("./routes/updateCoach")
+const routerAlert = require('./routes/alert.js')
+const routerPlace = require('./routes/place.js')
+
+
+
+
+
 
 const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
 
 
 // app routes
-const routerPlace = require('./routes/place.js')
 const listSession = require("./routes/listSession")
-const routerUpdateCoach = require("./routes/updateCoach")
-const routerSignup = require('./routes/signup.js')
 // App routes
 const routerCompetence = require('./routes/comp.js')
 const routerStatistic = require('./routes/statistic.js')
-const routerAlert = require('./routes/alert.js')
 const morgan = require('morgan')
 // App routes
 const routesSignup = require('./routes/signup.js')
@@ -77,13 +86,18 @@ app.use('/api',routeEvent)
 
 app.use('/api', routerCompetence)
 app.use('/api', routerStatistic)
-app.use('/api', routerPlace)
 app.use('/api',listSession)
-app.use('/api',routerAlert)
 
+
+
+
+
+
+// Iheb Slimen API
 app.use('/api', routerUpdateCoach)
 app.use('/api', routerSignup)
-
+app.use('/api',routerAlert)
+app.use('/api', routerPlace)
 
 
 

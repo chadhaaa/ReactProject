@@ -1,5 +1,17 @@
 
 import './App.css';
+
+// iheb slimen imports
+import SignupCoach from './pages/signup/signup'
+import UpdateCoach from './pages/updateCoach/updateCoach'
+import GetAlerts from './pages/alert/getAlert';
+/*import Addplace from './pages/crudplace/addPlace';
+import Getplaces from './pages/crudplace/GetPlaces';
+import Updateplace from './pages/crudplace/updatePlace';
+*/
+
+
+
 import UpdatePlayer from './components/pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession';
 import { Routes, Route } from 'react-router-dom';
@@ -15,9 +27,6 @@ import GetStatistics from './pages/crudStatistique/getStat';
 import UpdateStat from './pages/crudStatistique/updateStat';
 import GetOneCompetence from './pages/crudCompetence/getOneComp';
 import GetOneStatistic from './pages/crudStatistique/getOneStat';
-import GetAlerts from './pages/alert/getAlert';
-import UpdateCoach from './pages/updateCoach/updateCoach'
-import SignupCoach from './pages/signup/signup'
 
 import GetSeance from './components/pages/sessionDetails/getAllSessions'
 import GetOneSeance from './components/pages/sessionDetails/getOneSession'
@@ -25,10 +34,7 @@ import GetProfile from './components/pages/profilePlayer/getProfile'
 import UpdateProfile from './components/pages/profilePlayer/updateProfile'
 import EmailSend from './Components/pages/EmailSend'
 
-/*import Addplace from './pages/crudplace/addPlace';
-import Getplaces from './pages/crudplace/GetPlaces';
-import Updateplace from './pages/crudplace/updatePlace';
-*/
+
 function App(){
 	return (
 			<div className='App'>
@@ -48,13 +54,10 @@ function App(){
 
 					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
 
-					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}></Route>
 
-					<Route exact path='/signup' element={<SignupCoach />}></Route>
 
 					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}></Route>
 
-					<Route exact path='/alert' element={<GetAlerts />}></Route>
 
 					<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}></Route>
 
@@ -79,11 +82,20 @@ function App(){
 
 					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
 
-          			{/*
+          			
+
+
+
+					{/* Iheb Slimen routes					//  */}
+					<Route exact path='/signup' element={<SignupCoach />}></Route>
+					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}></Route>
+					<Route exact path='/alert' element={<GetAlerts />}></Route>
+{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>
 					<Route exact path='/getPlace' element={<GetPlaces />}></Route>
   					<Route exact path='/updatePlace/:id' element={<UpdatePlace />}></Route> 
 					*/}
+
 				</Routes>
 			</div>
 	);
