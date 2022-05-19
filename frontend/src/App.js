@@ -24,6 +24,7 @@ import GetOneSeance from './components/pages/sessionDetails/getOneSession'
 import GetProfile from './components/pages/profilePlayer/getProfile'
 import UpdateProfile from './components/pages/profilePlayer/updateProfile'
 import EmailSend from './Components/pages/EmailSend'
+import CoachViewPlayer from './pages/CoachViewPlayer/CoachViewPlayer';
 
 /*import Addplace from './pages/crudplace/addPlace';
 import Getplaces from './pages/crudplace/GetPlaces';
@@ -74,6 +75,7 @@ function App(){
 					
 					<Route exact path='/oneSession/:id' element={<GetOneSeance />}></Route>
 					<Route exact path='/Profile/:id' element={<GetProfile />}></Route>
+					<Route exact path='/CoachViewPlayer/:id' element={<CoachViewPlayer />}></Route>
 
 					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
 
