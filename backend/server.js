@@ -27,6 +27,7 @@ const routerSessionDetails = require('./routes/sessionDetails.js')
 const routerViewProfile = require('./routes/viewProfile.js')
 const routerUpdateProfile = require('./routes/updateProfile.js')
 const routerInviterPlayer = require('./routes/invitePlayer.js')
+const routerLogin = require('./routes/login')
 
 
 //App routes
@@ -92,7 +93,11 @@ app.use('/api',routerAlert)
 app.use('/api', routerUpdateCoach)
 app.use('/api', routerUpdateSession)
 app.use('/api', routerSignup)
+
+app.use('/api', routerLogin)
+
 app.use('/api', routerPlayerProfileByCoach)
+
 
 
 

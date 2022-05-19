@@ -1,4 +1,3 @@
-
 import './App.css';
 import UpdatePlayer from './pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession';
@@ -19,7 +18,8 @@ import GetAlerts from './pages/alert/getAlert';
 import UpdateCoach from './pages/updateCoach/updateCoach'
 import SessionCancel from './pages/sessionCancel/sessionCancel'
 import SignupCoach from './pages/signup/signup'
-
+import Login from './pages/login/login'
+import FirstLogin from './pages/firstLogin/firstLogin'
 import GetSeance from './pages/sessionDetails/getAllSessions'
 import GetOneSeance from './pages/sessionDetails/getOneSession'
 import GetProfile from './pages/profilePlayer/getProfile'
@@ -27,7 +27,6 @@ import UpdateProfile from './pages/profilePlayer/updateProfile'
 import EmailSend from './pages/emailSend/EmailSend'
 import GetChallenges from './pages/challengeDone/challengeDone';
 import GetPlaces from './pages/crudPlace/getPlaces';
-
 import UpdatePlace from './pages/crudPlace/updatePlace';
 import GetOnePlace from './pages/crudPlace/getOnePlace';
 import AddPlace from './pages/crudPlace/addPlace';
@@ -87,11 +86,15 @@ function App(){
 					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
 
 					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
+
+            <Route exact path='/login' element={<Login />}></Route>
+					<Route exact path='/firstLogin/:id' element={<FirstLogin />}></Route>
           			<Route path="/challengeList" element={<GetChallenges />}></Route>
             		<Route path="/places" element={<GetPlaces />}></Route>
 					<Route path="/updatePlace/:id" element={<UpdatePlace />}></Route>
 					<Route path="/place/:id" element={<GetOnePlace />}></Route>
 					<Route path="/addPlace/" element={<AddPlace />}></Route>
+
 
 				</Routes>
 			</div>
