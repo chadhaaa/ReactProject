@@ -1,5 +1,9 @@
+import React  from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { MainRouter } from './MainRouter';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
-import UpdatePlayer from './pages/updatePlayer/updatePlayer'
+import UpdatePlayer from './pages/updatePlayer/updatePlayer';
 import Sessions from './pages/allSession/allSession';
 import { Routes, Route } from 'react-router-dom';
 import AssignChallengePlayer from './components/assignChallengePlayer';
@@ -15,16 +19,16 @@ import UpdateStat from './pages/crudStatistique/updateStat';
 import GetOneCompetence from './pages/crudCompetence/getOneComp';
 import GetOneStatistic from './pages/crudStatistique/getOneStat';
 import GetAlerts from './pages/alert/getAlert';
-import UpdateCoach from './pages/updateCoach/updateCoach'
-import SessionCancel from './pages/sessionCancel/sessionCancel'
-import SignupCoach from './pages/signup/signup'
-import Login from './pages/login/login'
-import FirstLogin from './pages/firstLogin/firstLogin'
-import GetSeance from './pages/sessionDetails/getAllSessions'
-import GetOneSeance from './pages/sessionDetails/getOneSession'
-import GetProfile from './pages/profilePlayer/getProfile'
-import UpdateProfile from './pages/profilePlayer/updateProfile'
-import EmailSend from './pages/emailSend/EmailSend'
+import UpdateCoach from './pages/updateCoach/updateCoach';
+import SessionCancel from './pages/sessionCancel/sessionCancel';
+import SignupCoach from './pages/signup/signup';
+import Login from './pages/login/login';
+import FirstLogin from './pages/firstLogin/firstLogin';
+import GetSeance from './pages/sessionDetails/getAllSessions';
+import GetOneSeance from './pages/sessionDetails/getOneSession';
+import GetProfile from './pages/profilePlayer/getProfile';
+import UpdateProfile from './pages/profilePlayer/updateProfile';
+import EmailSend from './pages/emailSend/EmailSend';
 import GetChallenges from './pages/challengeDone/challengeDone';
 import GetPlaces from './pages/crudPlace/getPlaces';
 import UpdatePlace from './pages/crudPlace/updatePlace';
@@ -99,7 +103,16 @@ function App(){
 				</Routes>
 			</div>
 	);
-
 }
 
-export default App
+function AppSayed() {
+	
+	return (
+		<BrowserRouter>
+            <ToastContainer />
+			<MainRouter />
+		</BrowserRouter>
+	);
+}
+
+export default App;
