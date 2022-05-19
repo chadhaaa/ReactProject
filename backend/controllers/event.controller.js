@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const Event = require('../models/event')
 
 const FindOneEvent = async (req, res) => {
-	const events = await Event.findOne({ _id: req.params.id })
+	const events = await Event.findOne({ _id: req.params.id }).populate('idCoach')
 	if (!events) {
 		res.status(500).json({ Message: 'Error : Enable to find event' })
 	}
-	res.send(chllgs)
+	res.send(events)
 }
 
 const FindAllEvents = async (req, res) => {

@@ -39,7 +39,7 @@ function App(){
 	return (
 			<div className='App'>
 				<Routes>
-
+				{ /*  START  ROUTES */}
 					<Route exact path='/addCompetence' element={<AddCompetence />}></Route>
 
 					<Route exact path='/competence' element={<GetCompetences />}></Route>
@@ -55,7 +55,7 @@ function App(){
 					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
 
 					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}></Route>
-
+					{ /*  END CHEDHA ROUTES */}
 					<Route exact path='/sessionCancel/:id' element={<SessionCancel />}></Route>
 
 					<Route exact path='/signup' element={<SignupCoach />}></Route>
