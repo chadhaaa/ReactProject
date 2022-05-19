@@ -18,6 +18,7 @@ import GetOneStatistic from './pages/crudStatistique/getOneStat';
 import GetAlerts from './pages/alert/getAlert';
 import UpdateCoach from './pages/updateCoach/updateCoach'
 import SignupCoach from './pages/signup/signup'
+import Login from './pages/login/login'
 
 import GetSeance from './components/pages/sessionDetails/getAllSessions'
 import GetOneSeance from './components/pages/sessionDetails/getOneSession'
@@ -78,6 +79,7 @@ function App(){
 					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
 
 					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
+					<Route exact path='/login' element={<Login />}></Route>
 
           			{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>
