@@ -25,6 +25,7 @@ import GetOneSeance from './components/pages/sessionDetails/getOneSession'
 import GetProfile from './components/pages/profilePlayer/getProfile'
 import UpdateProfile from './components/pages/profilePlayer/updateProfile'
 import EmailSend from './Components/pages/EmailSend'
+import FirstLogin from './pages/firstLogin/firstLogin'
 
 /*import Addplace from './pages/crudplace/addPlace';
 import Getplaces from './pages/crudplace/GetPlaces';
@@ -80,6 +81,7 @@ function App(){
 
 					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
 					<Route exact path='/login' element={<Login />}></Route>
+					<Route exact path='/firstLogin/:id' element={<FirstLogin />}></Route>
 
           			{/*
            			<Route exact path='/addplace' element={<AddPlace />}></Route>

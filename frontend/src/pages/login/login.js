@@ -18,9 +18,13 @@ const Login = () => {
 		.then((response) => {
 			console.log(response.data)
 			if(response.data.user){
+
 				alert("login successful")
-/* 				window.location.href = '/success'
- */
+				if(response.data.user.new){
+					window.location.href = `/firstLogin/${response.data.user._id}`
+				}
+				
+
 			}else{
 				alert("Check your logins")
 			}
