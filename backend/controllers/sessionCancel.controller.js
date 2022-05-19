@@ -14,7 +14,7 @@ const UpdateSession = async (req, res) => {
             hour: req.body.hour,
             cancellation: req.body.cancellation,
             reason:  req.body.reason,
-            feedback:  req.body.reason,
+            feedback:  req.body.feedback,
             idPlayer:  req.body.idPlayer,
             idCoach:  req.body.idCoach,
             idPlace:req.body.idPlace,
