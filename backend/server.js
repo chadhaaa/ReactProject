@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
+const routeSessionFeedback = require('./routes/sessionFeedback')
 
 
 // app routes
@@ -83,6 +84,7 @@ app.use('/api',routerAlert)
 
 app.use('/api', routerUpdateCoach)
 app.use('/api', routerSignup)
+app.use('/api', routeSessionFeedback)
 
 
 
