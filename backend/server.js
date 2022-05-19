@@ -21,7 +21,7 @@ const StatisticPlayer = require('./models/statisticPlayer')
 const CompetenceSession = require('./models/competenceSession')
 const StatisticSession = require('./models/statisticSession')
 //App routes
-const routeEvent = require('./routes/event.js')
+const routeEvent = require('./routes/eventDetails.js')
 // Database connection
 mongoose
 	.connect(
@@ -50,4 +50,4 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use('/api',routeEvent)
+app.use('/api', routerEventDetails)
