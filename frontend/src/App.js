@@ -31,6 +31,7 @@ import GetPlaces from './pages/crudPlace/getPlaces';
 import UpdatePlace from './pages/crudPlace/updatePlace';
 import GetOnePlace from './pages/crudPlace/getOnePlace';
 import AddPlace from './pages/crudPlace/addPlace';
+import CoachViewPlayer from './pages/CoachViewPlayer/CoachViewPlayer';
 
 
 
