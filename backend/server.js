@@ -7,13 +7,11 @@ const cors = require('cors')
 const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
 
-
-
 // app routes
 const routerPlace = require('./routes/place.js')
-const listSession = require("./routes/listSession")
-const routerUpdateCoach = require("./routes/updateCoach")
-const routerUpdateSession = require("./routes/sessionCancel")
+const listSession = require('./routes/listSession')
+const routerUpdateCoach = require('./routes/updateCoach')
+const routerUpdateSession = require('./routes/sessionCancel')
 const routerSignup = require('./routes/signup.js')
 // App routes
 const routerCompetence = require('./routes/comp.js')
@@ -26,7 +24,6 @@ const routerSessionDetails = require('./routes/sessionDetails.js')
 const routerViewProfile = require('./routes/viewProfile.js')
 const routerUpdateProfile = require('./routes/updateProfile.js')
 const routerInviterPlayer = require('./routes/invitePlayer.js')
-
 
 //App routes
 const routeChallenge = require('./routes/challenge.js')
@@ -47,10 +44,7 @@ app.listen(8000, () => {
 	console.log('Listening on port 8000')
 })
 
-
-
-app.use(morgan("dev"))
-
+app.use(morgan('dev'))
 
 app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*')
@@ -65,33 +59,24 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+app.use('/api', routeChallenge)
 
-app.use('/api',routeChallenge)
-
-app.use('/api', routerInviterPlayer)
-
-app.use('/api', routerViewProfile)
-app.use('/api', routerUpdateProfile)
 app.use(express.static('uploads'))
 
-
-app.use('/api', routerSessionDetails)
-
-app.use('/api', routerUpdatePlayer)
-// Route to Crud Comp and Crud Stat
-
-app.use('/api',routeEvent)
-
+/* START CHADHA ROUTES */
+app.use('/api', routerInviterPlayer)
+app.use('/api', routerViewProfile)
+app.use('/api', routerUpdateProfile)
 app.use('/api', routerCompetence)
 app.use('/api', routerStatistic)
-app.use('/api', routerPlace)
-app.use('/api',listSession)
-app.use('/api',routerAlert)
+app.use('/api', routerSessionDetails)
+app.use('/api', routerUpdatePlayer)
+/* END CHADHA ROUTES */
 
+app.use('/api', routeEvent)
+app.use('/api', routerPlace)
+app.use('/api', listSession)
+app.use('/api', routerAlert)
 app.use('/api', routerUpdateCoach)
 app.use('/api', routerUpdateSession)
 app.use('/api', routerSignup)
-
-
-
-

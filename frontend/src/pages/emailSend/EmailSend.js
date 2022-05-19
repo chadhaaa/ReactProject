@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import './form.css'
+import { useNavigate } from 'react-router-dom'
 
 const EmailSend = () => {
+	const history = useNavigate()
 	const [values, setValues] = useState({
 		firstname: '',
 		lastname: '',
@@ -29,6 +31,7 @@ const EmailSend = () => {
 			sessionNumbers,
 		}
 		await axios.post('/api/players', dataToSubmit)
+		// history('/')
 	}
 	return (
 		<div class='form'>

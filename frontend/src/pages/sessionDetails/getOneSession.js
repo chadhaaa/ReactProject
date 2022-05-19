@@ -58,25 +58,25 @@ const GetOneSeance = () => {
 									<td>
 										<strong> Title : </strong>
 									</td>
-									<td> {place.name} </td>
+									<td> {place && place.Name} </td>
 								</tr>
 								<tr>
 									<td>
 										<strong>Country State :</strong>{' '}
 									</td>
-									<td> {place.countryState} </td>
+									<td> {place && place.countryState} </td>
 								</tr>
 								<tr>
 									<td>
 										<strong>Country : </strong>
 									</td>
-									<td> {place.country} </td>
+									<td> {place && place.country} </td>
 								</tr>
 								<tr>
 									<td>
 										<strong>Address : </strong>
 									</td>
-									<td> {place.address} </td>
+									<td> {place && place.address} </td>
 								</tr>
 							</table>
 						)}
