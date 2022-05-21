@@ -49,6 +49,7 @@ export default function ProgramCreate({mode}){
                         placeholder="Title"
                         value={program?.title || ''}
                         onChange={(e)=>setProgram({...program,title:e.target.value})}
+                        data-testid="title"
                     />
                 </div>
                 <div className="mb-4">
@@ -62,6 +63,8 @@ export default function ProgramCreate({mode}){
                         placeholder="Link"
                         value={program?.link || ''}
                         onChange={(e)=>setProgram({...program,link:e.target.value})}
+                        data-testid="link"
+
                     />
                 </div>
                 <div className="mb-4">
@@ -75,6 +78,8 @@ export default function ProgramCreate({mode}){
                         placeholder="Description"
                         value={program?.description || ''}
                         onChange={(e)=>setProgram({...program,description:e.target.value})}
+                        data-testid="description"
+
                     />
                 </div>
                 <div className="mb-4">
@@ -88,10 +93,14 @@ export default function ProgramCreate({mode}){
                         placeholder="Picture"
                         value={program?.picture || ''}
                         onChange={(e)=>setProgram({...program,picture:e.target.value})}
+                        data-testid="picture"
+
                     />
                 </div>
                 <div className="flex items-center justify-between">
                     <button
+                        data-testid="add-program"
+
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
                         onClick={()=>{

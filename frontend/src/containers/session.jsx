@@ -13,7 +13,7 @@ export default function Session() {
 
 	const loadSessionData = async () => {
 		if (isLoading) {
-			const { data } = await getSessionsByPlayerId('5e9f9b9f9b9f9b9f9b9f9e31');
+			const { data } = await getSessionsByPlayerId('5e9f9b9f9b9f9b9f9b9f9e11');
 			console.log(data);
 			const filtredSessions =
 				initalDate === '' ? data : data.filter(filterDateFunction);

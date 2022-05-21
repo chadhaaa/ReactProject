@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ReactDOM.render(
     <React.StrictMode>
       <Elements stripe={stripePromise}>
-        <App />
+          <App />
       </Elements>
     </React.StrictMode>,
     document.getElementById('root')

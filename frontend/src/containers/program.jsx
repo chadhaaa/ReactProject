@@ -18,8 +18,7 @@ export default function Program(){
         {isLoading &&<h1>loading ...</h1>}
         {!isLoading && <ProgramList setIsLoading={setIsLoading} programs={programs}/> }
         <button className='px-5 py-2 bg-gray-200 hover:bg-gray-400 text-blue-400 border-2' >
-            <Link to="/program/create"> Add program</Link></button>
+            <Link to="/program/create" data-testid='add-program'>Add program</Link></button>
     </div>);
-
 
 }

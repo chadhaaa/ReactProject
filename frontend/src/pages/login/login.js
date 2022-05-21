@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 const Login = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	
+	const navigate = useNavigate(); 
 	async function loginUser(event){
 
 		event.preventDefault()
@@ -20,8 +20,11 @@ const Login = () => {
 			if(response.data.user){
 
 				alert("login successful")
-				if(response.data.user.new){
-					window.location.href = `/firstLogin/${response.data.user._id}`
+				localStorage.setItem("user",JSON.stringify(response.data.user))
+				if(response.data.user.$new){
+					navigate(`/firstLogin/${response.data.user._id}`)
+				}else{
+					navigate("/")
 				}
 				
 
@@ -46,6 +49,8 @@ const Login = () => {
 						placeholder=' '
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
+						data-testid="email"
+
 					/>
 					<div class='cut'></div>
 					<label for='Enter new Email' class='placeholder'>
@@ -60,6 +65,7 @@ const Login = () => {
 						placeholder=' '
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
+						data-testid="password"
 					/>
 					<div class='cut'></div>
 					<label for='Enter new Password' class='placeholder'>
@@ -69,7 +75,7 @@ const Login = () => {
 				
 				<br />
 
-				<button type='text' class='submit' onClick={loginUser}>
+				<button type='text' class='submit' onClick={loginUser} data-testid="login">
 					Login
 				</button>
 			</div>

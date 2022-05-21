@@ -9,26 +9,14 @@ const FindUser = async (req, res) => {
 		})
 		.populate('playerId')
 		.populate('coachId')
-		console.log(req.body.email)
-		console.log(req.body.password)
-        
+		let user =  ( userToLogin.playerId )? {...userToLogin.playerId ,  password:''} : {...userToLogin.coachId  ,password:''} 
+		
 		if(userToLogin){
-			if(userToLogin.playerId){
-				
-				return res.json({ status: 'ok', user: userToLogin.playerId, role : userToLogin.role})
-
-			}else if (userToLogin.coachId){
-				return res.json({ status: 'ok', user: userToLogin.coachId, role : userToLogin.role})
-
-
-			}
+			return res.json({ status: 'ok', user: user, role : userToLogin.role})
 		} else {
 			return res.json({ status: 'error', user:false})
-
 		}
 	
-
-		res.send({ status: 'ok'})
 	} catch (err) {
 		'Error ' + err
 	}

@@ -35,10 +35,11 @@ import UpdatePlace from './pages/crudPlace/updatePlace';
 import GetOnePlace from './pages/crudPlace/getOnePlace';
 import AddPlace from './pages/crudPlace/addPlace';
 import CoachViewPlayer from './pages/CoachViewPlayer/CoachViewPlayer';
+import { rootContext } from './contexts/rootContext';
 
 
 
-function App(){
+function Appprojet(){
 	return (
 			<div className='App'>
 				<Routes>
@@ -105,12 +106,11 @@ function App(){
 	);
 }
 
-function AppSayed() {
-	
+function App() {
 	return (
 		<BrowserRouter>
             <ToastContainer />
-			<MainRouter />
+				<MainRouter />
 		</BrowserRouter>
 	);
 }
