@@ -35,12 +35,12 @@ const GetOneSeance = () => {
 		<div>
 			<table>
 				<OneSeance
-					id={session._id}
-					reason={session.reason}
-					day={session.day}
-					feedback={session.feedback}
-					cancellation={session.cancellation}
-					hour={session.hour}
+					id={session && session._id}
+					reason={session && session.reason}
+					day={session && session.day}
+					feedback={session && session.feedback}
+					cancellation={session && session.cancellation}
+					hour={session && session.hour}
 				/>
 
 				<tr>
