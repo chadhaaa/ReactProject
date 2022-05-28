@@ -1,11 +1,17 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Login = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const navigate = useNavigate(); 
+
+	useEffect(()=>{
+		 if (localStorage.getItem('user'))
+		    navigate('/program');
+	})
 	async function loginUser(event){
 
 		event.preventDefault()
@@ -16,22 +22,23 @@ const Login = () => {
 
 		await axios.post('http://localhost:8000/api/login', body)
 		.then((response) => {
-			console.log(response.data)
 			if(response.data.user){
-
-				alert("login successful")
 				localStorage.setItem("user",JSON.stringify(response.data.user))
 				if(response.data.user.$new){
 					navigate(`/firstLogin/${response.data.user._id}`)
-				}else{
-					navigate("/")
-				}
-				
+					toast.success("login successful fill in your information")
 
-			}else{
-				alert("Check your logins")
+				}else{
+					navigate("/program")
+					console.log(response.data)
+					const {firstName , lastName } = response.data.user._doc
+					toast.success(`Hello ${firstName} ${lastName}`)
+
+				}
 			}
 			
+		}).catch((err)=>{
+			toast.error(err.response.data.message)
 		});
 		
 	}

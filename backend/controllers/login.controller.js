@@ -9,6 +9,8 @@ const FindUser = async (req, res) => {
 		})
 		.populate('playerId')
 		.populate('coachId')
+		if (!userToLogin)
+			res.status(404).json({"message":"user not found check your email or password"})
 		let user =  ( userToLogin.playerId )? {...userToLogin.playerId ,  password:''} : {...userToLogin.coachId  ,password:''} 
 		
 		if(userToLogin){

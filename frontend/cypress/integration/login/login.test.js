@@ -14,8 +14,8 @@ describe("Login to account test ",()=>{
 describe("add program works ",()=>{
     it('add a program ',()=>{
         const title = 'program tennis';
-        const messageFinale = `New program "${title}" is created `
-        cy.visit("http://localhost:3001/program")
+        const messageFinale = `New program "${title}" is created `;
+        cy.visit("http://localhost:3001/program");
         cy.get('[data-testid="add-program"]').click()
         cy.get('[data-testid="title"]').type(title)
         cy.get('[data-testid="link"]').type('http://localhost:3000/programs/progamTennis.pdf')
