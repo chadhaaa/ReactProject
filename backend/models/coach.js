@@ -8,6 +8,9 @@ const coachSchema = mongoose.Schema({
 	birthDate: { type: String, required: false },
 	photo: { type: String, required: false },
 	sex: { type: String, required: false },
+	new: { type: Boolean, required: false, default:true },
+	alerts: { type: [String], required: false, default:[] },
+	discipline: { type: String, required: false, default:'' },
 })
 
 module.exports = mongoose.model('Coach', coachSchema)

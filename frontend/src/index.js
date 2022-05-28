@@ -1,18 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.less';
 
-ReactDOM.render(
-  <Router>
-  <App />
-  </Router>
-  ,
-  document.getElementById('root')
-);
+import axios from 'axios';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const {publishableKey} = await axios.get('http://localhost:8000/config').then(r=>r.data);
+  
+  const stripePromise = loadStripe(publishableKey);
+
+  ReactDOM.render(
+    <React.StrictMode>
+      <Elements stripe={stripePromise}>
+          <App />
+      </Elements>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+});
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
