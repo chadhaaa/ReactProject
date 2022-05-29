@@ -39,7 +39,7 @@ export default function ProgramList({ programs,setIsLoading }) {
 							</td>
 						</tr>
 					) : (
-						programs.map((program) => (
+						programs.map((program,index) => (
 							<tr
 								className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'
 								key={program._id}>
@@ -61,7 +61,10 @@ export default function ProgramList({ programs,setIsLoading }) {
 											className='font-medium text-red-600 dark:text-red-500 hover:underline'
 											onClick={() => {
 												handleDelete(program._id);
-											}}>
+											}}
+											data-idtest={ index === programs.length - 1 ? "lastAddedelement" : ""}
+											>
+											
 											Delete
 										</button>
 									</td>
