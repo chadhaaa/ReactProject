@@ -11,5 +11,6 @@ describe('Add a Competence ', () => {
 
 		cy.get('[data-testid="addCompetence"]').click()
 		cy.url().should('include', '/competence')
+		cy.visit('http://localhost:3000/competence')
 	})
 })

@@ -10,7 +10,7 @@ const GetOneSeance = () => {
 	const [programs, setProgram] = useState([])
 	const [stat, setStat] = useState([])
 	const [comp, setComp] = useState([])
-	const [loading,setLoading] = useState(true) 
+	const [loading, setLoading] = useState(true)
 	const { id } = useParams()
 	const history = useNavigate()
 
@@ -25,14 +25,13 @@ const GetOneSeance = () => {
 		})
 	}
 
-
 	useEffect(() => {
-		if(loading ){
+		if (loading) {
 			getSession()
 			setLoading(false)
 		}
 	}, [loading])
-	if(loading){
+	if (loading) {
 		return <h1>loading ...</h1>
 	}
 	return (
@@ -149,17 +148,12 @@ const GetOneSeance = () => {
 						) : (
 							stat.map((item, index) => (
 								<table>
-									{/* <tr>
+									<tr>
 										<td>
 											<strong> Title : </strong>
 										</td>
-<<<<<<< HEAD
-										<td> {item.statId.title} </td>
-									</tr> */}
-=======
 										<td> {item?.statId?.title} </td>
 									</tr>
->>>>>>> 810a1cd51398e1ebf5f6286013520b87d95213e4
 									<tr>
 										<td>
 											<strong> Unit : </strong>
