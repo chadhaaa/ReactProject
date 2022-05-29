@@ -145,12 +145,12 @@ const GetOneSeance = () => {
 						) : (
 							stat.map((item, index) => (
 								<table>
-									<tr>
+									{/* <tr>
 										<td>
 											<strong> Title : </strong>
 										</td>
 										<td> {item.statId.title} </td>
-									</tr>
+									</tr> */}
 									<tr>
 										<td>
 											<strong> Unit : </strong>

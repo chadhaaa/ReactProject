@@ -53,6 +53,7 @@ const AddCompetence = () => {
 					placeholder=' '
 					value={name}
 					onChange={(e) => setName(e.target.value)}
+					data-test-id='name'
 				/>
 				<div class='cut'></div>
 				<label for='name' class='placeholder'>
@@ -68,6 +69,7 @@ const AddCompetence = () => {
 					placeholder=' '
 					value={link}
 					onChange={(e) => setLink(e.target.value)}
+					data-testid='link'
 				/>
 				<div class='cut'></div>
 				<label for='link' class='placeholder'>
@@ -83,6 +85,7 @@ const AddCompetence = () => {
 					placeholder=' '
 					value={description}
 					onChange={(e) => setDescription(e.target.value)}
+					data-testid='description'
 				/>
 				<div class='cut'></div>
 				<label for='description' class='placeholder'>
@@ -107,7 +110,7 @@ const AddCompetence = () => {
 				<span class='switch' />
 			</label>
 			<br />
-			<button type='text' class='submit' onClick={addComp}>
+			<button type='text' class='submit' onClick={addComp} data-testid='addCompetence'>
 				Add Competence
 			</button>
 			<button type='text' class='submit' onClick={() => history('/competence')}>

@@ -10,6 +10,7 @@ const GetStatistics = () => {
 
 	useEffect(() => {
 		getStats()
+		console.log(stats)
 	}, [])
 
 	const getStats = async () => {
@@ -25,26 +26,31 @@ const GetStatistics = () => {
 				console.log(element.unit[0].value)
 			})} */}
 
-			{stats.map((el) => {
-				console.log('test', el.minMax[0] && el.minMax[0].value)
-			})}
-			{stats.map(function (stats) {
-				return (
-					<Statistic
-						id={stats._id}
-						key={stats._id}
-						title={stats.title}
-						type={stats.type[0].value}
-						description={stats.description}
-						currentState={stats.currentState}
-						link={stats.link}
-						visibility={String(stats.visibility)}
-						unit={stats.unit[0].value}
-						minMax={stats.minMax[0] && stats.minMax[0].value}
-						statAlert={String(stats.statAlert)}
-					/>
-				)
-			})}
+			{stats.length == 0
+				? 'No stats available'
+				: stats.map((el) => {
+						console.log('test', el.minMax[0] && el.minMax[0].value)
+				  })}
+
+			{stats.length == 0
+				? 'No stats available'
+				: stats.map(function (stats) {
+						return (
+							<Statistic
+								id={stats._id}
+								key={stats._id}
+								title={stats?.title}
+								type={stats.type[0] && stats?.type[0].value}
+								description={stats?.description}
+								currentState={stats?.currentState}
+								link={stats?.link}
+								visibility={String(stats?.visibility)}
+								unit={stats.unit[0] && stats?.unit[0].value}
+								minMax={stats.minMax[0] && stats?.minMax[0].value}
+								statAlert={String(stats?.statAlert)}
+							/>
+						)
+				  })}
 		</div>
 	)
 }

@@ -60,7 +60,7 @@ const GetProfile = () => {
 													{' '}
 													<strong>Unit : </strong>
 												</td>
-												<td> {item.statId.unit && item.statId.unit[0].value} </td>
+												<td> {item.statId.unit[0] && item.statId.unit[0].value} </td>
 											</tr>
 											<tr>
 												<td>
@@ -74,14 +74,14 @@ const GetProfile = () => {
 													{' '}
 													<strong>Type :</strong>{' '}
 												</td>
-												<td> {item.statId.type && item.statId.type[0].value} </td>
+												<td> {item.statId.type[0] && item.statId.type[0].value} </td>
 											</tr>
 											<tr>
 												<td>
 													{' '}
 													<strong>Min or Max ? : </strong>
 												</td>
-												<td> {item.statId.minMax && item.statId.minMax[0].value} </td>
+												<td> {item.statId.minMax[0] && item.statId.minMax[0].value} </td>
 											</tr>
 											<tr>
 												<td>
