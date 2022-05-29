@@ -10,12 +10,13 @@ const GetOneSeance = () => {
 	const [programs, setProgram] = useState([])
 	const [stat, setStat] = useState([])
 	const [comp, setComp] = useState([])
-
+	const [loading,setLoading] = useState(true) 
 	const { id } = useParams()
 	const history = useNavigate()
 
 	const getSession = async () => {
 		await axios.get(`http://localhost:8000/api/sessionDetails/${id}`).then((response) => {
+			console.log(response)
 			setSession(response.data.session)
 			setPlace(response.data.session.idPlace)
 			setProgram(response.data.session.programId)
@@ -23,14 +24,17 @@ const GetOneSeance = () => {
 			setComp(response.data.comp)
 		})
 	}
-	console.log('prog', programs)
-	console.log('place', place)
-	console.log('stat', stat)
+
 
 	useEffect(() => {
-		getSession()
-	}, [])
-
+		if(loading ){
+			getSession()
+			setLoading(false)
+		}
+	}, [loading])
+	if(loading){
+		return <h1>loading ...</h1>
+	}
 	return (
 		<div>
 			<table>
@@ -149,37 +153,37 @@ const GetOneSeance = () => {
 										<td>
 											<strong> Title : </strong>
 										</td>
-										<td> {item.statId.title} </td>
+										<td> {item?.statId?.title} </td>
 									</tr>
 									<tr>
 										<td>
 											<strong> Unit : </strong>
 										</td>
-										<td> {item.statId.unit && item.statId.unit[0].value} </td>
+										<td> {item.statId?.unit && item.statId.unit[0].value} </td>
 									</tr>
 									<tr>
 										<td>
 											<strong> Type : </strong>
 										</td>
-										<td> {item.statId.type && item.statId.type[0].value} </td>
+										<td> {item?.statId?.type && item.statId.type[0].value} </td>
 									</tr>
 									<tr>
 										<td>
 											<strong> Min or Max ? : </strong>
 										</td>
-										<td> {item.statId.minMax && item.statId.minMax[0].value} </td>
+										<td> {item.statId?.minMax && item.statId.minMax[0].value} </td>
 									</tr>
 									<tr>
 										<td>
 											<strong>Description : </strong>
 										</td>
-										<td> {item.statId.description} </td>
+										<td> {item.statId?.description} </td>
 									</tr>
 									<tr>
 										<td>
 											<strong>Current State :</strong>
 										</td>
-										<td> {item.statId.currentState} </td>
+										<td> {item.statId?.currentState} </td>
 									</tr>
 								</table>
 							))

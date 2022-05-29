@@ -2,6 +2,7 @@
 const email = "tennis@coach.com"
 const mdp = '12345678'
 describe("Login to account test ",()=>{
+
     it('should login ',()=>{
         cy.visit("http://localhost:3001/login")
         cy.get('[data-testid="email"]').type(email)
@@ -13,7 +14,7 @@ describe("Login to account test ",()=>{
 })
 describe("add program works ",()=>{
     it('add a program ',()=>{
-        const title = 'program tennis';
+        const title = 'program tennis koura';
         const messageFinale = `New program "${title}" is created `;
         cy.visit("http://localhost:3001/program");
         cy.get('[data-testid="add-program"]').click()
@@ -23,5 +24,13 @@ describe("add program works ",()=>{
         cy.get('[data-testid="picture"]').type("http://localhost:3000/images/programTennis.jpg")
         cy.get('[data-testid="add-program"]').click()
         cy.contains(messageFinale)
+    })
+    it('delete program',()=>{
+        const title = 'program tennis koura';
+
+        cy.visit("http://localhost:3001/program");
+        cy.get('[data-testid="lastAddedelement"]').click()
+        cy.contains(title).should('not.exist')
+
     })
 })

@@ -7,15 +7,24 @@ import './stat.css'
 const GetStatistics = () => {
 	const [stats, setStat] = useState([])
 	const history = useNavigate()
-
+	const [loading,setLoading] = useState(true)
 	useEffect(() => {
-		getStats()
-	}, [])
+		if(loading){
+			getStats()
+			setLoading(false)
+		}
+		
+	}, [loading])
 
 	const getStats = async () => {
+		
 		const response = await axios.get('http://localhost:8000/api/statistics')
+		console.log(response.data)
 		setStat(response.data)
+		console.log(response.data)
 	}
+	if (loading)
+		return <h1>loading ...</h1>
 	return (
 		<div className='App'>
 			<h1>Liste des statistiques </h1>
@@ -24,11 +33,11 @@ const GetStatistics = () => {
 				// console.log(element.minMax[0].value)
 				console.log(element.unit[0].value)
 			})} */}
-
-			{stats.map((el) => {
+			
+			{stats.length == 0 ? "no stats " : stats.map((el) => {
 				console.log('test', el.minMax[0] && el.minMax[0].value)
 			})}
-			{stats.map(function (stats) {
+			{stats.length == 0 ? "no stats " :  stats.map(function (stats) {
 				return (
 					<Statistic
 						id={stats._id}

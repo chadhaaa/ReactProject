@@ -11,6 +11,7 @@ const UpdatePlayer = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {
 		res.status(400).send({ Message: 'Error: Competence ID invalid !' })
 	}
+	console.log("houni fi update player")
 	const player = await Player.findOneAndUpdate(
 		{ _id: req.params.id },
 		{
@@ -51,7 +52,7 @@ const UpdatePlayer = async (req, res) => {
 		})
 		compPlayer.save()
 	})
-
+	
 	if (!player) {
 		return res.status(404).send({ Message: 'ERROR ! ' })
 	}
