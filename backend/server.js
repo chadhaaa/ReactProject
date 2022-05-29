@@ -41,6 +41,7 @@ const planRoute = require('./routes/plan.route.js')
 const sessionRoute = require('./routes/sessions.route')
 const invitationRoute = require('./routes/invitation.route')
 // preparing webhook for stripe
+app.use(cors())
 app.use(
 	express.json({
 		// We need the raw body to verify webhook signatures.
