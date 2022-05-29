@@ -14,7 +14,9 @@ const GetEvent = () => {
 		setEvent(response.data)
 	}
 	return (
-		<table>
+		<div className='allEvents'>
+
+		<table >
 			<caption> Liste des évennement</caption>
 			{Events.map(function (event) {
 				return (
@@ -35,6 +37,8 @@ const GetEvent = () => {
 				)
 			})}
 		</table>
+		</div>
+
 	)
 }
 export default GetEvent

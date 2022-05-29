@@ -38,7 +38,7 @@ const AddNewPlace = async (req, res) => {
 	if (!newPlace) {
 		return res.status(404).send({ Message: 'Error : Enable to create a new program' })
 	}
-	res.json(newPlace)
+	res.status(201).json(newPlace)
 }
 
 const UpdatePlace = async (req, res) => {

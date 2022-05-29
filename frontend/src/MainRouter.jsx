@@ -1,7 +1,7 @@
 import React,{useContext, useEffect,useState}  from 'react';
 import Program from './containers/program'; 
 import ProgramCreate from './containers/Program/Program.create';
-import { Route , Routes ,useNavigate, useLocation, Link, Navigate} from 'react-router-dom';
+import {  Routes ,useNavigate, useLocation, Link,Route } from 'react-router-dom';
 import Pricing from './containers/pricing';
 import Checkout from './containers/checkout';
 import Session from './containers/session';
@@ -45,19 +45,15 @@ import CoachViewPlayer from './pages/CoachViewPlayer/CoachViewPlayer';
 import { rootContext } from './contexts/rootContext';
 
 
-
 export function MainRouter(){
     const navigate = useNavigate(); 
     const location = useLocation();
     const [locationString,setLocationString] = useState(location.pathname);
     useEffect(()=>{
         // navigate to program when path is / 
-        console.log("hello")
         setLocationString(location.pathname.split('/').filter(e=>e!=='').join(' > '));
-        
-        if (location.pathname == '/')
-		    navigate('/program');
-	},[location]);
+      
+	},[]);
   
     return (
        <div className='w-[94vw] flex flex-col mx-[2vw]'>     
@@ -85,61 +81,61 @@ export function MainRouter(){
                 <Route exact path="program/edit/:programId" element={<ProgramCreate mode="edit" />} />
                 <Route exact path="program/create" element={<ProgramCreate />} />
                 <Route path="checkout/:plan" element={<Checkout />} />
-                <Route exact path='/addCompetence' element={<AddCompetence />}></Route>
+                <Route exact path='/addCompetence' element={<AddCompetence />}/>
 
-					<Route exact path='/competence' element={<GetCompetences />}></Route>
+					<Route exact path='/competence' element={<GetCompetences />}/>
 
-					<Route exact path='/updateCompetence/:id' element={<UpdateCompetence />}></Route>
+					<Route exact path='/updateCompetence/:id' element={<UpdateCompetence />}/>
 
-					<Route exact path='/compDetails/:id' element={<GetOneCompetence />}></Route>
+					<Route exact path='/compDetails/:id' element={<GetOneCompetence />}/>
 
-					<Route exact path='/addStat' element={<AddStatistic />}></Route>
+					<Route exact path='/addStat' element={<AddStatistic />}/>
 
-					<Route exact path='/getStat' element={<GetStatistics />}></Route>
+					<Route exact path='/getStat' element={<GetStatistics />}/>
 
-					<Route exact path='/updateStat/:id' element={<UpdateStat />}></Route>
+					<Route exact path='/updateStat/:id' element={<UpdateStat />}/>
 
-					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}></Route>
+					<Route exact path='/updateCoach/:id' element={<UpdateCoach />}/>
 					{ /*  END CHEDHA ROUTES */}
-					<Route exact path='/sessionCancel/:id' element={<SessionCancel />}></Route>
+					<Route exact path='/sessionCancel/:id' element={<SessionCancel />}/>
 
-					<Route exact path='/signup' element={<SignupCoach />}></Route>
+					<Route exact path='/signup' element={<SignupCoach />}/>
 
-					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}></Route>
+					<Route exact path='/statDetails/:id' element={<GetOneStatistic />}/>
 
-					<Route exact path='/alert' element={<GetAlerts />}></Route>
+					<Route exact path='/alert' element={<GetAlerts />}/>
 
-					<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}></Route>
+					<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}/>
 
-					<Route exact path='/addEvent' element={<AddEvent />}></Route>
+					<Route exact path='/addEvent' element={<AddEvent />}/>
 
-					<Route exact path='/getEvent' element={<GetEvent />}></Route>
+					<Route exact path='/getEvent' element={<GetEvent />}/>
 
-					<Route exact path='/updateEvent/:id' element={<UpdateEvent />}></Route>
+					<Route exact path='/updateEvent/:id' element={<UpdateEvent />}/>
 
-					<Route path="/signup" element={<SignupCoach />}></Route>
+					<Route path="/signup" element={<SignupCoach />}/>
 
-					<Route path="/allSession" element={<Sessions />}></Route>
+					<Route path="/allSession" element={<Sessions />}/>
 
-  					<Route exact path='/updatePlayerCoach/:id' element={<UpdatePlayer />}></Route>
+  					<Route exact path='/updatePlayerCoach/:id' element={<UpdatePlayer />}/>
 
-				  	<Route exact path='/sessionList' element={<GetSeance />}></Route>
+				  	<Route exact path='/sessionList' element={<GetSeance />}/>
 					
-					<Route exact path='/oneSession/:id' element={<GetOneSeance />}></Route>
-					<Route exact path='/Profile/:id' element={<GetProfile />}></Route>
-					<Route exact path='/CoachViewPlayer/:id' element={<CoachViewPlayer />}></Route>
+					<Route exact path='/oneSession/:id' element={<GetOneSeance />}/>
+					<Route exact path='/Profile/:id' element={<GetProfile />}/>
+					<Route exact path='/CoachViewPlayer/:id' element={<CoachViewPlayer />}/>
 
-					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}></Route>
+					<Route exact path='/updateProfile/:id' element={<UpdateProfile />}/>
 
-					<Route exact path='/invitePlayer' element={<EmailSend />}></Route>
+					<Route exact path='/invitePlayer' element={<EmailSend />}/>
 
-            <Route exact path='/login' element={<Login />}></Route>
-					<Route exact path='/firstLogin/:id' element={<FirstLogin />}></Route>
-          			<Route path="/challengeList" element={<GetChallenges />}></Route>
+                    <Route exact path='/login' element={<Login />}/>
+					<Route exact path='/firstLogin/:id' element={<FirstLogin />}/>
+          			<Route path="/challengeList" element={<GetChallenges />}/>
             		<Route path="/places" element={<GetPlaces />}></Route>
-					<Route path="/updatePlace/:id" element={<UpdatePlace />}></Route>
-					<Route path="/place/:id" element={<GetOnePlace />}></Route>
-					<Route path="/addPlace/" element={<AddPlace />}></Route>
+					<Route path="/updatePlace/:id" element={<UpdatePlace />}/>
+					<Route path="/place/:id" element={<GetOnePlace />}/>
+					<Route path="/addPlace/" element={<AddPlace />}/>
 
             </Routes>
         </div>

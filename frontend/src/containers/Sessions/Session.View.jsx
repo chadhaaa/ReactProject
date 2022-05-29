@@ -18,7 +18,7 @@ export default function SessionView (){
         }
     },[]);
     const toUl = (obj)=>{
-        return Object.keys(obj).filter(key=>key!='_id').map(key=><li key={key}>{key} : {obj[key]}</li>);
+        return obj ? Object.keys(obj).filter(key=>key!='_id').map(key=><li key={key}>{key} : {obj[key]}</li>) : null;
     };
 
     return (

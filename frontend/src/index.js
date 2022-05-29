@@ -4,7 +4,8 @@ import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'antd/dist/antd.less';
+//import 'antd/dist/antd.less';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 import {Elements} from '@stripe/react-stripe-js';

@@ -46,6 +46,7 @@ const UpdateCompetence = () => {
 	}, [])
 
 	return (
+		<div className='crudstat'>
 		<div class='form' encType='multipart/form-data'>
 			<div class='title'>Update Competence</div>
 			<div class='input-container ic1'>
@@ -116,6 +117,7 @@ const UpdateCompetence = () => {
 			<button type='text' class='submit' onClick={() => history('/competence')}>
 				BACK
 			</button>
+		</div>
 		</div>
 	)
 }

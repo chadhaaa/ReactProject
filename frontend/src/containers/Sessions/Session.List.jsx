@@ -9,15 +9,16 @@ export default function SessionList({ sessions }) {
 			<table className='text-sm text-left text-gray-500 dark:text-gray-400 mx-5'>
 				<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 '>
 					<tr className=''>
-						{ sessions?.length === 0 ? (
-							<th>no data</th>
-						) : (
-							Object.keys(sessions[0]).map((key) => (
-								<th className='px-6 py-3' key={key}>
-									{key}
-								</th>
-							))
-						)}
+						<th>session id</th>
+						<th>day</th>
+						<th>hour</th>
+						<th>canceleation</th>
+						<th>reason</th>
+						<th>feedback</th>
+						<th>Coach</th>
+						<th>Player</th>
+						<th>Place</th>
+						<th>Program</th>
 						<th>
                             VIEW
                         </th>
@@ -45,6 +46,7 @@ export default function SessionList({ sessions }) {
                                 <td>{session.idPlayer}</td>
                                 <td>{session.idPlace}</td>
                                 <td>{session.programId}</td>
+
 									<td className='px-6 py-4 text-right'>
 										<Link
 											to={`/session/${session._id}`}
