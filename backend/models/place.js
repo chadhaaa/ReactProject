@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+	const mongoose = require('mongoose')
 
 const placeSchema = mongoose.Schema({
 	Name: { type: String, required: false },

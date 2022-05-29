@@ -90,6 +90,7 @@ const AddStatistic = () => {
 	}, [])
 
 	return (
+		<div className="crudstat">
 		<div class='form'>
 			<div class='title'>Add Statistic</div>
 			<div class='input-container ic1'>
@@ -176,6 +177,7 @@ const AddStatistic = () => {
 			<button type='text' class='submit' onClick={() => history('/getStat')}>
 				BACK
 			</button>
+		</div>
 		</div>
 	)
 }

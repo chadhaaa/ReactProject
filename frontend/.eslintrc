@@ -8,8 +8,7 @@
     },
     "extends": [ "eslint-config-prettier"],
     "rules": {
-        "no-undef" : "warn",
-        "quotes" : ["warn", "single"]
+        "no-undef" : "warn"
     }, 
 
         "env": {

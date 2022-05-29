@@ -16,6 +16,9 @@ const UpdateCoach = async (req, res) => {
             birthDate: req.body.birthDate,
             photo: req.body.photo,
             sex: req.body.sex,
+            new: req.body.new,
+            alerts: req.body.alerts,
+            discipline: req.body.discipline,
 		},
 		{ new: true }
 	)
@@ -25,6 +28,7 @@ const UpdateCoach = async (req, res) => {
 		return res.status(404).send({ Message: 'ERROR ! ' })
 	}
 	res.json(coach)
+	console.log(coach)
 }
 
 
