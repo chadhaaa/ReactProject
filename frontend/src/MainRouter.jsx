@@ -12,9 +12,10 @@ import Invitation from './containers/invitation';
 //routes from app
 import UpdatePlayer from './pages/updatePlayer/updatePlayer';
 import Sessions from './pages/allSession/allSession';
-import AddEvent from './pages/CRUD_defi/addEvent';
-import GetEvent from './pages/CRUD_defi/getEvent';
-import UpdateEvent from './pages/CRUD_defi/updateEvent';
+import AssignChallengePlayer from './components/assignChallengePlayer';
+import AddEvent from './pages/CRUD_event/addEvent';
+import GetEvent from './pages/CRUD_event/getEvent';
+import UpdateEvent from './pages/CRUD_event/updateEvent';
 import AddCompetence from './pages/crudCompetence/addComp';
 import GetCompetences from './pages/crudCompetence/getComp';
 import UpdateCompetence from './pages/crudCompetence/updateComp';
@@ -104,7 +105,7 @@ export function MainRouter(){
 
 					<Route exact path='/alert' element={<GetAlerts />}/>
 
-					{/*<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}/>*/}
+					<Route path="/assignChallengePlayer" element={<AssignChallengePlayer />}/>
 
 					<Route exact path='/addEvent' element={<AddEvent />}/>
 
