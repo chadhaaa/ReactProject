@@ -12,7 +12,7 @@ import Invitation from './containers/invitation';
 //routes from app
 import UpdatePlayer from './pages/updatePlayer/updatePlayer';
 import Sessions from './pages/allSession/allSession';
-import AssignChallengePlayer from './components/assignChallengePlayer';
+import AssignChallengePlayer from './Components/assignChallengePlayer';
 import AddEvent from './pages/CRUD_defi/addEvent';
 import GetEvent from './pages/CRUD_defi/getEvent';
 import UpdateEvent from './pages/CRUD_defi/updateEvent';
