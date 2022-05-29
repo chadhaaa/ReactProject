@@ -9,7 +9,10 @@ const AddNewCoach = async (req, res) => {
         birthDate: req.body.birthDate,
 	})
 	newCoach = await newCoach.save()
-	if (!newCoach) {
+	if (!newCoach || newCoach.firstname =='' || newCoach.lastname =='' || newCoach.birthDate =='' 
+	|| !newCoach.firstname || !newCoach.lastname || !newCoach.birthDate
+	|| newCoach.new != true || newCoach.alerts.length != 0  || newCoach.discipline != ''
+	) {
 		return res.status(404).send({ Message: 'Error : Enable to signup a new coach' })
 	}
 	res.send(newCoach)

@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const {
-	assignChallengePlayer
+	UpdateChallenge
 } = require('../controllers/challenge.controller')
 
 
-router.put('/assignChallengePlayer/:id', assignChallengePlayer)
+router.put('/assignChallengePlayer/:id', UpdateChallenge)
 
 module.exports = router

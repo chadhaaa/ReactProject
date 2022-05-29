@@ -24,7 +24,9 @@ const UpdateCoach = async (req, res) => {
 	)
 
 
-	if (!coach) {
+	if (!coach || coach.new != false|| coach.discipline == ''|| coach.sex == ''|| coach.birthDate == ''
+	|| coach.photo == ''|| coach.password == ''|| coach.lastname == ''|| coach.firstname == ''
+	) {
 		return res.status(404).send({ Message: 'ERROR ! ' })
 	}
 	res.json(coach)

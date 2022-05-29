@@ -1,0 +1,9 @@
+PUT http://localhost:8000/api/assignChallengePlayer/6252d30f1b3e5d84beafd947
+Content-Type: application/json 
+
+{
+    
+"idPlayers" : "62487882a4ef81986e1a8ad0"
+
+}
+

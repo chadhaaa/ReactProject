@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Challenge = require('../models/challenge')
+const { set } = require('../server')
 
 
 const FindOneChllg = async (req, res) => {
@@ -38,40 +39,24 @@ const UpdateChallenge = async (req, res) => {
 		res.status(400).send({ Message: 'Error: Competence ID invalid !' })
 	}
 	const challenge = await Challenge.findOneAndUpdate(
-		{ _id: req.params.id },
+		{ _id: req.params.id
+		 },
 		{
 
             link: req.body.link,
             goal: req.body.hour,
             done: req.body.done,
-            idPlayers:  req.body.idPlayers,
+            $push: { idPlayers: req.body.idPlayers },
 
 		},
 		{ new: true }
 	)
-	if (!challenge) {
+	if (!challenge || req.body.done !=true) {
 		return res.status(404).send({ Message: 'ERROR ! ' })
 	}
 	res.json(challenge)
 }
 
-const assignChallengePlayer = async (req, res) => {
-	if (!mongoose.isValidObjectId(req.params.id)) {
-		res.status(400).send({ Message: 'Error : Invalid Challenge Id' })
-	}
-	let chllg = new chllg;
-	chllg = await chllg.findByIdAndUpdate(req.params.id,
-		{
-			
-			idPlayers: idPlayers.push(req.body.idPlayers)
-		},
-		{ new: true }
-	)
-	if (!chllg) {
-		return res.status(404).send({ Message: 'Error : Enable to update the Challenge' })
-	}
-	res.send(chllg)
-}
 
 const DeleteChllg = (req, res) => {
 	chllg.findByIdAndRemove(req.params.id)
@@ -99,6 +84,5 @@ module.exports = {
 	FindAllChllg,
 	AddNewChllg,
 	UpdateChallenge,
-	DeleteChllg,
-  assignChallengePlayer
+	DeleteChllg
 }

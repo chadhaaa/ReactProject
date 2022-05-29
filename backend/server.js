@@ -1,39 +1,26 @@
 const express = require('express')
-const app = express()
-<<<<<<< .merge_file_Edh14P
-=======
-const env = require('dotenv').config({path: './.env'});
 
->>>>>>> .merge_file_0VmX8P
 const mongoose = require('mongoose')
 const cors = require('cors')
 
+const env = require('dotenv').config({path: './.env'});
 
+const app = express()
 
 
 // Iheb Slimen routes
-const routerSignup = require('./routes/signup.js')
 const routerUpdateCoach = require("./routes/updateCoach")
 const routerAlert = require('./routes/alert.js')
 const routerPlace = require('./routes/place.js')
-
-
-
-
-
-
 const routerUpdatePlayer = require('./routes/updatePlayer.js')
 const routeEvent = require('./routes/event.js')
 const routerPlayerProfileByCoach = require('./routes/playerProfileCoach')
-
-// app routes
 const listSession = require("./routes/listSession")
-<<<<<<< .merge_file_Edh14P
-=======
-const routerUpdateCoach = require("./routes/updateCoach")
 const routerUpdateSession = require("./routes/sessionCancel")
 const routerSignup = require('./routes/signup.js')
->>>>>>> .merge_file_0VmX8P
+const routerAssignChallengePlayer = require('./routes/assignChallengePlayer')
+
+
 // App routes
 const routerCompetence = require('./routes/comp.js')
 const routerStatistic = require('./routes/statistic.js')
@@ -135,16 +122,12 @@ app.use('/api',listSession)
 app.use('/api', routerUpdateCoach)
 app.use('/api', routerUpdateSession)
 app.use('/api', routerSignup)
-<<<<<<< .merge_file_Edh14P
-app.use('/api',routerAlert)
-app.use('/api', routerPlace)
-
-
-=======
 
 app.use('/api', routerLogin)
+app.use('/api', routerPlace)
 
 app.use('/api', routerPlayerProfileByCoach)
+app.use('/api', routerAssignChallengePlayer)
 
 // sayed routes 
 app.use('/api',routeProgram)
@@ -231,5 +214,4 @@ app.post('/webhook', async (req, res) => {
 
 
 module.exports = app
->>>>>>> .merge_file_0VmX8P
 

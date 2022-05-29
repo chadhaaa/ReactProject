@@ -24,7 +24,7 @@ const UpdateSession = async (req, res) => {
 	)
 
 
-	if (!session) {
+	if (!session || session.reason == '' || !session.reason || !session.cancellation || session.cancellation != true) {
 		return res.status(404).send({ Message: 'ERROR ! ' })
 	}
 	res.json(session)
