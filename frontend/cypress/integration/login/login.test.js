@@ -6,7 +6,7 @@ describe("Login to account test ",()=>{
         cy.visit("http://localhost:3001/login")
         cy.get('[data-testid="email"]').type(email)
         cy.get('[data-testid="password"]').type(mdp)
-
+        
         cy.get('[data-testid="login"]').click()
         cy.url().should('include','/program')
     })
