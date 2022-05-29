@@ -1,18 +1,17 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+	return false
+})
 describe('add event works ', () => {
 	it('add a event ', () => {
-		const title = 'ranning event'
-		const messageFinale = `New program "${title}" is created `
-		cy.visit('http://localhost:3001/program')
-		cy.get('[data-testid="add-program"]').click()
-		cy.get('[data-testid="title"]').type(title)
-		cy.get('[data-testid="link"]').type('http://localhost:3000/programs/progamTennis.pdf')
-		cy
-			.get('[data-testid="description"]')
-			.type('ce programme est dediée pour les personnes avancée dans le tennis')
-		cy
-			.get('[data-testid="picture"]')
-			.type('http://localhost:3000/images/programTennis.jpg')
-		cy.get('[data-testid="add-program"]').click()
-		cy.contains(messageFinale)
+		cy.visit('http://localhost:3000/addEvent')
+		cy.get('[data-testid="title"]').type('boxe')
+		cy.get('[data-testid="description"]').type('round 1')
+		cy.get('[data-testid="dateDebut"]').type('2022-05-19T00:05:43.000+00:00')
+		cy.get('[data-testid="dateFin"]').type('2022-05-19T00:05:43.000+00:00')
+		cy.get('[data-testid="hour"]').type('12:00pm')
+		cy.get('[data-testid="place"]').type('salle le bardo')
+		cy.get('[data-testid="visibility"]').type('true')
+		cy.get('[data-testid="add-event"]').click()
+		cy.visit('http://localhost:3000/event')
 	})
 })
