@@ -20,6 +20,9 @@ const UpdatePlayer = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [active, setActive] = useState(false)
+	const  [loading,setLoading] = useState(true)
+	const  [loading2,setLoading2] = useState(true)
+	const  [loading3,setLoading3] = useState(true)
 
 	// Operations on Competences
 	const [comp, setComp] = useState([])
@@ -58,38 +61,57 @@ const UpdatePlayer = () => {
 
 	// Getting All Competences
 	useEffect(() => {
-		axios.get('http://localhost:8000/api/competences').then((response) => {
-			setEveryComp(response.data)
-			console.log('test', response.data)
-		})
-	}, [])
+		if(loading2){
+			axios.get('http://localhost:8000/api/competences').then((response) => {
+				setEveryComp(response.data)
+				console.log('test', response.data)
+				setLoading2(false)
+
+			})
+		}
+		
+	}, [loading2])
 
 	// Getting All Statistics
 	useEffect(() => {
-		axios.get(`http://localhost:8000/api/statistics/${id}`).then((response) => {
-			setEveryStat(response.data)
-		})
-	}, [])
+		if(loading3){
+			axios.get(`http://localhost:8000/api/statistics/${id}`).then((response) => {
+				setEveryStat(response.data)
+				setLoading3(false)
+			})
+		}
+		
+	}, [loading3])
 
 	// Setting New Changes
 	useEffect(() => {
-		axios.get(`http://localhost:8000/api/playerUpdate/${id}`).then((res) => {
-			setSessionPrice(res.data.player.sessionPrice)
-			setSessionNumbers(res.data.player.sessionNumbers)
-			setFirstname(res.data.player.firstname)
-			setLastname(res.data.player.lastname)
-			setTel(res.data.player.tel)
-			setHeight(res.data.player.height)
-			setWeight(res.data.player.weight)
-			setCountry(res.data.player.country)
-			setScholar(res.data.player.scholar)
-			setEmail(res.data.player.email)
-			setPassword(res.data.player.password)
-			setActive(res.data.player.active)
-			setComp(res.data.comp)
-			setStats(res.data.stats)
-		})
-	}, [])
+		if(loading){
+			axios.get(`http://localhost:8000/api/viewProfile/${id}`).then((res) => {
+				console.log({response : {...res}})
+				setSessionPrice(res.data.player.sessionPrice)
+				setSessionNumbers(res.data.player.sessionNumbers)
+				setFirstname(res.data.player.firstname)
+				setLastname(res.data.player.lastname)
+				setTel(res.data.player.tel)
+				setHeight(res.data.player.height)
+				setWeight(res.data.player.weight)
+				setCountry(res.data.player.country)
+				setScholar(res.data.player.scholar)
+				setEmail(res.data.player.email)
+				setPassword(res.data.player.password)
+				setActive(res.data.player.active)
+				setComp(res.data.comp)
+				setStats(res.data.stats)
+				setLoading(false)
+
+			}).catch(err=>{
+				console.log(err)
+				setLoading(false)
+
+			})
+		}
+		
+	}, [loading])
 
 	// Toggle Activity By Coach To Mark Player As Active Or Not
 	const changeActivityPlayer = () => {
@@ -329,7 +351,7 @@ const UpdatePlayer = () => {
 						</td>
 						<td>
 							<h3>Choose Statistics</h3>
-							{statistic.map((item, index) => (
+							{statistic.length ==0  ?'no stats ':  statistic.map((item, index) => (
 								<div key={index}>
 									<input
 										value={item.id}
@@ -339,7 +361,7 @@ const UpdatePlayer = () => {
 										onChange={chooseStat}
 									/>
 									<label class='labelStatComp' for='Choose New Statistic'>
-										{item.type}
+										{item.type[0] && item.type[0].value}
 									</label>
 								</div>
 							))}

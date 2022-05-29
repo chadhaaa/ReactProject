@@ -23,7 +23,7 @@ const AssignChallengePlayer = () => {
 		history('/');
 	};
 	return (
-		<Link to={'/assignChallengePlayer'}  element={ <AssignChallengePlayer />}> 
+		<Link to={'/assignChallengePlayer'}  > 
 
 		<div>
 			<div className='form-div'>
