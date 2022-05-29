@@ -5,6 +5,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 const email = 'tennis@coach.com'
 const mdp = '12345678'
+
 describe('Login to account test ', () => {
 	it('should login ', () => {
 		cy.visit('http://localhost:3001/login')
