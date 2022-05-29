@@ -361,7 +361,7 @@ const UpdatePlayer = () => {
 										onChange={chooseStat}
 									/>
 									<label class='labelStatComp' for='Choose New Statistic'>
-										{item.type[0].value}
+										{item.type[0] && item.type[0].value}
 									</label>
 								</div>
 							))}

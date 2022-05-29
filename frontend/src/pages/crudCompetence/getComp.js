@@ -9,10 +9,9 @@ const GetCompetences = () => {
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-
-		if(isLoading){
+		if (isLoading) {
 			getComps()
-			setIsLoading(false);
+			setIsLoading(false)
 		}
 	}, [isLoading])
 
@@ -23,19 +22,26 @@ const GetCompetences = () => {
 	return (
 		<div className='App'>
 			<h1>Liste des competences </h1>
-			<button onClick={() => history('/addCompetence')}> Add New Competence </button>
-			{ isLoading ? <p>Loading...</p> : comp.map(function (comps) {
-				return (
-					<Competence
-						id={comps._id}
-						key={comps._id}
-						name={comps.name}
-						description={comps.description}
-						visibility={String(comps.visibility)}
-						link={comps.link}
-					/>
-				)
-			})}
+			<button onClick={() => history('/addCompetence')} data-testid='Add-New'>
+				{' '}
+				Add New Competence{' '}
+			</button>
+			{isLoading ? (
+				<p>Loading...</p>
+			) : (
+				comp.map(function (comps) {
+					return (
+						<Competence
+							id={comps._id}
+							key={comps._id}
+							name={comps.name}
+							description={comps.description}
+							visibility={String(comps.visibility)}
+							link={comps.link}
+						/>
+					)
+				})
+			)}
 		</div>
 	)
 }

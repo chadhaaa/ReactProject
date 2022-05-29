@@ -10,7 +10,7 @@ const GetOneSeance = () => {
 	const [programs, setProgram] = useState([])
 	const [stat, setStat] = useState([])
 	const [comp, setComp] = useState([])
-	const [loading,setLoading] = useState(true) 
+	const [loading, setLoading] = useState(true)
 	const { id } = useParams()
 	const history = useNavigate()
 
@@ -25,14 +25,13 @@ const GetOneSeance = () => {
 		})
 	}
 
-
 	useEffect(() => {
-		if(loading ){
+		if (loading) {
 			getSession()
 			setLoading(false)
 		}
 	}, [loading])
-	if(loading){
+	if (loading) {
 		return <h1>loading ...</h1>
 	}
 	return (
