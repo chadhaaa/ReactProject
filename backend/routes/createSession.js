@@ -4,8 +4,8 @@ const {
 	
 	AddNewSession,
 	
-} = require('../controllers/session.controller')
+} = require('../controllers/Createsession.controller')
 
-router.post('/newSession', AddNewSession)
+router.post('/newSession/:id', AddNewSession)
 
 module.exports = router

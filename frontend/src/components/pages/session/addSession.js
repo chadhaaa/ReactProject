@@ -7,14 +7,14 @@ const AddSession = () => {
 	day:'',
 	hour:'',
 	idPlayer:'',
-	idCoach:'',
-	idPlace:'',
-	programId:'',
+	cancellation:'',
+	reason:'',
+	feedback:'',
 	
 	})
 
 	const history = useNavigate()
-	const { day,hour,idPlayer,idCoach,idPlace,programId} = sess
+	const { day,hour,cancellation,reason,feedback} = sess
 	const handleChange = (namee) => (event) => {
 		addSession({ ...sess, [namee]: event.target.value })
 	}
@@ -26,12 +26,12 @@ const AddSession = () => {
 			day,
 			hour,
 			idPlayer,
-			idCoach,
-			idPlace,
-			programId,
-			
+			cancellation,
+			reason,
+			feedback,
+					
 		}
-		await axios.post('/api//newSession', dataToAdd)
+		await axios.post('/api/newSession', dataToAdd)
 		history('/addSession')
 	}
 	return (
@@ -43,7 +43,7 @@ const AddSession = () => {
 					<input
 						type='date'
 						placeholder="jour"
-						value={jour}
+						value={day}
 						onChange={handleChange('day')}
 					/>
 				</label>
@@ -110,7 +110,39 @@ const AddSession = () => {
 				<br />
 				<br />
 
-				
+				<label>
+					cancellation :
+					<input
+						type='text'
+						placeholder=" annulation"
+						value={cancellation}
+						onChange={handleChange('cancellation')}
+					/>
+				</label>
+				<br />
+				<br />
+				<label>
+					cause de l'annulation:
+					<input
+						type='text'
+						placeholder=" annulation"
+						value={reason}
+						onChange={handleChange('reason')}
+					/>
+				</label>
+				<br />
+				<br />
+				<label>
+					feedback:
+					<input
+						type='text'
+						placeholder=" feedback"
+						value={feedback}
+						onChange={handleChange('feedback')}
+					/>
+				</label>
+				<br />
+				<br />
 				<button type='submit' onClick={handleSubmit}>
 					{' '}
 					Add event{' '}
