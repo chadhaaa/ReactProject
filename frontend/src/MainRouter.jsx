@@ -12,7 +12,7 @@ import Invitation from './containers/invitation';
 //routes from app
 import UpdatePlayer from './pages/updatePlayer/updatePlayer';
 import Sessions from './pages/allSession/allSession';
-import AssignChallengePlayer from './components/assignChallengePlayer';
+import AssignChallengePlayer from './Components/assignChallengePlayer';
 import AddEvent from './pages/CRUD_event/addEvent';
 import GetEvent from './pages/CRUD_event/getEvent';
 import UpdateEvent from './pages/CRUD_event/updateEvent';
@@ -35,14 +35,22 @@ import GetOneSeance from './pages/sessionDetails/getOneSession';
 import GetProfile from './pages/profilePlayer/getProfile';
 import UpdateProfile from './pages/profilePlayer/updateProfile';
 import EmailSend from './pages/emailSend/EmailSend';
-import GetChallenges from './pages/challengeDone/challengeDone';
+// import GetChallenges from './pages/challengeDone/challengeDone';
 import GetPlaces from './pages/crudPlace/getPlaces';
 import UpdatePlace from './pages/crudPlace/updatePlace';
 import GetOnePlace from './pages/crudPlace/getOnePlace';
 import AddPlace from './pages/crudPlace/addPlace';
 import CoachViewPlayer from './pages/CoachViewPlayer/CoachViewPlayer';
 
+
 import { rootContext } from './contexts/rootContext';
+import GetEvents from './pages/CRUD_event/getEvent';
+import GetOneEvent from './pages/CRUD_event/getOneEvent';
+import UpdateChallenge from './pages/CRUD_defi/updateChallenge'
+import AddChallenge from './pages/CRUD_defi/addChallenge'
+import GetOneChallenge from './pages/CRUD_defi/getOneDefi'
+import GetChallenges from './pages/CRUD_defi/getChallenge';
+
 
 
 export function MainRouter(){
@@ -136,6 +144,14 @@ export function MainRouter(){
 					<Route path="/updatePlace/:id" element={<UpdatePlace />}/>
 					<Route path="/place/:id" element={<GetOnePlace />}/>
 					<Route path="/addPlace/" element={<AddPlace />}/>
+                    <Route path='/updateEvent/' element={<UpdateEvent />}></Route>
+				<Route path='/addEvent/' element={<AddEvent />}></Route>
+				<Route path='/getEvent/:id' element={<GetOneEvent />}></Route>
+				<Route path='/events' element={<GetEvents />}></Route>
+                <Route path='/updateChallenge' element={<UpdateChallenge />}></Route>
+				<Route path='/addChallenge' element={<AddChallenge />}></Route>
+				<Route path='/challenges' element={<GetChallenges />}></Route>
+				<Route path='/challengeDetails' element={<GetOneChallenge />}></Route>
 
             </Routes>
         </div>

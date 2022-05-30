@@ -2,16 +2,16 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-
 const GetOneEvent = () => {
 	const [oneEvent, setoneEvent] = useState([])
+	const [isLoading, setIsLoading] = useState(true)
 	const { id } = useParams()
 	const history = useNavigate()
 
 	useEffect(() => {
-		if(isLoading){
-            getoneEvent()
-			setIsLoading(false);
+		if (isLoading) {
+			getoneEvent()
+			setIsLoading(false)
 		}
 	}, [isLoading])
 	const getoneEvent = async () => {
@@ -30,16 +30,16 @@ const GetOneEvent = () => {
 					<br />
 					<li>Date début : {oneEvent.dateDebut}</li>
 					<br />
-                    <li>Date fin : {oneEvent.dateFin}</li>
+					<li>Date fin : {oneEvent.dateFin}</li>
 					<br />
-                    <li>Heur : {oneEvent.hour}</li>
+					<li>Heur : {oneEvent.hour}</li>
 					<br />
-                    <li>Emplacement : {oneEvent.place}</li>
+					<li>Emplacement : {oneEvent.place}</li>
 					<br />
 					<li>Visibility : {String(oneEvent.visibility)}</li>
 					<br />
 				</ul>
-				<button onClick={() => history('/event')}> BACK </button>
+				<button onClick={() => history('/events')}> BACK </button>
 			</div>
 		</section>
 	)

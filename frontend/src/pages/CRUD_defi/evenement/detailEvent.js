@@ -1,12 +1,11 @@
 import { useNavigate, Link } from 'react-router-dom'
-import './allSessions.css'
 
-export default function event({
+export default function Event({
 	titre,
 	description,
 	dateDebut,
-    dateFin,
-    hour,
+	dateFin,
+	hour,
 	place,
 	visibility,
 	idCoach,
@@ -17,7 +16,7 @@ export default function event({
 	function renderActions() {
 		return (
 			<div className='actions'>
-				<button onClick={() => history(`/oneEvent/${id}`)}>VIEW MORE</button>
+				<button onClick={() => history(`/eventDetails/${id}`)}>VIEW MORE</button>
 			</div>
 		)
 	}
@@ -28,10 +27,10 @@ export default function event({
 				<th scope='col'>Titre</th>
 				<th scope='col'>Description</th>
 				<th scope='col'>Date Debut</th>
-                <th scope='col'>Date fin</th>
-                <th scope='col'>Heur</th>
-                <th scope='col'>place</th>
-             
+				<th scope='col'>Date fin</th>
+				<th scope='col'>Heur</th>
+				<th scope='col'>place</th>
+
 				<th scope='col'>Action</th>
 			</tr>
 
@@ -40,10 +39,10 @@ export default function event({
 					<td data-label='titre'>{titre}</td>
 					<td data-label='description'>{description}</td>
 					<td data-label='date Debut'>{dateDebut}</td>
-                    <td data-label='date Fin'>{dateFin}</td>
-                    <td data-label='heur'>{hour}</td>
-                    <td data-label='Emplacement'>{place}</td>
-               
+					<td data-label='date Fin'>{dateFin}</td>
+					<td data-label='heur'>{hour}</td>
+					<td data-label='Emplacement'>{place}</td>
+
 					<td data-label='Action'>{renderActions()}</td>
 				</tr>
 			</tbody>

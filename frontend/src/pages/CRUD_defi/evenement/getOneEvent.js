@@ -10,9 +10,8 @@ const GetOneEvent = () => {
 	const history = useNavigate()
 
 	const getEvent = async () => {
-		await axios.get(`http://localhost:8000/api/eventDetails/${id}`).then((response) => {
+		await axios.get(`http://localhost:8000/api/event/${id}`).then((response) => {
 			setEvent(response.data.event)
-		
 		})
 	}
 	useEffect(() => {
@@ -23,14 +22,14 @@ const GetOneEvent = () => {
 		<div>
 			<table>
 				<OneEvent
-					id={Event._id}
+					id={event._id}
 					title={event.title}
 					description={event.description}
 					dateDebut={event.dateDebut}
-                    dateFin={event.dateFin}
+					dateFin={event.dateFin}
 					cancellation={event.cancellation}
 					hour={event.hour}
-                    place={event.place}
+					place={event.place}
 				/>
 			</table>
 			<br />

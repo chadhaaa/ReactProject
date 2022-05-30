@@ -2,16 +2,16 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-
 const GetOneChallenge = () => {
 	const [oneChllg, setoneChllg] = useState([])
+	const [isLoading, setIsLoading] = useState(true)
 	const { id } = useParams()
 	const history = useNavigate()
 
 	useEffect(() => {
-		if(isLoading){
-            getoneChllg()
-			setIsLoading(false);
+		if (isLoading) {
+			getoneChllg()
+			setIsLoading(false)
 		}
 	}, [isLoading])
 	const getoneChllg = async () => {

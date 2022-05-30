@@ -9,24 +9,25 @@ const AddEvent = () => {
 	const [dateDebut, setDateDebut] = useState('')
 	const [dateFin, setDateFin] = useState('')
 	const [hour, setHour] = useState('')
+	const [place, setPlace] = useState('')
 	const [visibility, setVisibility] = useState(false)
-	
+
 	const changeVisibility = () => {
 		setVisibility(!visibility)
 	}
-const assChallenge=(event)=>{
+	const assChallenge = (event) => {
 		const dataToAdd = {
-			title:title,
-			description:description,
-			dateDebut:dateDebut,
-			dateFin:dateDebut,
-			hour:hour,
-			place:place,
-			visibility:visibility,
+			title: title,
+			description: description,
+			dateDebut: dateDebut,
+			dateFin: dateDebut,
+			hour: hour,
+			place: place,
+			visibility: visibility,
 		}
 
 		axios.post('http://localhost:8000/api/event', dataToAdd)
-		history('/challenge')
+		history('/events')
 	}
 	useEffect(() => {
 		axios.get('http://localhost:8000/api/event').then((res) => {
@@ -43,15 +44,14 @@ const assChallenge=(event)=>{
 	return (
 		<>
 			<h1> Ajouter événnement </h1>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={assChallenge}>
 				<label>
 					Enter titre :
 					<input
 						type='text'
 						placeholder='titre'
 						value={title}
-						onChange={handleChange('title')}
-						data-testid='title'
+						onChange={(e) => setTitle(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -63,8 +63,7 @@ const assChallenge=(event)=>{
 						type='text'
 						placeholder=' description'
 						value={description}
-						onChange={handleChange('description')}
-						data-testid='description'
+						onChange={(e) => setDescription(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -76,8 +75,7 @@ const assChallenge=(event)=>{
 						type='text'
 						placeholder=' date début'
 						value={dateDebut}
-						onChange={handleChange('dateDebut')}
-						data-testid='dateDebut'
+						onChange={(e) => setDateDebut(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -89,8 +87,7 @@ const assChallenge=(event)=>{
 						type='text'
 						placeholder=' date Fin'
 						value={dateFin}
-						onChange={handleChange('dateFin')}
-						data-testid='dateFin'
+						onChange={(e) => setDateFin(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -102,8 +99,7 @@ const assChallenge=(event)=>{
 						type='text'
 						placeholder=' time'
 						value={hour}
-						onChange={handleChange('hour')}
-						data-testid='hour'
+						onChange={(e) => setHour(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -115,8 +111,7 @@ const assChallenge=(event)=>{
 						type='text'
 						placeholder=' emplacement'
 						value={place}
-						onChange={handleChange('place')}
-						data-testid='place'
+						onChange={(e) => setPlace(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -128,14 +123,13 @@ const assChallenge=(event)=>{
 						type='text'
 						placeholder='Enter  visibilitè'
 						value={visibility}
-						onChange={handleChange('visibility')}
-						data-testid='visibility'
+						onChange={(e) => setVisibility(e.target.value)}
 					/>
 				</label>
 				<br />
 				<br />
 
-				<button type='submit' onClick={handleSubmit} data-testid='add-event'>
+				<button type='submit' onClick={assChallenge} data-testid='add-event'>
 					{' '}
 					Add event{' '}
 				</button>

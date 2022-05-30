@@ -1,21 +1,20 @@
 import axios from 'axios'
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 
 const AddChallenge = () => {
 	const history = useNavigate()
 
 	const [link, setLink] = useState('')
 	const [goal, setGoal] = useState('')
-	
-	const addChallenge= (event)=>{
+
+	const addChallenge = async (event) => {
 		const dataToAdd = {
-			link:link,
-			goal:goal,
+			link: link,
+			goal: goal,
 		}
 		await axios.post('http://localhost:8000/api/challenge', dataToAdd)
-		history('/challenge')
+		history('/challenges')
 	}
 
 	useEffect(() => {
@@ -27,14 +26,14 @@ const AddChallenge = () => {
 	return (
 		<>
 			<h1> Ajouter défi </h1>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={addChallenge}>
 				<label>
 					Enter objectif :
 					<input
 						type='text'
 						placeholder='objectif'
 						value={goal}
-						onChange={handleChange('goal')}
+						onChange={(e) => setGoal(e.target.value)}
 						data-testid='goal'
 					/>
 				</label>
@@ -47,14 +46,14 @@ const AddChallenge = () => {
 						type='text'
 						placeholder='lien de la vidéo'
 						value={link}
-						onChange={handleChange('link')}
+						onChange={(e) => setLink(e.target.value)}
 						data-testid='link'
 					/>
 				</label>
 				<br />
 				<br />
 
-				<button type='submit' onClick={handleSubmit} data-testid='add-defi'>
+				<button type='submit' onClick={addChallenge} data-testid='add-defi'>
 					{' '}
 					Add Challenge{' '}
 				</button>
