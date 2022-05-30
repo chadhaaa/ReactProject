@@ -1,99 +1,105 @@
 import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const AddEvent = () => {
-	const [even, addEvent] = useState({	
-	title:'',
-	description:'',
-	dateDebut:'',
-	dateFin:'',
-	hour:'',
-	place:'',
-	visibility:'',
-	})
-
 	const history = useNavigate()
-	const { title,description,dateDebut,dateFin,hour,place,visibility } = even
-	const handleChange = (namee) => (event) => {
-		addEvent({ ...even, [namee]: event.target.value })
+	const [title, setTitle] = useState('')
+	const [description, setDescription] = useState('')
+	const [dateDebut, setDateDebut] = useState('')
+	const [dateFin, setDateFin] = useState('')
+	const [hour, setHour] = useState('')
+	const [place, setPlace] = useState('')
+	const [visibility, setVisibility] = useState(false)
+
+	const changeVisibility = () => {
+		setVisibility(!visibility)
 	}
-
-	const handleSubmit = async (event) => {
-		event.preventDefault()
-
+	const assChallenge = (event) => {
 		const dataToAdd = {
-			title,
-			description,
-			dateDebut,
-			dateFin,
-			hour,
-			place,
-			visibility,
-			
+			title: title,
+			description: description,
+			dateDebut: dateDebut,
+			dateFin: dateDebut,
+			hour: hour,
+			place: place,
+			visibility: visibility,
 		}
-		await axios.post('/api/event', dataToAdd)
-		history('/getEvents')
+
+		axios.post('http://localhost:8000/api/event', dataToAdd)
+		history('/events')
 	}
+	useEffect(() => {
+		axios.get('http://localhost:8000/api/event').then((res) => {
+			setTitle(res.data.events.title)
+			setDescription(res.data.events.description)
+			setDateDebut(res.data.events.dateDebut)
+			setDateFin(res.data.events.dateFin)
+			setHour(res.data.events.hour)
+			setPlace(res.data.events.place)
+			setVisibility(res.data.events.visibility)
+		})
+	}, [])
+
 	return (
 		<>
 			<h1> Ajouter événnement </h1>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={assChallenge}>
 				<label>
 					Enter titre :
 					<input
 						type='text'
-						placeholder="titre"
+						placeholder='titre'
 						value={title}
-						onChange={handleChange('title')}
+						onChange={(e) => setTitle(e.target.value)}
 					/>
 				</label>
 				<br />
 				<br />
 
 				<label>
-					Enter  description :
+					Enter description :
 					<input
 						type='text'
-						placeholder=" description"
+						placeholder=' description'
 						value={description}
-						onChange={handleChange('description')}
+						onChange={(e) => setDescription(e.target.value)}
 					/>
 				</label>
 				<br />
 				<br />
 
 				<label>
-					Enter  date début :
+					Enter date début :
 					<input
 						type='text'
-						placeholder=" date début"
+						placeholder=' date début'
 						value={dateDebut}
-						onChange={handleChange('dateDebut')}
+						onChange={(e) => setDateDebut(e.target.value)}
 					/>
 				</label>
 				<br />
 				<br />
 
 				<label>
-					Enter  date Fin :
+					Enter date Fin :
 					<input
 						type='text'
-						placeholder=" date Fin"
+						placeholder=' date Fin'
 						value={dateFin}
-						onChange={handleChange('dateFin')}
+						onChange={(e) => setDateFin(e.target.value)}
 					/>
 				</label>
 				<br />
 				<br />
 
 				<label>
-					Enter  l'heur :
+					Enter l'heur :
 					<input
 						type='text'
-						placeholder=" time"
+						placeholder=' time'
 						value={hour}
-						onChange={handleChange('hour')}
+						onChange={(e) => setHour(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -103,9 +109,9 @@ const AddEvent = () => {
 					Enter l'emplacement :
 					<input
 						type='text'
-						placeholder=" emplacement"
+						placeholder=' emplacement'
 						value={place}
-						onChange={handleChange('place')}
+						onChange={(e) => setPlace(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -115,22 +121,21 @@ const AddEvent = () => {
 					Enter player's visibility :
 					<input
 						type='text'
-						placeholder="Enter  visibilitè"
+						placeholder='Enter  visibilitè'
 						value={visibility}
-						onChange={handleChange('visibility')}
+						onChange={(e) => setVisibility(e.target.value)}
 					/>
 				</label>
 				<br />
 				<br />
 
-
-				<button type='submit' onClick={handleSubmit}>
+				<button type='submit' onClick={assChallenge} data-testid='add-event'>
 					{' '}
 					Add event{' '}
 				</button>
 			</form>
 		</>
 	)
-} 
+}
 
 export default AddEvent

@@ -3,28 +3,30 @@ import './event.css'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 
-export default function event({ 
-    title,
+export default function event({
+	title,
 	description,
 	dateDebut,
 	dateFin,
 	hour,
 	place,
 	visibility,
-    id,
+	id,
 }) {
 	const history = useNavigate()
 
 	const deleteEvent = async (event) => {
-		event.preventDefault()
+		// event.preventDefault()
 		await axios.delete(`/api/event/${id}`)
-		history('/addEvent')
+		history('/events')
+		window.location.reload(false)
 	}
 
 	function renderActions() {
 		return (
 			<div className='actions'>
 				<button onClick={() => history(`/updateEvent/${id}`)}>UPDATE</button>
+				<button onClick={() => history(`/getEvent/${id}`)}>VIEW MORE</button>
 				<button onClick={deleteEvent}> DELETE</button>
 			</div>
 		)
@@ -41,7 +43,6 @@ export default function event({
 					<li>{hour}</li>
 					<li>{place}</li>
 					<li>{visibility}</li>
-				
 				</ul>
 			</div>
 			{renderActions()}

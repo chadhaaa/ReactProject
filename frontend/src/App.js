@@ -6,7 +6,7 @@ import './App.css'
 import UpdatePlayer from './pages/updatePlayer/updatePlayer'
 import Sessions from './pages/allSession/allSession'
 import { Routes, Route } from 'react-router-dom'
-import AssignChallengePlayer from './components/assignChallengePlayer'
+import AssignChallengePlayer from './Components/assignChallengePlayer'
 import AddEvent from './pages/CRUD_event/addEvent'
 import GetEvent from './pages/CRUD_event/getEvent'
 import UpdateEvent from './pages/CRUD_event/updateEvent'
@@ -36,6 +36,13 @@ import GetOnePlace from './pages/crudPlace/getOnePlace'
 import AddPlace from './pages/crudPlace/addPlace'
 import CoachViewPlayer from './pages/CoachViewPlayer/CoachViewPlayer'
 import { rootContext } from './contexts/rootContext'
+import GetOneEvent from './pages/CRUD_event/getOneEvent'
+import GetEvents from './pages/CRUD_event/getEvent'
+import UpdateChallenge from './pages/CRUD_defi/updateChallenge'
+import AddChallenge from './pages/CRUD_defi/addChallenge'
+import GetOneChallenge from './pages/CRUD_defi/getOneDefi'
+import GetAllChallenges from './pages/CRUD_defi/getChallenge'
+import GetEventDetails from './pages/CRUD_defi/evenement/getAllEvent'
 
 function Appprojet() {
 	return (
@@ -97,6 +104,15 @@ function Appprojet() {
 				<Route path='/updatePlace/:id' element={<UpdatePlace />}></Route>
 				<Route path='/place/:id' element={<GetOnePlace />}></Route>
 				<Route path='/addPlace/' element={<AddPlace />}></Route>
+				<Route path='/updateEvent/:id' element={<UpdateEvent />}></Route>
+				<Route path='/addEvent/' element={<AddEvent />}></Route>
+				<Route path='/getEvent/:id' element={<GetOneEvent />}></Route>
+				<Route path='/events' element={<GetEvents />}></Route>
+				<Route path='/updateChallenge' element={<UpdateChallenge />}></Route>
+				<Route path='/addChallenge' element={<AddChallenge />}></Route>
+				<Route path='/challenges' element={<GetAllChallenges />}></Route>
+				<Route path='/challengeDetails' element={<GetOneChallenge />}></Route>
+				<Route path='/eventDetails' element={<GetEventDetails />}></Route>
 			</Routes>
 		</div>
 	)
