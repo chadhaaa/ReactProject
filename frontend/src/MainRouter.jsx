@@ -46,29 +46,28 @@ import { rootContext } from './contexts/rootContext';
 
 
 export function MainRouter(){
+
     const navigate = useNavigate(); 
     const location = useLocation();
+    const  [user,setUser] = useState(null);
     const [locationString,setLocationString] = useState(location.pathname);
     useEffect(()=>{
         // navigate to program when path is / 
         setLocationString(location.pathname.split('/').filter(e=>e!=='').join(' > '));
       
 	},[]);
+    useEffect(()=>{
+        if(localStorage.getItem("user")){
+            setUser(JSON.parse(localStorage.getItem('user')));
+        }else{
+            setUser(null)
+        }
+    },[user])
   
     return (
        <div className='w-[94vw] flex flex-col mx-[2vw]'>     
-        
-            <nav className='mb-10'>
-                <ul className='flex w-[400px] justify-around '>
-                    <li><Link to="/program" className='!text-[blue] !hover:text-gray-600'>Programs</Link></li>
-                    <li><Link to="/program/create" className='!text-[blue] !hover:text-gray-600'>Create Program</Link></li>
-                    <li><Link to="/pricing" className='!text-[blue] !hover:text-gray-600'>Pricing</Link></li>
-                    <li onClick={()=>{
-                        localStorage.removeItem("user");
-                        navigate("/login");
-                    }}><span className='!text-[red] !hover:text-red-600'>Logout</span></li>
-                </ul>
-            </nav>
+           <Navbar user = {user }/> 
+           
              
             <h1 className="text-3xl font-bold mb-10 to-black">{locationString}</h1>
             <Routes>
@@ -141,4 +140,22 @@ export function MainRouter(){
         </div>
     );
 
-} 
+}
+
+function Navbar ({user}){
+        const navigate = useNavigate()
+        if(!user)
+            return (<div>...</div>)
+        return  (<nav className='mb-10'>
+        <ul className='flex w-[400px] justify-around '>
+            <li><Link to="/program" className='!text-[blue] !hover:text-gray-600'>Programs</Link></li>
+            <li><Link to="/program/create" className='!text-[blue] !hover:text-gray-600'>Create Program</Link></li>
+            <li><Link to="/pricing" className='!text-[blue] !hover:text-gray-600'>Pricing</Link></li>
+            <li onClick={()=>{
+                localStorage.removeItem("user");
+                navigate("/login");
+            }}><span className='!text-[red] !hover:text-red-600'>Logout</span></li>
+        </ul>
+    </nav>
+    )
+}

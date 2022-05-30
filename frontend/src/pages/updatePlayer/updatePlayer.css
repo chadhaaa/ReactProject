@@ -40,13 +40,6 @@
 
   /* Form CSS */
 
-  body {
-    align-items: center;
-    background-color: #FFF;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-  }
   
   .form {
     background-color: #15172b;
