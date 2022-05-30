@@ -1,31 +1,52 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import ReactStars from 'react-stars'
+import './event.css'
 
 const UpdateEvent = () => {
-	
-	const { id } = useParams()
-    const [even, addEvent] = useState({
-		title:'',
-		description:'',
-		dateDebut:'',
-		dateFin:'',
-		hour:'',
-		place:'',
-		visibility:'',
-	})
 	const history = useNavigate()
-	const { title,description,dateDebut,dateFin,hour,place,visibility } = even
-	const handleChange = (namee) => (event) => {
-		addEvent({ ...even, [namee]: event.target.value })
-	}
+	const { id } = useParams()
 
-	const updateEvent = async (event) => {
-		event.preventDefault()
-
-		await axios.put(`/api/Event/${id}`,even)
-		history('/getEvent')
+	const [title, setTitle] = useState('')
+	const [description, setDescription] = useState('')
+	const [dateDebut, setDateDebut] = useState('')
+	const [dateFin, setDateFin] = useState('')
+	const [hour, setHour] = useState('')
+	const [visibility, setVisibility] = useState(false)
+	
+	const changeVisibility = () => {
+		setVisibility(!visibility)
 	}
+	
+  
+
+	const updateEvent =  (event) => {
+		const dataToUp={
+		title:title,
+		description:description,
+		dateDebut:dateDebut,
+		dateFin:dateFin,
+		hour:hour,
+		place:place,
+		visibility:visibility,
+
+		}
+
+		await axios.put(`http://localhost:8000/api/event/${id}`,dataToUp)
+		history('/event')
+	}
+	useEffect(() => {
+		axios.get(`http://localhost:8000/api/event/${id}`).then((res) => {
+			setTitle(res.data.events.title)
+			setDescription(res.data.events.description)
+			setDateDebut(res.data.events.dateDebut)
+			setDateFin(res.data.events.dateFin)
+			setHour(res.data.events.hour)
+			setPlace(res.data.events.place)
+			setVisibility(res.data.events.visibility)
+		})
+	}, [])
 	return (
 		<>
 			<h1> Ajouter événnement </h1>
@@ -118,6 +139,9 @@ const UpdateEvent = () => {
 					{' '}
 					Update event{' '}
 				</button>
+				<button type='text'  onClick={() => history('/event')}>
+				BACK
+			</button>
 			</form>
 		</>
 	)

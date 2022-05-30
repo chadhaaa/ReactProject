@@ -18,13 +18,15 @@ export default function event({
 	const deleteEvent = async (event) => {
 		event.preventDefault()
 		await axios.delete(`/api/event/${id}`)
-		history('/addEvent')
+		history('/event')
+		window.location.reload(false)
 	}
 
 	function renderActions() {
 		return (
 			<div className='actions'>
 				<button onClick={() => history(`/updateEvent/${id}`)}>UPDATE</button>
+				<button onClick={() => history(`/eventDetails/${id}`)}>VIEW MORE</button>
 				<button onClick={deleteEvent}> DELETE</button>
 			</div>
 		)

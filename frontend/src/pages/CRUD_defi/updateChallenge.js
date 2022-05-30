@@ -1,26 +1,32 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import ReactStars from 'react-stars'
+import './challenge.css'
 
 const UpdateChallenge = () => {
-	
+	const history = useNavigate()
 	const { id } = useParams()
-    const [chllg, addChllg] = useState({
-		link: '',
-		goal: '',
-	})
-    const history = useNavigate()
-	const { link, goal } = chllg
-	const handleChange = (namee) => (event) => {
-        addChllg({ ...chllg, [namee]: event.target.value })
-	}
 
-	const updateChllg = async (event) => {
-		event.preventDefault()
+	const [link, setLink] = useState('')
+	const [goal, setGoal] = useState('')
 
-		await axios.put(`/api/challenge/${id}`,chllg)
-		history('/getChllgs')
-	}
+	const updateChllg = (event) => {
+		const dataToUp={	
+			link:link,
+			goal:goal,
+		}
+			axios.post(`http://localhost:8000/api/challenge/${id}`, dataToUp)
+			history('/challenge')	
+		}
+		useEffect(() => {
+			axios.get(`http://localhost:8000/api/challenge/${id}`).then((res) => {
+				setLink(res.data.challenge.link)
+				setGoal(res.data.challenge.goal)
+		
+			})
+		}, [])
+	
 	return (
 		<>
 			<h1> mise à jours défi  </h1>
@@ -53,6 +59,11 @@ const UpdateChallenge = () => {
 					{' '}
 					Update challenge{' '}
 				</button>
+				<button 
+				type='text'
+				onClick={() => history('/challenge')}>
+				BACK
+			</button>
 			</form>
 		</>
 	)
