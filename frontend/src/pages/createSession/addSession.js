@@ -1,39 +1,38 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import Select from 'react-select'
+import './session.css'
 const AddSession = () => {
-	const [session, addSession] = useState({	
-	day:'',
-	hour:'',
-	idPlayer:'',
-	cancellation:'',
-	reason:'',
-	feedback:'',
-	
-	})
-
 	const history = useNavigate()
-	const { day,hour,cancellation,reason,feedback} = sess
-	const handleChange = (namee) => (event) => {
-		addSession({ ...sess, [namee]: event.target.value })
-	}
-
-	const handleSubmit = async (event) => {
-		event.preventDefault()
-
+	const [day, setDay] = useState('')
+	const [hour, setHour] = useState('')
+	const [cancellation, setCancellation] = useState('')
+	const [reason, setReason] = useState('')
+	const [feedback, setFeedback] = useState('')
+	
+	const addSession = async (event) => {
 		const dataToAdd = {
-			day,
-			hour,
-			idPlayer,
-			cancellation,
-			reason,
-			feedback,
+			day:day,
+			hour:hour,
+			cancellation:cancellation,
+			reason:reason,
+			feedback:feedback,
 					
 		}
-		await axios.post('/api/newSession', dataToAdd)
-		history('/addSession')
+		axios.post('http://localhost:8000/api/newSession', dataToAdd)
+		history('/getSession')
 	}
+	useEffect(() => {
+		axios.get('http://localhost:8000/api/newSession').then((res) => {
+			setDay(res.data.sessions.day)
+			setHour(res.data.sessions.hour)
+			setCancellation(res.data.sessions.cancellation)
+			setReason(res.data.sessions.reason)
+			setFeedback(res.data.sessions.feedback)
+		
+		})
+	}, [])
 	return (
 		<>
 			<h1> Ajouter Session </h1>
@@ -143,6 +142,7 @@ const AddSession = () => {
 				</label>
 				<br />
 				<br />
+				
 				<button type='submit' onClick={handleSubmit}>
 					{' '}
 					Add event{' '}
