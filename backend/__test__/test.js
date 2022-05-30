@@ -7,12 +7,10 @@ describe('Coach and Player Endpoints', () => {
 	it('GET api/sessions should show all sessions', async () => {
 		const res = await requestWithSupertest.get('/api/sessions')
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	it('GET /api/programs should show all programs', async () => {
 		const res = await requestWithSupertest.get('/api/programs')
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	it('POST /api/place should add a place  all places', async () => {
 		const place = {
@@ -22,7 +20,7 @@ describe('Coach and Player Endpoints', () => {
 			address: '1, Rue med 5 , Tunis',
 		}
 		const placeRes = await requestWithSupertest.post('/api/place').send(place)
-		console.log()
+		
 		expect(placeRes.statusCode).toEqual(201)
 		const res = await requestWithSupertest.get(`/api/place/${placeRes.body._id}`)
 		expect(placeRes.body.Name).toEqual('Tunis')
@@ -31,13 +29,11 @@ describe('Coach and Player Endpoints', () => {
 	it('GET api/competences should show all competences', async () => {
 		const res = await requestWithSupertest.get('/api/competences')
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	// test GET ALL STATISTICS chadha_hajji_crudStat.js
 	it('GET api/statistics should show all statistics', async () => {
 		const res = await requestWithSupertest.get('/api/statistics')
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	// test ADD COMPETENCE chadha_hajji_crudComp.js
 	it('POST /api/competence should add a competence', async () => {
@@ -51,7 +47,7 @@ describe('Coach and Player Endpoints', () => {
 		const competenceRes = await requestWithSupertest
 			.post('/api/competence')
 			.send(competence)
-		console.log()
+		
 		expect(competenceRes.statusCode).toEqual(200)
 		const res = await requestWithSupertest.get(`/api/competence/${competenceRes.body._id}`)
 		expect(competenceRes.body.name).toEqual('Running')
@@ -70,7 +66,7 @@ describe('Coach and Player Endpoints', () => {
 			statAlert: 'false',
 		}
 		const statisticRes = await requestWithSupertest.post('/api/statistic').send(statistic)
-		console.log()
+		
 		expect(statisticRes.statusCode).toEqual(200)
 		const res = await requestWithSupertest.get(`/api/statistic/${statisticRes.body._id}`)
 		expect(statisticRes.body.title).toEqual('Squats')
@@ -88,7 +84,7 @@ describe('Coach and Player Endpoints', () => {
 		const invitePlayerRes = await requestWithSupertest
 			.post('/api/players')
 			.send(invitePlayer)
-		console.log()
+		
 		expect(invitePlayerRes.statusCode).toEqual(200)
 		const res = await requestWithSupertest.get(`/api/players/${invitePlayerRes.body._id}`)
 		expect(invitePlayerRes.body.email).toEqual('chadha.hadji@gmail.com')
@@ -98,63 +94,60 @@ describe('Coach and Player Endpoints', () => {
 		const statisticId = '62727aa238785c8b4cd4890f'
 		const res = await requestWithSupertest.get(`/api/statistic/${statisticId}`)
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	// test GET ONE COMPETENCE chadha_hajji_crudComp.js
 	it('GET api/competence/:id should return competence by its ID', async () => {
 		const compId = '6271335ebb2a72a1f95166bf'
 		const res = await requestWithSupertest.get(`/api/competence/${compId}`)
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	// test ONE SESSION chadha_hajji_sessionDetails.js
 	it('GET api/sessionDetails/:id should return a session by its ID', async () => {
 		const sessionId = '6282bc1aa7beeceeb106a67b'
 		const res = await requestWithSupertest.get(`/api/sessionDetails/${sessionId}`)
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	// test GET PROFILE PLAYER BY ID chadha_hajji_viewProfile.js
 	it('GET api/viewProfile/:id should return player s profile by its ID', async () => {
 		const viewProfileId = '5e9f9b9f9b9f9b9f9b9f9e21'
 		const res = await requestWithSupertest.get(`/api/viewProfile/${viewProfileId}`)
 		expect(res.status).toEqual(200)
-		console.log(res.body.length)
 	})
 	// test UPDATE COMPETENCE chadha_hajji_crudComp.js
 	it('PUT /api/competence/:id should update a competence', async () => {
 		const compUpdate = '6271335ebb2a72a1f95166bf'
 		const compUpdateRes = await requestWithSupertest.put(`/api/competence/${compUpdate}`)
-		console.log()
+		console.log(res.body.length)
+		
 		expect(compUpdateRes.statusCode).toEqual(200)
 		// const res = await requestWithSupertest.get(`/api/statistic/${compUpdateRes.body._id}`)
 		// expect(compUpdateRes.body.title).toEqual('Squats')
 	})
 	// test UPDATE STATISTIC chadha_hajji_crudStat.js
-	/*it('PUT /api/statistic/:id should update a statistic', async () => {
+	/*it('PUT /api/statistic/:id should update a statistic', async  => {
 		const statisticUpdate = '62727aa238785c8b4cd4890f'
 		const statisticRes = await requestWithSupertest.put(
 			`/api/statistic/${statisticUpdate}`
 		).send({})
-		console.log()
+		
 		expect(statisticRes.statusCode).toEqual(200)
 	})*/
 	// test DELETE STATISTIC chadha_hajji_crudStat.js
-	// it('DELETE /api/statistic/:id should delete a statistic', async () => {
+	// it('DELETE /api/statistic/:id should delete a statistic', async  => {
 	// 	const statisticDelete = '6292c9794de8f1f6d76060b0'
 	// 	const statisticDeleteRes = await requestWithSupertest.delete(
 	// 		`/api/statistic/${statisticDelete}`
 	// 	)
-	// 	console.log()
+	// 	
 	// 	expect(statisticDeleteRes.statusCode).toEqual(200)
 	// })
 	// test DELETE COMPETENCE chadha_hajji_crudComp.js
-	// it('DELETE /api/competence/:id should delete a competence', async () => {
+	// it('DELETE /api/competence/:id should delete a competence', async  => {
 	// 	const competenceDelete = '623c88f9e5cec2f3a2a45d90'
 	// 	const competenceDeleteRes = await requestWithSupertest.delete(
 	// 		`/api/competence/${competenceDelete}`
 	// 	)
-	// 	console.log()
+	// 	
 	// 	expect(competenceDeleteRes.statusCode).toEqual(200)
 	// })
 
@@ -167,14 +160,14 @@ describe('Coach and Player Endpoints', () => {
 
   ///// signup tests
  
-  it('POST /api/signup should add a coach', async () => {
+  it('POST /api/signup should add a coach',async ()  => {
 	const coach = {
 	  firstname: 'test1',
 	  lastname:'test1',
 	  birthDate: '04/08/1998'
 	}
 	const signupRes = await requestWithSupertest.post('/api/signup').send(coach);
-	console.log()
+	
 	expect(signupRes.statusCode).toEqual(200);
   });
   it('POST /api/signup should not add a coach with empty properties', async () => {
@@ -184,13 +177,11 @@ describe('Coach and Player Endpoints', () => {
 	  birthDate: ''
 	}
 	const signupRes = await requestWithSupertest.post('/api/signup').send(coach);
-	console.log()
 	expect(signupRes.statusCode).toEqual(404);
   });
   it('POST /api/signup should  not add a coach with missing property', async () => {
 	const coach ={}
 	const signupRes = await requestWithSupertest.post('/api/signup').send(coach);
-	console.log()
 	expect(signupRes.statusCode).toEqual(404);
   });
   it('POST /api/signup should set new property to true', async () => {
@@ -201,7 +192,6 @@ describe('Coach and Player Endpoints', () => {
 	  new : 'false'
 	}
 	const signupRes = await requestWithSupertest.post('/api/signup').send(coach);
-	console.log(signupRes)
 	expect(signupRes.statusCode).toEqual(200);
   }); 
 
@@ -221,7 +211,6 @@ describe('Coach and Player Endpoints', () => {
 	  discipline : 'judo'
 	}
 	const res = await requestWithSupertest.put('/api/coachUpdate/6292f08e2e1fc0f5225f4856').send(coachToUpdate);
-	console.log()
 	expect(res.statusCode).toEqual(200);
   });
   it('PUT /coachUpdate/:id should update subset of this coach', async () => {
@@ -232,7 +221,6 @@ describe('Coach and Player Endpoints', () => {
 	  new : 'false',
 	}
 	const res = await requestWithSupertest.put('/api/coachUpdate/6292f08e2e1fc0f5225f4856').send(coachToUpdate);
-	console.log()
 	expect(res.statusCode).toEqual(200);
   });
 
@@ -247,7 +235,6 @@ describe('Coach and Player Endpoints', () => {
 	 
 	}
 	const res = await requestWithSupertest.put('/api/coachUpdate/6292f08e2e1fc0f5225f4856').send(coachToUpdate);
-	console.log()
 	expect(res.statusCode).toEqual(404);
   }); 
 
@@ -261,7 +248,6 @@ describe('Coach and Player Endpoints', () => {
 	 
 	}
 	const res = await requestWithSupertest.post('/api/login').send(userToLogin);
-	console.log()
 	expect(res.statusCode).toEqual(200);
   });
   it('POST /login should not login with wrong email and password', async () => {
@@ -271,7 +257,6 @@ describe('Coach and Player Endpoints', () => {
 	 
 	}
 	const res = await requestWithSupertest.post('/api/login').send(userToLogin);
-	console.log()
 	expect(res.statusCode).toEqual(404);
   });
   it('POST /login should not pass empty fields', async () => {
@@ -281,7 +266,6 @@ describe('Coach and Player Endpoints', () => {
 	 
 	}
 	const res = await requestWithSupertest.post('/api/login').send(userToLogin);
-	console.log()
 	expect(res.statusCode).toEqual(404);
   }); 
 
@@ -289,7 +273,6 @@ describe('Coach and Player Endpoints', () => {
    it('GET api/alerts should show all alerts', async () => {
 	const res = await requestWithSupertest.get('/api/alerts');
 	  expect(res.status).toEqual(200);
-	  console.log(res.body.length)
   }); 
 
   // session cancel test 
@@ -299,7 +282,7 @@ describe('Coach and Player Endpoints', () => {
 	  reason:  'bledet test',
 	}
 	const res = await requestWithSupertest.put('/api/sessionCancel/6282bc1aa7beeceeb106a67d').send(session);
-	console.log()
+	
 	expect(res.statusCode).toEqual(200);
   }); 
    it('PUT /sessionCancel/:id should not cancel this session with no reason', async () => {
@@ -308,7 +291,7 @@ describe('Coach and Player Endpoints', () => {
 	  reason:  '',
 	}
 	const res = await requestWithSupertest.put('/api/sessionCancel/62859b3ec23b70bd20795d17').send(session);
-	console.log()
+	
 	expect(res.statusCode).toEqual(404);
   });
   it('PUT /sessionCancel/:id should not reactivate a cancel session ', async () => {
@@ -317,7 +300,7 @@ describe('Coach and Player Endpoints', () => {
 	  reason:  'lkdnf',
 	}
 	const res = await requestWithSupertest.put('/api/sessionCancel/6282bc1aa7beeceeb106a67d').send(session);
-	console.log()
+	
 	expect(res.statusCode).toEqual(404);
   });
   it('PUT /sessionCancel/:id should not cancel this session', async () => {
@@ -325,7 +308,7 @@ describe('Coach and Player Endpoints', () => {
 	  
 	}
 	const res = await requestWithSupertest.put('/api/sessionCancel/62859b3ec23b70bd20795d17').send(session);
-	console.log()
+	
 	expect(res.statusCode).toEqual(404);
   }); 
 
@@ -336,7 +319,7 @@ describe('Coach and Player Endpoints', () => {
 	  
 	}
 	const res = await requestWithSupertest.put('/api/sessionFeedback/62859b3ec23b70bd20795d17').send(session);
-	console.log()
+	
 	expect(res.statusCode).toEqual(200);
   });
   it('PUT /sessionFeedback/:id should not give empty feedback to session', async () => {
@@ -345,7 +328,7 @@ describe('Coach and Player Endpoints', () => {
 	  
 	}
 	const res = await requestWithSupertest.put('/api/sessionFeedback/62859b3ec23b70bd20795d17').send(session);
-	console.log()
+	
 	expect(res.statusCode).toEqual(404);
   });
   it('PUT /sessionFeedback/:id should not accept undefined feedback', async () => {
@@ -353,7 +336,7 @@ describe('Coach and Player Endpoints', () => {
 	  
 	}
 	const res = await requestWithSupertest.put('/api/sessionFeedback/62859b3ec23b70bd20795d17').send(session);
-	console.log()
+	
 	expect(res.statusCode).toEqual(404);
   }); 
 
@@ -365,7 +348,7 @@ describe('Coach and Player Endpoints', () => {
 	  
 	}
 	const res = await requestWithSupertest.put('/api/assignChallengePlayer/6252d30f1b3e5d84beafd947').send(challenge);
-	console.log()
+	
 	expect(res.statusCode).toEqual(200);
   });
 
@@ -376,12 +359,10 @@ describe('Coach and Player Endpoints', () => {
   it('GET api/place/:id should show this existed place', async () => {
 	const res = await requestWithSupertest.get('/api/place/5e9f9b9f9b9f9b9f9b9f9ba1');
 	  expect(res.status).toEqual(200);
-	  console.log(res.body.length)
   });
   it('GET /getProfileByCoach/:id should not return anything if place id does not exist', async () => {
 	const res = await requestWithSupertest.get('/api/place/badRequest');
 	  expect(res.status).toEqual(400);
-	  console.log(res.body.length)
   }); 
 
   /////
@@ -394,7 +375,6 @@ describe('Coach and Player Endpoints', () => {
   });
   it('GET /viewProfile/:id should not return anything if place id does not exist', async () => {
 	const res = await requestWithSupertest.get('/api/getProfileByCoach/badID');
-	console.log(res.body)
 	  expect(res.status).toEqual(404);
   }); 
 
@@ -407,7 +387,7 @@ describe('Coach and Player Endpoints', () => {
 	  done: true
 	}
 	const res = await requestWithSupertest.put('/api/challenge/6252d30f1b3e5d84beafd947').send(challenge);
-	console.log()
+	
 	expect(res.statusCode).toEqual(200);
   });
   it('PUT api/challenge/:id should not set done to false', async () => {
@@ -415,7 +395,7 @@ describe('Coach and Player Endpoints', () => {
 	  done: false
 	}
 	const res = await requestWithSupertest.put('/api/challenge/6252d30f1b3e5d84beafd947').send(challenge);
-	console.log()
+	
 	expect(res.statusCode).toEqual(404);
   });
   it('PUT api/challenge/:id should not set done to empty ', async () => {
@@ -423,14 +403,13 @@ describe('Coach and Player Endpoints', () => {
 	  done: undefined
 	}
 	const res = await requestWithSupertest.put('/api/challenge/6252d30f1b3e5d84beafd947').send(challenge);
-	console.log()
+	
 	expect(res.statusCode).toEqual(404);
   });
 
   it('GET /challenges should show all challenges', async () => {
 	const res = await requestWithSupertest.get('/api/challenges');
-	console.log(res.body)
-	  expect(res.status).toEqual(200);
+	expect(res.status).toEqual(200);
   }); 
 
 })
