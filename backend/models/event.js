@@ -7,7 +7,7 @@ const eventSchema = mongoose.Schema({
 	dateFin: { type: Date, required: false },
 	hour: { type: String, required: false },
 	place: { type: String, required: false },
-	visibility: { type: String, required: false },
+	visibility: { type: Boolean, required: false },
 	idCoach: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Coach',

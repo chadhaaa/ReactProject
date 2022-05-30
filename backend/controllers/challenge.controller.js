@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Challenge = require('../models/challenge')
+const chllg = require('../models/challenge')
 
 const FindOneChllg = async (req, res) => {
 	const chllgs = await chllg.findOne({ _id: req.params.id })
@@ -10,7 +10,7 @@ const FindOneChllg = async (req, res) => {
 }
 
 const FindAllChllg = async (req, res) => {
-	const challenges = await Challenge.find()
+	const challenges = await chllg.find()
 	if (!challenges) {
 		res.status(500).json({ Message: 'Error : Enable to find challenges' })
 	}
@@ -34,7 +34,7 @@ const UpdateChallenge = async (req, res) => {
 	if (!mongoose.isValidObjectId(req.params.id)) {
 		res.status(400).send({ Message: 'Error: Competence ID invalid !' })
 	}
-	const challenge = await Challenge.findOneAndUpdate(
+	const challenge = await chllg.findOneAndUpdate(
 		{ _id: req.params.id },
 		{
 			link: req.body.link,
