@@ -27,6 +27,114 @@ describe('Coach and Player Endpoints', () => {
 		const res = await requestWithSupertest.get(`/api/place/${placeRes.body._id}`)
 		expect(placeRes.body.Name).toEqual('Tunis')
 	})
+	  
+  	//test get all challenges youssef_CrudChallenge.test.js
+	  it('GET api/challenges should show all challenges', async () => {
+		const res = await requestWithSupertest.get('/api/challenges')
+		expect(res.status).toEqual(200)
+		console.log(res.body.length)
+	})
+	//test get one challenge youssef_CrudChallenge.test.js
+	it('GET api/challenge/:id should return challenge by ID', async () => {
+		const chllgId = '6292ac340749749d7633a7f0'
+		const res = await requestWithSupertest.get(`/api/challenge/${chllgId}`)
+		expect(res.status).toEqual(200)
+		console.log(res.body.length)
+	})
+	//test update one challenge youssef_CrudChallenge.test.js
+	it('PUT api/challenge/:id should update challenge by ID', async () => {
+		const challenge = {
+			link: 'www.challenge.com',
+			goal: 'Run 12kmm',
+			done: 'false',
+		}
+		const chllgId = '6292b192b5d605e58da8e16c'
+		const challengeRes = await requestWithSupertest
+			.put(`/api/challenge/${chllgId}`)
+			.send(challenge)
+		console.log()
+		expect(challengeRes.status).toEqual(200)
+		
+	})
+	//test delete one challenge youssef_CrudChallenge.test.js
+	it('DELETE api/challenge/:id should delete challenge by ID', async () => {
+		const chllgId = '6292b9a026612f3c32b403e5'
+		const res = await requestWithSupertest.delete(`/api/challenge/${chllgId}`)
+		expect(res.status).toEqual(200)
+		console.log(res.body.length)
+	})
+	//test post challenges youssef_CrudChallenge.test.js
+	it('POST /api/challenge should add a challenge', async () => {
+		const challenge = {
+			link: 'www.challenge.com',
+			goal: 'Run 12km',
+			done: 'true',
+		}
+		const challengeRes = await requestWithSupertest.post('/api/challenge').send(challenge)
+		console.log()
+		expect(challengeRes.statusCode).toEqual(200)
+		const res = await requestWithSupertest.get(`/api/challenge/${challengeRes.body._id}`)
+		expect(challengeRes.body.goal).toEqual('Run 12km')
+	})
+		//test get events youssef_CrudEvent.test.js
+		it('GET api/events should show all Eventes', async () => {
+			const res = await requestWithSupertest.get('/api/events')
+			expect(res.status).toEqual(200)
+			console.log(res.body.length)
+		})
+		//test get one event youssef_CrudEvent.test.js
+		it('GET api/event/:id should return event by ID', async () => {
+			const eventId = '6286cbfb39a9dedb0376607a'
+			const res = await requestWithSupertest.get(`/api/event/${eventId}`)
+			expect(res.status).toEqual(200)
+			console.log(res.body.length)
+		})
+		//test Post event youssef_CrudEvent.test.js
+		it('POST /api/event should add  all events', async () => {
+			const event = {
+				title: 'boxe',
+				description: 'round 1',
+				dateDebut: '2022-05-19T00:05:43.000+00:00',
+				dateFin: '2022-05-19T00:05:43.000+00:00',
+				hour: '12:00pm',
+				place: 'salle le bardo',
+				visibility: 'true',
+			}
+			const eventRes = await requestWithSupertest.post('/api/event').send(event)
+			console.log()
+			expect(eventRes.statusCode).toEqual(200)
+			const res = await requestWithSupertest.get(`/api/event/${eventRes.body._id}`)
+			expect(eventRes.body.title).toEqual('boxe')
+		})
+		//test delete one Event youssef_CrudEvent.test.js
+		it('DELETE api/event/:id should delete event by ID', async () => {
+			const eventId = '6292b7cb803f404791fa3d3d'
+			const res = await requestWithSupertest.delete(`/api/event/${eventId}`)
+			expect(res.status).toEqual(200)
+			console.log(res.body.length)
+		})
+			//test get listeSession youssef_ListSession.test.js
+		it('GET api/listSession should show all session', async () => {
+		const res = await requestWithSupertest.get('/api/listSession')
+		expect(res.status).toEqual(200)
+		console.log(res.body.length)
+	})
+		//test Post session youssef_session.test.js
+		it('POST /api/session should add a session', async () => {
+			const session = {
+				day: '2022-05-19T00:05:43.000+00:00',
+				hour: '12:00pm',
+				cancellation: 'annulation de la séance',
+				reason: 'maladie',
+				feedback: 'very good session',
+			}
+			const sessRes = await requestWithSupertest.post('/api/newSession').send(session)
+			console.log()
+			expect(sessRes.statusCode).toEqual(404)
+			const res = await requestWithSupertest.get(`/api/newSession/${sessRes.body._id}`)
+			expect(sessRes.body.day).toEqual('2022-05-19T00:05:43.000+00:00')
+		})
+	
 	// test GET ALL COMPETENCES chadha_hajji_crudComp.js
 	it('GET api/competences should show all competences', async () => {
 		const res = await requestWithSupertest.get('/api/competences')
@@ -431,6 +539,8 @@ describe('Coach and Player Endpoints', () => {
 	const res = await requestWithSupertest.get('/api/challenges');
 	console.log(res.body)
 	  expect(res.status).toEqual(200);
-  }); 
+  });
 
 })
+
+
